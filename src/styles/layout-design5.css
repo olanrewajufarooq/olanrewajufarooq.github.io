@@ -1159,184 +1159,195 @@ footer a:hover {
 }
 
 /* ============================================
-   Education — Degree Cards
+   Education — Degree Timeline
    ============================================ */
 
-.degree-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  margin-top: 1rem;
+.edu-timeline {
+  position: relative;
+  margin-top: 1.5rem;
+  padding-left: 2.5rem;
 }
 
-/* Erasmus Mundus group wrapper */
-.erasmus-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding-left: 1.1rem;
-  border-left: 2px solid rgba(var(--accent-rgb), 0.35);
+/* Vertical spine */
+.edu-timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--accent) 0%,
+    rgba(var(--accent-rgb), 0.4) 80%,
+    transparent 100%
+  );
+  border-radius: 2px;
 }
 
-.erasmus-group-header {
-  margin-bottom: -0.1rem;
+.edu-timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
 }
 
-.erasmus-badge {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: rgba(var(--accent-rgb), 0.1);
-  padding: 0.2rem 0.65rem;
-  border-radius: 4px;
-  display: inline-block;
+.edu-timeline-item:last-child {
+  margin-bottom: 0;
 }
 
-.degree-card {
+/* Hollow accent dot centred on spine */
+.edu-tl-dot {
+  position: absolute;
+  left: -2.5rem;   /* centres at 8px from timeline left edge */
+  top: 1.3rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2.5px solid var(--accent);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
+  z-index: 1;
+}
+
+/* Content panel — subtle bg + left accent bar */
+.edu-tl-panel {
   background: var(--bg-secondary);
-  border: 1px solid rgba(var(--accent-rgb), 0.1);
-  border-radius: 10px;
+  border-left: 3px solid rgba(var(--accent-rgb), 0.4);
+  border-radius: 0 8px 8px 0;
   padding: 1.25rem 1.4rem;
   display: flex;
-  gap: 1.25rem;
   align-items: flex-start;
-  transition: border-color 0.2s ease;
+  justify-content: space-between;
+  gap: 1.5rem;
+  transition: border-left-color 0.2s ease;
 }
 
-.degree-card:hover {
-  border-color: rgba(var(--accent-rgb), 0.3);
+.edu-tl-panel:hover {
+  border-left-color: var(--accent);
 }
 
-/* Logo container — tall, proportional */
-.degree-card-logo-wrap {
-  width: 105px;
-  min-height: 88px;
-  flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.07);
-  border-radius: 10px;
-  padding: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-html.light-mode .degree-card-logo-wrap {
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.degree-card-logo {
-  width: 100%;
-  height: auto;
-  max-height: 88px;
-  object-fit: contain;
-  border-radius: 4px;
-  display: block;
-}
-
-.degree-card-logo-placeholder {
-  font-size: 2.4rem;
-  opacity: 0.45;
-}
-
-.degree-card-body {
+/* Joint-degree outer wrapper */
+.edu-tl-jd-wrapper {
   flex: 1;
   min-width: 0;
 }
 
-/* Institution · Location */
-.degree-card-heading {
+.edu-tl-jd-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.85rem;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+}
+
+.edu-tl-jd-institutions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+/* Sub-panels inside joint degree (slightly inset) */
+.edu-tl-sub-panel {
+  border-radius: 0 6px 6px 0;
+  padding: 0.9rem 1.2rem;
+  border-left-width: 2px;
+}
+
+/* Text body */
+.edu-tl-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.edu-tl-institution {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 0.15rem;
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 0.35rem;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--text);
-  margin-bottom: 0.2rem;
 }
 
-.degree-inst-link {
+.edu-tl-inst-link {
   color: var(--text);
   text-decoration: none;
 }
 
-.degree-inst-link:hover {
+.edu-tl-inst-link:hover {
   color: var(--accent);
 }
 
-.degree-location-sep {
+.edu-tl-sep-dot {
   color: var(--text-secondary);
   font-weight: 400;
 }
 
-.degree-location {
+.edu-tl-location {
   font-size: 0.82rem;
   color: var(--text-secondary);
   font-weight: 400;
 }
 
-/* Degree · Field */
-.degree-card-sub {
+.edu-tl-degree {
   display: flex;
-  align-items: baseline;
   flex-wrap: wrap;
+  align-items: baseline;
   gap: 0.1rem;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
 
-.degree-name-text {
+.edu-tl-degree-name {
   font-size: 0.83rem;
   color: var(--accent);
   font-weight: 500;
 }
 
-.degree-card-sep {
+.edu-tl-sep {
   font-size: 0.83rem;
   color: var(--text-secondary);
 }
 
-.degree-field-text {
+.edu-tl-field {
   font-size: 0.83rem;
   color: var(--text-secondary);
 }
 
-/* Period */
-.degree-card-period-line {
-  font-size: 0.79rem;
-  color: var(--accent);
+.edu-tl-period {
+  font-size: 0.78rem;
   font-weight: 500;
-  opacity: 0.85;
-  margin-bottom: 0.55rem;
+  color: var(--accent);
+  opacity: 0.82;
+  margin-bottom: 0.5rem;
 }
 
-/* Advisor prose */
-.degree-card-advisor {
-  font-size: 0.81rem;
+.edu-tl-advisor {
+  font-size: 0.8rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 0.35rem;
+  line-height: 1.65;
   font-style: italic;
 }
 
-.degree-card-advisor a {
+.edu-tl-advisor a {
   color: var(--accent);
   text-decoration: none;
   font-style: normal;
 }
 
-.degree-card-advisor a:hover {
+.edu-tl-advisor a:hover {
   text-decoration: underline;
 }
 
-/* Footnote (Erasmus year notes) */
-.degree-card-footnote {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  opacity: 0.65;
-  font-style: italic;
-  margin-top: 0.1rem;
+/* Logo — bare image, no box/border */
+.edu-tl-logo {
+  width: 90px;
+  height: auto;
+  max-height: 80px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
 }
 
 /* ============================================

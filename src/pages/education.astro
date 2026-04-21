@@ -17,26 +17,16 @@ const techStack = [
   { name: 'Ubuntu',   logoDark: '/assets/images/logos/ubuntu-dark.svg', logoLight: '/assets/images/logos/ubuntu.svg' },
 ];
 
-// Group consecutive Erasmus Mundus degrees into one visual block
-type Degree = (typeof degrees)[0];
-type DegreeGroup = { type: 'single'; deg: Degree } | { type: 'erasmus'; degs: Degree[] };
-const groups: DegreeGroup[] = [];
-let erasmusBuf: Degree[] = [];
-for (const deg of degrees) {
-  if ((deg.degree as string).startsWith('Erasmus Mundus')) {
-    erasmusBuf.push(deg);
-  } else {
-    if (erasmusBuf.length) { groups.push({ type: 'erasmus', degs: erasmusBuf }); erasmusBuf = []; }
-    groups.push({ type: 'single', deg });
-  }
-}
-if (erasmusBuf.length) groups.push({ type: 'erasmus', degs: erasmusBuf });
-
-function buildAdvisorProse(deg: Degree): string | null {
-  if (!deg.advisor) return null;
-  const advisors: string[] = Array.isArray(deg.advisor) ? deg.advisor : [deg.advisor];
-  const links: (string | null)[] = Array.isArray(deg.advisorLink) ? deg.advisorLink : [deg.advisorLink];
-  const parts = advisors.map((a: string, i: number) =>
+function buildAdvisorProse(
+  advisor: string | string[] | null,
+  advisorLink: string | string[] | null,
+  lab: string | null,
+  labLink: string | null
+): string | null {
+  if (!advisor) return null;
+  const advisors: string[] = Array.isArray(advisor) ? advisor : [advisor];
+  const links: (string | null)[] = Array.isArray(advisorLink) ? advisorLink : [advisorLink];
+  const parts = advisors.map((a, i) =>
     links[i] ? `<a href="${links[i]}" target="_blank" rel="noopener noreferrer">${a}</a>` : a
   );
   const verb = advisors.length > 1 ? 'co-supervised' : 'supervised';
@@ -44,10 +34,10 @@ function buildAdvisorProse(deg: Degree): string | null {
     ? parts[0]
     : parts.slice(0, -1).join(', ') + ' and ' + parts[parts.length - 1];
   let prose = `The thesis associated with this degree was ${verb} by ${who}`;
-  if (deg.lab) {
-    const labStr = deg.labLink
-      ? `<a href="${deg.labLink}" target="_blank" rel="noopener noreferrer">${deg.lab}</a>`
-      : deg.lab;
+  if (lab) {
+    const labStr = labLink
+      ? `<a href="${labLink}" target="_blank" rel="noopener noreferrer">${lab}</a>`
+      : lab;
     prose += ` at the ${labStr}`;
   }
   return prose + '.';
@@ -64,60 +54,79 @@ function buildAdvisorProse(deg: Degree): string | null {
   <!-- Degrees -->
   <section class="content-section" id="degrees">
     <h2>Academic Degrees</h2>
-    <div class="degree-cards">
-      {groups.map((group) => {
-        const renderCard = (deg: any) => {
-          const advisorProse = buildAdvisorProse(deg);
-          return (
-            <div class="degree-card">
-              <div class="degree-card-logo-wrap">
-                {deg.logo ? (
-                  <img
-                    src={deg.logo}
-                    alt={deg.institution}
-                    class="degree-card-logo"
-                    onerror="this.style.visibility='hidden'"
-                  />
-                ) : (
-                  <span class="degree-card-logo-placeholder">🎓</span>
-                )}
-              </div>
-              <div class="degree-card-body">
-                <p class="degree-card-heading">
-                  {deg.url ? (
-                    <a href={deg.url} target="_blank" rel="noopener noreferrer" class="degree-inst-link">{deg.institution}</a>
-                  ) : <span>{deg.institution}</span>}
-                  {deg.location && <span class="degree-location-sep">·</span>}
-                  {deg.location && <span class="degree-location">{deg.location}</span>}
-                </p>
-                <p class="degree-card-sub">
-                  <span class="degree-name-text">{deg.degree}</span>
-                  <span class="degree-card-sep"> · </span>
-                  <span class="degree-field-text">{deg.field}</span>
-                </p>
-                <p class="degree-card-period-line">{deg.period}</p>
-                {advisorProse && (
-                  <p class="degree-card-advisor" set:html={advisorProse} />
-                )}
-                {deg.note && (
-                  <p class="degree-card-footnote">{deg.note}</p>
-                )}
-              </div>
-            </div>
-          );
-        };
+    <div class="edu-timeline">
+      {degrees.map((deg: any) => {
 
-        if (group.type === 'erasmus') {
+        /* ── Joint / Erasmus Mundus entry ── */
+        if (deg.jointdegree) {
+          const advisorProse = buildAdvisorProse(deg.advisor, deg.advisorLink, deg.lab, deg.labLink);
           return (
-            <div class="erasmus-group">
-              <div class="erasmus-group-header">
-                <span class="erasmus-badge">Erasmus Mundus Joint Master's Programme</span>
+            <div class="edu-timeline-item">
+              <div class="edu-tl-dot"></div>
+              <div class="edu-tl-jd-wrapper">
+                <p class="edu-tl-jd-name">{deg.JDName}</p>
+                <div class="edu-tl-jd-institutions">
+                  {(deg.institution as string[]).map((_: string, i: number) => (
+                    <div class="edu-tl-panel edu-tl-sub-panel">
+                      <div class="edu-tl-body">
+                        <p class="edu-tl-institution">
+                          {deg.url[i] ? (
+                            <a href={deg.url[i]} target="_blank" rel="noopener noreferrer" class="edu-tl-inst-link">{deg.institution[i]}</a>
+                          ) : <span>{deg.institution[i]}</span>}
+                          {deg.location[i] && <span class="edu-tl-sep-dot">·</span>}
+                          {deg.location[i] && <span class="edu-tl-location">{deg.location[i]}</span>}
+                        </p>
+                        <p class="edu-tl-degree">
+                          <span class="edu-tl-degree-name">{deg.degree[i]}</span>
+                          <span class="edu-tl-sep"> · </span>
+                          <span class="edu-tl-field">{deg.field[i]}</span>
+                        </p>
+                        <p class="edu-tl-period">{deg.period[i]}</p>
+                      </div>
+                      {deg.logo[i] && (
+                        <img src={deg.logo[i]} alt={deg.institution[i]} class="edu-tl-logo" onerror="this.style.display='none'" />
+                      )}
+                    </div>
+                  ))}
+                </div>
+                {advisorProse && (
+                  <p class="edu-tl-advisor" set:html={advisorProse} />
+                )}
               </div>
-              {group.degs.map(renderCard)}
             </div>
           );
         }
-        return renderCard(group.deg);
+
+        /* ── Regular single entry ── */
+        const advisorProse = buildAdvisorProse(deg.advisor, deg.advisorLink, deg.lab, deg.labLink);
+        return (
+          <div class="edu-timeline-item">
+            <div class="edu-tl-dot"></div>
+            <div class="edu-tl-panel">
+              <div class="edu-tl-body">
+                <p class="edu-tl-institution">
+                  {deg.url ? (
+                    <a href={deg.url} target="_blank" rel="noopener noreferrer" class="edu-tl-inst-link">{deg.institution}</a>
+                  ) : <span>{deg.institution}</span>}
+                  {deg.location && <span class="edu-tl-sep-dot">·</span>}
+                  {deg.location && <span class="edu-tl-location">{deg.location}</span>}
+                </p>
+                <p class="edu-tl-degree">
+                  <span class="edu-tl-degree-name">{deg.degree}</span>
+                  <span class="edu-tl-sep"> · </span>
+                  <span class="edu-tl-field">{deg.field}</span>
+                </p>
+                <p class="edu-tl-period">{deg.period}</p>
+                {advisorProse && (
+                  <p class="edu-tl-advisor" set:html={advisorProse} />
+                )}
+              </div>
+              {deg.logo && (
+                <img src={deg.logo} alt={deg.institution} class="edu-tl-logo" onerror="this.style.display='none'" />
+              )}
+            </div>
+          </div>
+        );
       })}
     </div>
   </section>
