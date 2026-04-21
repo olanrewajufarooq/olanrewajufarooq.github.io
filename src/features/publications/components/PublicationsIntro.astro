@@ -1,0 +1,65 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = 'Publications',
+  subtitle = 'My research contributions and peer-reviewed papers'
+} = Astro.props;
+---
+
+<section class="publications-intro">
+  <div class="intro-content">
+    <h1>{title}</h1>
+    <p class="subtitle">{subtitle}</p>
+    <p class="description">
+      Below is a collection of my peer-reviewed publications and research papers.
+      Publications are categorized by their current status: published in journals/conferences,
+      accepted for publication, or currently under review.
+    </p>
+  </div>
+</section>
+
+<style>
+  .publications-intro {
+    margin-bottom: var(--space-12);
+  }
+
+  .intro-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin: 0 0 var(--space-2) 0;
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+  }
+
+  .subtitle {
+    margin: 0 0 var(--space-4) 0;
+    font-size: var(--font-size-lg);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .description {
+    margin: 0;
+    font-size: var(--font-size-base);
+    color: var(--color-text-tertiary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: var(--breakpoint-md)) {
+    h1 {
+      font-size: var(--font-size-2xl);
+    }
+
+    .subtitle {
+      font-size: var(--font-size-base);
+    }
+  }
+</style>

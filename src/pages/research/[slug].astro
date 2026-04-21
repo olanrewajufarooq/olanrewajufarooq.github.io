@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import Breadcrumbs from '../../components/layout/Breadcrumbs.astro';
+import ResearchHeader from '../../features/research/components/ResearchHeader.astro';
+import ResearchOverview from '../../features/research/components/ResearchOverview.astro';
+import ResearchCollaborators from '../../features/research/components/ResearchCollaborators.astro';
+import ResearchProjects from '../../features/research/components/ResearchProjects.astro';
+import ResearchRepositories from '../../features/research/components/ResearchRepositories.astro';
+import ResearchPublications from '../../features/research/components/ResearchPublications.astro';
+import ResearchGallery from '../../features/research/components/ResearchGallery.astro';
+import ResearchVideos from '../../features/research/components/ResearchVideos.astro';
+
+import publicationsData from '../../data/publications/publications.json';
+import projectsData from '../../data/research/projects.json';
+import type { Project, Publication } from '../../shared/types';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('research');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const allProjects = projectsData.projects as Project[];
+const allPublications = publicationsData.publications as Publication[];
+
+const relatedProjects = allProjects.filter((project) =>
+  entry.data.projectIds.includes(project.id)
+);
+
+const relatedPublications = allPublications.filter((publication) =>
+  entry.data.publicationIds.includes(publication.id)
+);
+---
+
+<ContentLayout
+  title={`${entry.data.title} | Farooq Olanrewaju`}
+  description={entry.data.seoDescription ?? entry.data.summary}
+  activePath="/research"
+>
+  <Breadcrumbs
+    items={[
+      { label: 'Home', href: '/' },
+      { label: 'Research', href: '/research' },
+      { label: entry.data.title }
+    ]}
+  />
+
+  <ResearchHeader
+    title={entry.data.title}
+    period={entry.data.period}
+    status={entry.data.status}
+    keywords={entry.data.keywords}
+  />
+
+  <ResearchOverview summary={entry.data.summary}>
+    <Content />
+  </ResearchOverview>
+
+  <ResearchCollaborators collaborators={entry.data.collaborators} />
+  <ResearchProjects projects={relatedProjects} />
+  <ResearchGallery images={entry.data.gallery} title={entry.data.title} />
+  <ResearchVideos videos={entry.data.videos} />
+  <ResearchRepositories repositories={entry.data.repositories} />
+  <ResearchPublications publications={relatedPublications} />
+</ContentLayout>

@@ -1,0 +1,20 @@
+---
+import SectionHeading from '../../../components/ui/SectionHeading.astro';
+import styles from '../styles/research.module.css';
+
+interface Props {
+  summary: string;
+}
+
+const { summary } = Astro.props;
+---
+
+<section class={styles.section}>
+  <SectionHeading eyebrow="Overview" title="Research Overview" />
+  <div class={styles.introBlock}>
+    <p>{summary}</p>
+    <div class={styles.richContent}>
+      <slot />
+    </div>
+  </div>
+</section>

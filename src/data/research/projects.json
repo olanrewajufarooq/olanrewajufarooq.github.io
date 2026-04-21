@@ -1,0 +1,169 @@
+{
+  "projects": [
+    {
+      "id": "prob-kalman-filter",
+      "title": "Probabilistic Adaptive Kalman Filter",
+      "summary": "Research project at KFUPM on sensor fusion and probabilistic guarantees under noise mis-specification.",
+      "period": "Sep 2025 \u2013 Dec 2025",
+      "status": "ongoing",
+      "themeSlug": "probabilistic-sensor-fusion",
+      "url": "https://github.com/olanrewajufarooq/prob-sensor-fusion",
+      "repositoryVisibility": "public",
+      "technologies": [
+        "Python",
+        "Kalman Filtering",
+        "Sensor Fusion"
+      ]
+    },
+    {
+      "id": "microgrid-control",
+      "title": "RL-based Control of Microgrid",
+      "summary": "Research on reinforcement learning-based control strategies for microgrid systems.",
+      "period": "Sep 2025 \u2013 Dec 2025",
+      "status": "ongoing",
+      "themeSlug": "microgrid-control",
+      "url": "https://github.com/olanrewajufarooq/microgrid-control-sim",
+      "repositoryVisibility": "public",
+      "technologies": [
+        "Python",
+        "Reinforcement Learning",
+        "Control Systems"
+      ]
+    },
+    {
+      "id": "adaptive-hexacopter",
+      "title": "Adaptive Control of Variable-Tilt Hexacopter",
+      "summary": "Geometric adaptive control on SE(3) for fully-actuated aerial vehicles with online parameter estimation.",
+      "period": "Jan 2025 \u2013 May 2025",
+      "status": "completed",
+      "themeSlug": "variable-tilt-hexacopter",
+      "url": "https://github.com/olanrewajufarooq/VariableTiltHexacopterMATLAB",
+      "repositoryVisibility": "public",
+      "technologies": [
+        "Python",
+        "ROS",
+        "Control Systems"
+      ]
+    },
+    {
+      "id": "se3-hexacopter",
+      "title": "SE(3) Geometric Estimation and Control",
+      "summary": "Geometric approach to modelling, control allocation, and visual-inertial odometry for hexacopters.",
+      "period": "Jan 2025 \u2013 May 2025",
+      "status": "completed",
+      "themeSlug": "variable-tilt-hexacopter",
+      "url": "https://github.com/olanrewajufarooq/VariableTiltHexacopter",
+      "repositoryVisibility": "public",
+      "technologies": [
+        "Python",
+        "ROS",
+        "Computer Vision"
+      ]
+    },
+    {
+      "id": "ship-identification",
+      "title": "Model-based ARX Ship Identification",
+      "summary": "APO-optimized ARX-based system identification of ship maneuvering systems, later published in 2025.",
+      "period": "Sep 2024 \u2013 Dec 2024",
+      "status": "completed",
+      "themeSlug": "ship-identification",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10989967/",
+      "repositoryVisibility": null,
+      "technologies": [
+        "Python",
+        "Control Systems",
+        "System Identification"
+      ]
+    },
+    {
+      "id": "grasp-planning",
+      "title": "Grasp Planning for Underwater Robot Cooperation",
+      "summary": "Master's thesis research at Universitat Jaume I as part of the COOPERAMOS project on underwater robot cooperation.",
+      "period": "Feb 2024 \u2013 Jun 2024",
+      "status": "completed",
+      "themeSlug": "underwater-robot-cooperation",
+      "url": "https://github.com/uji-irslab/uji-irslab-cooperamos-grasp-planner",
+      "repositoryVisibility": "public",
+      "technologies": [
+        "Python",
+        "ROS",
+        "Computer Vision"
+      ]
+    },
+    {
+      "id": "bluerov-treasure",
+      "title": "Autonomous Docking and Underwater Treasure Search",
+      "summary": "Vision-based autonomous systems for an underwater robotics competition with BlueROV.",
+      "period": "Mar 2023 \u2013 Jun 2023",
+      "status": "completed",
+      "themeSlug": "underwater-robot-cooperation",
+      "url": "https://github.com/olanrewajufarooq/BlueROVCompetition",
+      "repositoryVisibility": "public",
+      "technologies": [
+        "Python",
+        "ROS",
+        "Deep Learning"
+      ]
+    },
+    {
+      "id": "bluerov-trajectory",
+      "title": "Trajectory Planning and Autonomous Control",
+      "summary": "Path planning and control algorithms for BlueROV autonomous underwater vehicles.",
+      "period": "Feb 2023 \u2013 May 2023",
+      "status": "completed",
+      "themeSlug": "underwater-robot-cooperation",
+      "url": "https://github.com/olanrewajufarooq/MIRBlueROV",
+      "repositoryVisibility": "public",
+      "technologies": [
+        "Python",
+        "ROS",
+        "Planning"
+      ]
+    },
+    {
+      "id": "oceanography",
+      "title": "Oceanographic Analysis of the Mediterranean Sea",
+      "summary": "Data-driven analysis and visualization of oceanographic data from the Mediterranean Sea.",
+      "period": "Oct 2022 \u2013 Feb 2023",
+      "status": "completed",
+      "themeSlug": "underwater-robot-cooperation",
+      "url": "https://github.com/olanrewajufarooq/OceanographyAnalysis",
+      "repositoryVisibility": "public",
+      "technologies": [
+        "MATLAB",
+        "Python",
+        "Data Analysis"
+      ]
+    },
+    {
+      "id": "underwater-auv",
+      "title": "Modelling and Simulation of Autonomous Underwater Vehicle",
+      "summary": "System dynamics modelling and simulation of underwater robotic systems.",
+      "period": "Oct 2022 \u2013 Jan 2023",
+      "status": "completed",
+      "themeSlug": "underwater-robot-cooperation",
+      "url": "https://github.com/olanrewajufarooq/MIRUnderwaterRobotics",
+      "repositoryVisibility": "public",
+      "technologies": [
+        "MATLAB",
+        "Simulink",
+        "Dynamics"
+      ]
+    },
+    {
+      "id": "uas-development",
+      "title": "Development of Unmanned Aerial System",
+      "summary": "Research and development of an aerial surveillance and delivery system with advanced control and robotics components.",
+      "period": "Nov 2019 \u2013 Aug 2021",
+      "status": "completed",
+      "themeSlug": "autonomous-aerial-systems",
+      "url": null,
+      "repositoryVisibility": null,
+      "technologies": [
+        "Control Systems",
+        "Robotics",
+        "Embedded Systems"
+      ]
+    }
+  ]
+}

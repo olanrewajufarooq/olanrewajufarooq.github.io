@@ -1,0 +1,62 @@
+---
+import SectionHeading from '../../../components/ui/SectionHeading.astro';
+import StatusBadge from '../../../components/ui/StatusBadge.astro';
+import styles from '../styles/home.module.css';
+import type { Publication } from '../../../shared/types/publication';
+import type { Project } from '../../../shared/types/project';
+
+interface Props {
+  publication: Publication | null;
+  projects: Project[];
+}
+
+const { publication, projects } = Astro.props;
+
+function renderAuthors(authors: Publication['authors']) {
+  return authors
+    .map((author) => (author.isMe ? `<strong>${author.name}</strong>` : author.name))
+    .join(', ');
+}
+---
+
+<section class={styles.section}>
+  <SectionHeading eyebrow="Latest" title="Latest Work" />
+
+  <div class={styles.latestGrid}>
+    <div class={styles.simplePanel}>
+      <h3 class={styles.panelTitle}>Latest Publication</h3>
+      {publication ? (
+        <>
+          <div class={styles.metaRow}>
+            <StatusBadge label={publication.status} />
+          </div>
+          <p set:html={renderAuthors(publication.authors)} />
+          <p>
+            "{publication.title}," <em>{publication.venue}</em>, {publication.year}.
+          </p>
+          {publication.publisherUrl && (
+            <p>
+              <a href={publication.publisherUrl} target="_blank" rel="noopener noreferrer">
+                View publisher page
+              </a>
+            </p>
+          )}
+        </>
+      ) : (
+        <p>No publication selected yet.</p>
+      )}
+    </div>
+
+    <div class={styles.simplePanel}>
+      <h3 class={styles.panelTitle}>Current Projects</h3>
+      <ul class={styles.compactList}>
+        {projects.map((project) => (
+          <li>
+            <strong>{project.title}</strong>
+            <div>{project.period}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,172 @@
+---
+import type { TeachingItem } from '../../../shared/types';
+import teachingData from '../../../data/teaching/teaching.json';
+
+interface Props {
+  title?: string;
+}
+
+const { title = 'Teaching Experience' } = Astro.props;
+const items = teachingData.items as TeachingItem[];
+---
+
+<section class="teaching-section">
+  <h2 class="section-title">{title}</h2>
+
+  {items && items.length > 0 ? (
+    <div class="teaching-list">
+      {items.map((item) => (
+        <article class="teaching-item">
+          <div class="item-header">
+            <h3 class="item-title">{item.title}</h3>
+            {item.period && <span class="item-year">{item.period}</span>}
+          </div>
+
+          {item.institution && (
+            <p class="item-institution">{item.institution}</p>
+          )}
+
+          {item.role && <p class="item-role">{item.role}</p>}
+
+          {item.summary && (
+            <p class="item-description">{item.summary}</p>
+          )}
+
+          {item.materialsUrl && (
+            <a href={item.materialsUrl} target="_blank" rel="noopener noreferrer" class="item-link">
+              View materials →
+            </a>
+          )}
+        </article>
+      ))}
+    </div>
+  ) : (
+    <div class="empty-state">
+      <p>No teaching experience to display at this time.</p>
+      <p class="empty-subtitle">Updates coming soon!</p>
+    </div>
+  )}
+</section>
+
+<style>
+  .teaching-section {
+    margin-bottom: var(--space-16);
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 var(--space-6) 0;
+    color: var(--color-text);
+  }
+
+  .teaching-list {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .teaching-item {
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-secondary);
+    transition: all var(--transition-fast);
+
+    &:hover {
+      border-left-color: var(--color-link);
+      background-color: var(--color-bg-tertiary);
+    }
+  }
+
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-2);
+  }
+
+  .item-title {
+    margin: 0;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+  }
+
+  .item-year {
+    display: inline-block;
+    padding: var(--space-1) var(--space-2);
+    background-color: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+  }
+
+  .item-institution {
+    margin: 0 0 var(--space-1) 0;
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+  }
+
+  .item-role {
+    margin: 0 0 var(--space-2) 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+    font-style: italic;
+  }
+
+  .item-description {
+    margin: 0 0 var(--space-3) 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .item-link {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    color: var(--color-link);
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .empty-state {
+    padding: var(--space-8);
+    text-align: center;
+    color: var(--color-text-tertiary);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-secondary);
+
+    p {
+      margin: 0 0 var(--space-2) 0;
+      font-size: var(--font-size-base);
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .empty-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-quaternary);
+  }
+
+  @media (max-width: var(--breakpoint-md)) {
+    .item-header {
+      flex-direction: column;
+    }
+
+    .item-year {
+      align-self: flex-start;
+    }
+  }
+</style>

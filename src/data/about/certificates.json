@@ -1,0 +1,199 @@
+{
+  "providers": [
+    {
+      "id": "mathworks",
+      "name": "MathWorks",
+      "items": [
+        {
+          "id": "control-onramp",
+          "name": "Control Onramp",
+          "date": "07 Oct 2022",
+          "issuer": "MathWorks",
+          "platform": "MathWorks",
+          "verificationUrl": null,
+          "image": "/assets/images/certificates/control-onramp-certificate.png"
+        },
+        {
+          "id": "simulink-onramp",
+          "name": "Simulink Onramp",
+          "date": "05 Oct 2022",
+          "issuer": "MathWorks",
+          "platform": "MathWorks",
+          "verificationUrl": null,
+          "image": "/assets/images/certificates/simulink-onramp.png"
+        },
+        {
+          "id": "matlab-onramp",
+          "name": "MATLAB Onramp",
+          "date": "07 Mar 2020",
+          "issuer": "MathWorks",
+          "platform": "MathWorks",
+          "verificationUrl": null,
+          "image": "/assets/images/certificates/matlab-onramp-certificate.png"
+        }
+      ]
+    },
+    {
+      "id": "vanderbilt-university",
+      "name": "Vanderbilt University",
+      "items": [
+        {
+          "id": "intro-programming-matlab",
+          "name": "Introduction to Programming with MATLAB",
+          "date": "21 Mar 2022",
+          "issuer": "Vanderbilt University",
+          "platform": "Coursera",
+          "verificationUrl": "https://coursera.org/verify/4DZTPSALZUF5",
+          "image": "/assets/images/certificates/intro-matlab-vanderbuilt.png"
+        },
+        {
+          "id": "mastering-programming-matlab",
+          "name": "Mastering Programming with MATLAB",
+          "date": "05 Aug 2022",
+          "issuer": "Vanderbilt University",
+          "platform": "Coursera",
+          "verificationUrl": "https://coursera.org/verify/MWKLHQLQKK27",
+          "image": "/assets/images/certificates/master-matlab-vanderbuilt.png"
+        }
+      ]
+    },
+    {
+      "id": "deeplearning-ai",
+      "name": "DeepLearning.AI",
+      "items": [
+        {
+          "id": "neural-networks-and-deep-learning",
+          "name": "Neural Networks and Deep Learning",
+          "date": "22 Jul 2020",
+          "issuer": "DeepLearning.AI",
+          "platform": "Coursera",
+          "verificationUrl": "https://coursera.org/verify/G2D9HQ2DWP8W",
+          "image": "/assets/images/certificates/neural-networks-and-deep-learning.png"
+        },
+        {
+          "id": "improving-deep-neural-networks",
+          "name": "Improving Deep Neural Networks",
+          "date": "24 Jul 2020",
+          "issuer": "DeepLearning.AI",
+          "platform": "Coursera",
+          "verificationUrl": "https://coursera.org/verify/FWMDNQSYHG6S",
+          "image": "/assets/images/certificates/improving-deep-neural-networks-hyperparameter-tuning-regularization-and-optimization.png"
+        },
+        {
+          "id": "convolutional-neural-networks",
+          "name": "Convolutional Neural Networks",
+          "date": "09 Aug 2020",
+          "issuer": "DeepLearning.AI",
+          "platform": "Coursera",
+          "verificationUrl": "https://coursera.org/verify/TXY2ZANYAZRK",
+          "image": "/assets/images/certificates/convolutional-neural-networks.png"
+        }
+      ]
+    },
+    {
+      "id": "ibm",
+      "name": "IBM",
+      "items": [
+        {
+          "id": "neural-networks-and-pytorch",
+          "name": "Neural Networks and PyTorch",
+          "date": "17 Jun 2023",
+          "issuer": "IBM",
+          "platform": "Coursera",
+          "verificationUrl": "https://coursera.org/verify/YK89YC4M5NGY",
+          "image": "/assets/images/certificates/neural-networks-and-pytorch.png"
+        },
+        {
+          "id": "ibm-data-science-professional-certificate",
+          "name": "IBM Data Science Professional Certificate",
+          "date": "22 Apr 2020",
+          "issuer": "IBM",
+          "platform": "Coursera",
+          "verificationUrl": "https://coursera.org/verify/professional-cert/CMLY9FTE3ZLT",
+          "image": "/assets/images/certificates/coursera-ibm-data-science.png"
+        },
+        {
+          "id": "data-visualization-with-python",
+          "name": "Data Visualization with Python",
+          "date": "14 Apr 2020",
+          "issuer": "IBM",
+          "platform": "Coursera",
+          "verificationUrl": "https://coursera.org/verify/ZQ7UBDNT9ADY",
+          "image": "/assets/images/certificates/data-viz-ibm.png"
+        },
+        {
+          "id": "eda-for-machine-learning",
+          "name": "Exploratory Data Analysis for Machine Learning",
+          "date": "20 Jun 2022",
+          "issuer": "IBM",
+          "platform": "Coursera",
+          "verificationUrl": "https://coursera.org/verify/8CS5RV4ZXY23",
+          "image": "/assets/images/certificates/eda-ml-ibm.png"
+        },
+        {
+          "id": "master-python-for-data-science",
+          "name": "Master Python for Data Science",
+          "date": "10 Apr 2020",
+          "issuer": "IBM",
+          "platform": "LinkedIn Learning",
+          "verificationUrl": null,
+          "image": "/assets/images/certificates/master-python-for-data-science.png"
+        },
+        {
+          "id": "linux-and-shell-scripting",
+          "name": "Linux and Shell Scripting",
+          "date": "12 Sep 2022",
+          "issuer": "IBM",
+          "platform": "Coursera",
+          "verificationUrl": "https://coursera.org/verify/6ASACFSDSTTF",
+          "image": "/assets/images/certificates/linux-and-shell-scripting.png"
+        }
+      ]
+    },
+    {
+      "id": "university-of-michigan",
+      "name": "University of Michigan",
+      "items": [
+        {
+          "id": "statistics-with-python-specialization",
+          "name": "Statistics with Python Specialization",
+          "date": "10 Jun 2020",
+          "issuer": "University of Michigan",
+          "platform": "Coursera",
+          "verificationUrl": "https://coursera.org/verify/specialization/6VYRYW37DZ7H",
+          "image": "/assets/images/certificates/statistics-with-python-specialization.png"
+        }
+      ]
+    },
+    {
+      "id": "atlassian",
+      "name": "Atlassian",
+      "items": [
+        {
+          "id": "git-version-control",
+          "name": "Git Version Control",
+          "date": "10 Oct 2022",
+          "issuer": "Atlassian",
+          "platform": "Coursera",
+          "verificationUrl": "https://coursera.org/verify/W9L4N9YVK29F",
+          "image": "/assets/images/certificates/git-atlassian.png"
+        }
+      ]
+    },
+    {
+      "id": "google",
+      "name": "Google",
+      "items": [
+        {
+          "id": "git-and-github",
+          "name": "Git and GitHub",
+          "date": "08 Oct 2022",
+          "issuer": "Google",
+          "platform": "Coursera",
+          "verificationUrl": "https://coursera.org/verify/JYG7W8XJ7MC5",
+          "image": "/assets/images/certificates/git-and-github-google.png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+---
+import profileData from '../../../data/profile.json';
+---
+
+<section class="about-intro">
+  <div class="intro-content">
+    <h1>About Me</h1>
+    <p class="bio">{profileData.bio}</p>
+    <p class="subtitle">
+      I'm passionate about geometric control, robotics, and the intersection of
+      theory and practice. This page documents my academic journey, research
+      interests, and contributions to the field.
+    </p>
+  </div>
+</section>
+
+<style>
+  .about-intro {
+    margin-bottom: var(--space-12);
+  }
+
+  .intro-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin: 0 0 var(--space-4) 0;
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+  }
+
+  .bio {
+    margin: 0 0 var(--space-3) 0;
+    font-size: var(--font-size-lg);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .subtitle {
+    margin: 0;
+    font-size: var(--font-size-base);
+    color: var(--color-text-tertiary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: var(--breakpoint-md)) {
+    h1 {
+      font-size: var(--font-size-2xl);
+    }
+
+    .bio {
+      font-size: var(--font-size-base);
+    }
+  }
+</style>

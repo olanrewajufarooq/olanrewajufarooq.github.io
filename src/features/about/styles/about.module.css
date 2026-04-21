@@ -1,0 +1,503 @@
+/* About Page Module Styles */
+
+.aboutContainer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contentSection {
+  margin-bottom: var(--space-16);
+}
+
+.sectionHeading {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-6);
+  color: var(--color-text);
+}
+
+/* Education Timeline */
+
+.educationTimeline {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.educationEntry {
+  padding: var(--space-6);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-secondary);
+  transition: all var(--transition-fast);
+
+  &:hover {
+    background-color: var(--color-bg-tertiary);
+  }
+}
+
+.degreeName {
+  margin: 0 0 var(--space-3) 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.degreeField {
+  margin: 0 0 var(--space-2) 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+}
+
+.degreeLocation {
+  margin: 0 0 var(--space-2) 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+}
+
+.degreePeriod {
+  margin: 0 0 var(--space-3) 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+}
+
+.institutionLink {
+  display: inline-block;
+  color: var(--color-link);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-3);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.institutionLogo {
+  display: block;
+  max-height: 80px;
+  width: auto;
+  margin: var(--space-3) 0 0 0;
+  opacity: 0.9;
+  border-radius: var(--radius-sm);
+}
+
+/* Joint Degree */
+
+.jointDegreeGroup {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-4) 0;
+  padding: var(--space-4);
+  background-color: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+}
+
+.degreePart {
+  padding: var(--space-3);
+}
+
+.degreeLevel {
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+}
+
+/* Thesis Section */
+
+.thesisSection {
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.thesisTitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  margin: 0 0 var(--space-2) 0;
+  color: var(--color-text-secondary);
+}
+
+.thesisName {
+  margin: 0 0 var(--space-3) 0;
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.thesisAdvisor,
+.thesisLab {
+  margin: var(--space-2) 0;
+  font-size: var(--font-size-sm);
+}
+
+.label {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  margin-right: var(--space-2);
+}
+
+.advisorList {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: inline;
+
+    &:not(:last-child)::after {
+      content: ', ';
+    }
+
+    a {
+      color: var(--color-link);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* Certificates Section */
+
+.certificatesSection {
+  margin-bottom: var(--space-16);
+}
+
+.scrollContainerWrapper {
+  position: relative;
+  margin: 0 calc(var(--space-4) * -1);
+  padding: 0 var(--space-4);
+}
+
+.scrollButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  color: var(--color-text);
+  transition: all var(--transition-fast);
+
+  &:hover {
+    background-color: var(--color-bg-tertiary);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.scrollButtonLeft {
+  left: 0;
+}
+
+.scrollButtonRight {
+  right: 0;
+}
+
+.scrollContainer {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: var(--space-2) 0;
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-bg-tertiary);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-text-tertiary);
+    border-radius: var(--radius-full);
+
+    &:hover {
+      background: var(--color-text-secondary);
+    }
+  }
+}
+
+.certificateCard {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: 200px;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-secondary);
+  text-align: center;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-bg-tertiary);
+    transform: translateY(-2px);
+  }
+}
+
+.certIcon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto var(--space-3) auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-tertiary);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.certName {
+  margin: 0 0 var(--space-1) 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.certProvider {
+  margin: 0 0 var(--space-2) 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.certDate {
+  margin: 0 0 var(--space-3) 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+.certLink {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  color: var(--color-link);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Awards Section */
+
+.awardsSection {
+  margin-bottom: var(--space-16);
+}
+
+.awardsList {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.awardItem {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-secondary);
+  transition: all var(--transition-fast);
+
+  &:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-bg-tertiary);
+  }
+}
+
+.awardName {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.awardYear {
+  display: inline-block;
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  margin-left: var(--space-2);
+}
+
+.awardOrganization {
+  margin: var(--space-2) 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+.awardDescription {
+  margin: var(--space-2) 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  line-height: 1.5;
+}
+
+.awardLink {
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  color: var(--color-link);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* CV Panel */
+
+.cvPanel {
+  margin: var(--space-12) 0;
+  padding: var(--space-6);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-secondary) 0%,
+    var(--color-bg-tertiary) 100%
+  );
+}
+
+.cvContent {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.cvIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  color: var(--color-primary);
+  background-color: rgba(var(--color-primary-rgb), 0.1);
+  border-radius: var(--radius-lg);
+}
+
+.cvText {
+  flex: 1;
+}
+
+.cvTitle {
+  margin: 0 0 var(--space-1) 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.cvDescription {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+.cvDownloadButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Empty State */
+
+.emptyState {
+  padding: var(--space-8);
+  text-align: center;
+  color: var(--color-text-tertiary);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-secondary);
+}
+
+/* Responsive */
+
+@media (max-width: var(--breakpoint-md)) {
+  .jointDegreeGroup {
+    grid-template-columns: 1fr;
+  }
+
+  .scrollButton {
+    display: none;
+  }
+
+  .certificateCard {
+    width: 180px;
+  }
+
+  .cvContent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cvIcon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .cvDownloadButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .awardsList {
+    grid-template-columns: 1fr;
+  }
+}

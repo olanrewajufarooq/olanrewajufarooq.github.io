@@ -1,0 +1,19 @@
+html[data-theme='dark'] {
+  --color-bg: #111214;
+  --color-surface: #17191d;
+  --color-surface-soft: #1e2126;
+  --color-text: #ece7de;
+  --color-text-muted: #b2ab9f;
+  --color-border: #2a2d33;
+  --color-accent: #7c94ad;
+}
+
+html[data-theme='light'] {
+  --color-bg: #f7f5f0;
+  --color-surface: #ffffff;
+  --color-surface-soft: #efebe4;
+  --color-text: #1f1d19;
+  --color-text-muted: #615c55;
+  --color-border: #d8d1c5;
+  --color-accent: #617f9d;
+}

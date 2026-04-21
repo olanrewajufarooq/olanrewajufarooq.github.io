@@ -1,0 +1,120 @@
+---
+import profileData from '../../../data/site/profile.json';
+import socialData from '../../../data/site/social.json';
+import type { Profile, SocialLink } from '../../../shared/types';
+
+const profile = profileData as Profile;
+const social: SocialLink[] = socialData;
+---
+
+<div class="identity-block">
+  <div class="identity-profile">
+    <img src={profile.photo} alt={profile.name} class="profile-photo" />
+    <div class="profile-info">
+      <h1 class="profile-name">{profile.name}</h1>
+      <p class="profile-title">{profile.title}</p>
+      <p class="profile-institution">{profile.institution}</p>
+    </div>
+  </div>
+
+  {profile.bio && <p class="profile-bio">{profile.bio}</p>}
+
+  <ul class="social-links">
+    {social.map((link) => (
+      <li>
+        <a href={link.href} title={link.label} target="_blank" rel="noopener noreferrer">
+          {link.icon && <img src={link.icon} alt={link.label} />}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .identity-block {
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .identity-profile {
+    display: flex;
+    gap: var(--space-6);
+    align-items: flex-start;
+    margin-bottom: var(--space-6);
+  }
+
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+    min-width: 120px;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    border: 2px solid var(--color-border);
+  }
+
+  .profile-info {
+    flex: 1;
+  }
+
+  .profile-name {
+    font-size: var(--font-size-2xl);
+    margin: 0 0 var(--space-1) 0;
+  }
+
+  .profile-title {
+    margin: 0 0 var(--space-1) 0;
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .profile-institution {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+  }
+
+  .profile-bio {
+    margin: 0 0 var(--space-6) 0;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+  }
+
+  .social-links {
+    display: flex;
+    gap: var(--space-3);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--color-border);
+        transition: all var(--transition-fast);
+
+        img {
+          width: 20px;
+          height: 20px;
+          object-fit: contain;
+        }
+
+        &:hover {
+          background-color: var(--color-primary);
+          border-color: var(--color-primary);
+
+          img {
+            filter: brightness(0) invert(1);
+          }
+        }
+      }
+    }
+  }
+</style>

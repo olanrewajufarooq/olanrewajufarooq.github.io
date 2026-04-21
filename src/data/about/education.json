@@ -1,0 +1,94 @@
+{
+  "degrees": [
+    {
+      "id": "kfupm-phd",
+      "type": "single",
+      "degree": "Doctor of Philosophy (PhD)",
+      "field": "Systems and Control Engineering",
+      "institution": "King Fahd University of Petroleum & Minerals (KFUPM)",
+      "location": "Dhahran, Saudi Arabia",
+      "period": "Aug 2024 – Jul 2028",
+      "url": "https://www.kfupm.edu.sa",
+      "logo": "/assets/images/logos/kfupm-seal.png",
+      "thesis": {
+        "title": "Geometric Port-Hamiltonian Modelling and Control of Vehicle-Manipulator Systems with Safe Interaction",
+        "advisor": [
+          {
+            "name": "Dr. Ramy Rashad",
+            "url": "https://scholar.google.com/citations?user=M7fdYekAAAAJ"
+          }
+        ],
+        "lab": {
+          "name": "ARM4L Lab",
+          "url": "https://ri.kfupm.edu.sa/irc-sml/facilities/arm4l-lab"
+        },
+        "relatedResearchSlug": "vehicle-manipulator-systems"
+      }
+    },
+    {
+      "id": "erasmus-mmir",
+      "type": "joint",
+      "programName": "Erasmus Mundus Joint Master's Degree in Marine and Maritime Intelligent Robotics",
+      "entries": [
+        {
+          "degree": "Master of Engineering (M.Eng.)",
+          "field": "Electrical and Computer Engineering",
+          "institution": "Instituto Superior Tecnico",
+          "location": "Lisbon, Portugal",
+          "period": "Sep 2023 – Aug 2024",
+          "url": "https://tecnico.ulisboa.pt",
+          "logo": "/assets/images/logos/ist-lisbon.jpg"
+        },
+        {
+          "degree": "Master of Science (M.Sc.)",
+          "field": "Engineering of Complex Systems (Marine and Maritime Intelligent Robotics Specialization)",
+          "institution": "Université de Toulon",
+          "location": "Toulon, France",
+          "period": "Sep 2022 – Aug 2023",
+          "url": "https://www.univ-tln.fr",
+          "logo": "/assets/images/logos/univ-toulon.jpg"
+        }
+      ],
+      "thesis": {
+        "title": "Grasp Planning for Underwater Robot Cooperation",
+        "advisor": [
+          {
+            "name": "Dr. Pedro Sanz",
+            "url": "https://www.researchgate.net/profile/Pedro-Sanz"
+          },
+          {
+            "name": "Dr. Rodrigo Ventura",
+            "url": "https://isr.tecnico.ulisboa.pt/author/rodrigomartinsdematos/"
+          }
+        ],
+        "lab": {
+          "name": "CIRTESU Lab",
+          "url": null
+        },
+        "relatedResearchSlug": "underwater-robot-cooperation"
+      }
+    },
+    {
+      "id": "unilorin-beng",
+      "type": "single",
+      "degree": "Bachelor of Engineering (B.Eng.)",
+      "field": "Mechanical Engineering",
+      "institution": "University of Ilorin",
+      "location": "Ilorin, Nigeria",
+      "period": "Nov 2015 – Oct 2021",
+      "url": "https://www.unilorin.edu.ng",
+      "logo": "/assets/images/logos/unilorin.jpg",
+      "thesis": {
+        "title": "Modeling and Simulation of Unmanned Aerial Vehicle for Aerial Surveillance and Delivery",
+        "advisor": [
+          {
+            "name": "Dr. H. A. Ajimotokan",
+            "url": "https://scholar.google.com/citations?user=yA_cH54AAAAJ&hl=en"
+          }
+        ],
+        "lab": null,
+        "relatedResearchSlug": "autonomous-aerial-systems"
+      }
+    }
+  ]
+}

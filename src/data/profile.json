@@ -30,12 +30,12 @@
     {
       "label": "Google Scholar",
       "href": "https://scholar.google.com/citations?user=olanrewajufarooq",
-      "emoji": "📖"
+      "icon": "/assets/images/logos/google-scholar.png"
     },
     {
       "label": "Email",
       "href": "mailto:olanrewajufarooq@yahoo.com",
-      "emoji": "✉️"
+      "icon": "/assets/images/logos/email.png"
     }
   ]
 }

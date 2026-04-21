@@ -1,0 +1,18 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import SiteShell from '../components/layout/SiteShell.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  activePath: string;
+}
+
+const { title, description, activePath } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <SiteShell activePath={activePath}>
+    <slot />
+  </SiteShell>
+</BaseLayout>

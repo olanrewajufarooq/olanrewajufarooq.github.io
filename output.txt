@@ -1,0 +1,74 @@
+[2m01:20:04[22m [34m[content][39m Syncing content
+[33m[1m01:20:04[22m [WARN] [glob-loader][39m No files found matching "**/*.md,!**/_*/**/*.md,!**/_*.md" in directory "src\content\research"
+[2m01:20:04[22m [34m[content][39m Synced content
+[2m01:20:04[22m [34m[types][39m Generated [2m401ms[22m
+[2m01:20:04[22m [34m[check][39m Getting diagnostics for Astro files in C:\dev\githubPersonalWebsite...
+[96msrc/components/layout/MobileDrawer.tsx[0m:[93m111[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'styles' is declared but its value is never read.
+
+[7m111[0m const styles = `
+[7m   [0m [93m      ~~~~~~[0m
+
+[96msrc/features/about/components/AwardsSection.astro[0m:[93m18[0m:[93m27[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m18[0m       {awards.map((award, index) => (
+[7m  [0m [93m                          ~~~~~[0m
+
+[96msrc/features/about/components/CertificatesSection.tsx[0m:[93m2[0m:[93m50[0m - [93mwarning[0m[90m ts(6196): [0m'CertificateProviderGroup' is declared but never used.
+
+[7m2[0m import type { CertificateItem, CertificatesData, CertificateProviderGroup } from '../../../shared/types';
+[7m [0m [93m                                                 ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/features/about/components/CvDownloadPanel.astro[0m:[93m2[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'profileData' is declared but its value is never read.
+
+[7m2[0m import profileData from '../../../data/profile.json';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/features/about/components/EducationSection.astro[0m:[93m68[0m:[93m58[0m - [93mwarning[0m[90m ts(6133): [0m'idx' is declared but its value is never read.
+
+[7m68[0m                     {degree.thesis.advisor.map((advisor, idx) => (
+[7m  [0m [93m                                                         ~~~[0m
+
+[96msrc/features/about/components/JointDegreeGroup.astro[0m:[93m15[0m:[93m33[0m - [93mwarning[0m[90m ts(6133): [0m'idx' is declared but its value is never read.
+
+[7m15[0m     {degree.entries.map((entry, idx) => (
+[7m  [0m [93m                                ~~~[0m
+
+[96msrc/pages/about.astro[0m:[93m9[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'AffiliationMeta' is declared but its value is never read.
+
+[7m9[0m import AffiliationMeta from '../features/profile/components/AffiliationMeta.astro';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/about.astro[0m:[93m8[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'SocialLinks' is declared but its value is never read.
+
+[7m8[0m import SocialLinks from '../features/profile/components/SocialLinks.astro';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/about.astro[0m:[93m7[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'IdentityBlock' is declared but its value is never read.
+
+[7m7[0m import IdentityBlock from '../features/profile/components/IdentityBlock.astro';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/about.astro[0m:[93m6[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'SiteShell' is declared but its value is never read.
+
+[7m6[0m import SiteShell from '../components/layout/SiteShell.astro';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/about.astro[0m:[93m5[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'Footer' is declared but its value is never read.
+
+[7m5[0m import Footer from '../components/layout/Footer.astro';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/about.astro[0m:[93m4[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'Sidebar' is declared but its value is never read.
+
+[7m4[0m import Sidebar from '../components/layout/Sidebar.astro';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/about.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'PageHero' is declared but its value is never read.
+
+[7m3[0m import PageHero from '../components/layout/PageHero.astro';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/shared/content/education.ts[0m:[93m1[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatDate' is declared but its value is never read.
+
+[7m1[0m import { formatDate } from '../utils/dates';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+Result (106 files): 
+- 0 errors
+- 0 warnings
+- 14 hints
+

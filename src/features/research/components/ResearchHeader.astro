@@ -1,0 +1,30 @@
+---
+import SectionHeading from '../../../components/ui/SectionHeading.astro';
+import StatusBadge from '../../../components/ui/StatusBadge.astro';
+import styles from '../styles/research.module.css';
+
+interface Props {
+  title: string;
+  period: string;
+  status: string;
+  keywords: string[];
+}
+
+const { title, period, status, keywords } = Astro.props;
+---
+
+<section class={styles.section}>
+  <SectionHeading eyebrow="Research Theme" title={title} />
+  <div class={styles.headerMeta}>
+    <p class={styles.headerPeriod}>{period}</p>
+    <StatusBadge label={status} />
+  </div>
+
+  {keywords.length > 0 && (
+    <ul class={styles.keywordList}>
+      {keywords.map((keyword) => (
+        <li>{keyword}</li>
+      ))}
+    </ul>
+  )}
+</section>

@@ -1,0 +1,138 @@
+---
+import profileData from '../../../data/profile.json';
+
+interface Props {
+  cvUrl?: string;
+  cvFileName?: string;
+}
+
+const { cvUrl = '/assets/cv.pdf', cvFileName = 'Farooq_Olanrewaju_CV.pdf' } = Astro.props;
+---
+
+<section class="cv-panel">
+  <div class="cv-content">
+    <div class="cv-icon">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 6H18L24 2H42V46H6V6Z" stroke="currentColor" stroke-width="2" fill="none" />
+        <path d="M12 14H36" stroke="currentColor" stroke-width="1.5" />
+        <path d="M12 22H36" stroke="currentColor" stroke-width="1.5" />
+        <path d="M12 30H28" stroke="currentColor" stroke-width="1.5" />
+      </svg>
+    </div>
+
+    <div class="cv-text">
+      <h3 class="cv-title">Curriculum Vitae</h3>
+      <p class="cv-description">Download my complete academic and professional CV</p>
+    </div>
+
+    <a href={cvUrl} download={cvFileName} class="cv-download-button" aria-label="Download CV">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 2V14M14 10L10 14L6 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M3 16H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+      <span>Download</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .cv-panel {
+    margin: var(--space-12) 0;
+    padding: var(--space-6);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(
+      135deg,
+      var(--color-bg-secondary) 0%,
+      var(--color-bg-tertiary) 100%
+    );
+  }
+
+  .cv-content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .cv-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    color: var(--color-primary);
+    background-color: rgba(var(--color-primary-rgb), 0.1);
+    border-radius: var(--radius-lg);
+  }
+
+  .cv-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cv-title {
+    margin: 0 0 var(--space-1) 0;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+  }
+
+  .cv-description {
+    margin: 0;
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+  }
+
+  .cv-download-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @media (max-width: var(--breakpoint-md)) {
+    .cv-panel {
+      padding: var(--space-4);
+    }
+
+    .cv-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .cv-icon {
+      width: 64px;
+      height: 64px;
+    }
+
+    .cv-download-button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

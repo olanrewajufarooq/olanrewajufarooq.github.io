@@ -1,0 +1,59 @@
+---
+import SectionHeading from '../../../components/ui/SectionHeading.astro';
+import StatusBadge from '../../../components/ui/StatusBadge.astro';
+import styles from '../styles/research.module.css';
+
+interface Author {
+  name: string;
+  isMe?: boolean;
+}
+
+interface Publication {
+  id: string;
+  title: string;
+  authors: Author[];
+  venue: string;
+  year: number;
+  status: string;
+  publisherUrl?: string | null;
+}
+
+interface Props {
+  publications: Publication[];
+}
+
+const { publications } = Astro.props;
+
+function renderAuthors(authors: Author[]) {
+  return authors
+    .map((author) => (author.isMe ? `<strong>${author.name}</strong>` : author.name))
+    .join(', ');
+}
+---
+
+{publications.length > 0 && (
+  <section class={styles.section}>
+    <SectionHeading eyebrow="Publications" title="Related Publications" />
+
+    <ul class={styles.publicationList}>
+      {publications.map((publication) => (
+        <li class={styles.publicationItem}>
+          <div class={styles.metaRow}>
+            <StatusBadge label={publication.status} />
+          </div>
+          <p set:html={renderAuthors(publication.authors)} />
+          <p>
+            "{publication.title}," <em>{publication.venue}</em>, {publication.year}.
+          </p>
+          {publication.publisherUrl && (
+            <p class={styles.linkRow}>
+              <a href={publication.publisherUrl} target="_blank" rel="noopener noreferrer">
+                View publisher page
+              </a>
+            </p>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

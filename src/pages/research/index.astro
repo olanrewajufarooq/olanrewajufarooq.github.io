@@ -1,0 +1,20 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import ResearchIntro from '../../features/research/components/ResearchIntro.astro';
+import ResearchTimeline from '../../features/research/components/ResearchTimeline';
+import themesData from '../../data/research/themes.json';
+import type { ResearchThemeSummary } from '../../shared/types/research';
+
+const themes = (themesData.themes as ResearchThemeSummary[]).sort(
+  (a, b) => a.order - b.order
+);
+---
+
+<ContentLayout
+  title="Research | Farooq Olanrewaju"
+  description="Research themes, portfolio, and current directions of Farooq Olanrewaju."
+  activePath="/research"
+>
+  <ResearchIntro />
+  <ResearchTimeline client:load themes={themes} />
+</ContentLayout>

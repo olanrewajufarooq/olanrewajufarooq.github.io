@@ -1,0 +1,30 @@
+---
+import SectionHeading from '../../../components/ui/SectionHeading.astro';
+import styles from '../styles/research.module.css';
+
+interface Video {
+  title: string;
+  url: string;
+}
+
+interface Props {
+  videos: Video[];
+}
+
+const { videos } = Astro.props;
+---
+
+{videos.length > 0 && (
+  <section class={styles.section}>
+    <SectionHeading eyebrow="Videos" title="Demos" />
+    <ul class={styles.detailList}>
+      {videos.map((video) => (
+        <li class={styles.detailListItem}>
+          <a href={video.url} target="_blank" rel="noopener noreferrer">
+            {video.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

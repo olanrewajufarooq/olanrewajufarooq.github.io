@@ -1,0 +1,15 @@
+---
+import profile from '../../../data/site/profile.json';
+import SectionHeading from '../../../components/ui/SectionHeading.astro';
+import styles from '../styles/home.module.css';
+---
+
+<section class={styles.section}>
+  <SectionHeading eyebrow="Affiliation" title="Current Affiliation" />
+  <div class={styles.simplePanel}>
+    <p><strong>{profile.title}</strong></p>
+    <p>{profile.department}</p>
+    <p>{profile.institution}</p>
+    <p>{profile.location}</p>
+  </div>
+</section>

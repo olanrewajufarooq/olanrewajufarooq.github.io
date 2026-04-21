@@ -1,0 +1,151 @@
+{
+  "themes": [
+    {
+      "slug": "vehicle-manipulator-systems",
+      "title": "Vehicle-Manipulator Systems and Safe Interaction",
+      "summary": "Research on geometric and port-Hamiltonian modelling and control of vehicle-manipulator systems with emphasis on safe interaction and energy-aware robotic behaviour.",
+      "period": "2024 \u2013 Present",
+      "status": "ongoing",
+      "featured": true,
+      "keywords": [
+        "Vehicle-Manipulator Systems",
+        "Port-Hamiltonian Systems",
+        "Safe Interaction",
+        "Physical Human-Robot Interaction"
+      ],
+      "coverImage": "/assets/images/research/vehicle-manipulator-systems/cover.jpg",
+      "projectIds": [],
+      "publicationIds": [],
+      "order": 1
+    },
+    {
+      "slug": "variable-tilt-hexacopter",
+      "title": "Variable-Tilt Hexacopter and SE(3) Geometric Control",
+      "summary": "Research on geometric modelling, adaptive control, estimation, and control allocation for fully-actuated aerial vehicles.",
+      "period": "2024 \u2013 Present",
+      "status": "ongoing",
+      "featured": true,
+      "keywords": [
+        "Geometric Control",
+        "SE(3)",
+        "Aerial Robotics",
+        "Adaptive Control",
+        "Control Allocation"
+      ],
+      "coverImage": "/assets/images/research/variable-tilt-hexacopter/cover.jpg",
+      "projectIds": [
+        "adaptive-hexacopter",
+        "se3-hexacopter"
+      ],
+      "publicationIds": [
+        "geometric-adaptive-se3-aerial",
+        "variable-tilt-hexacopter"
+      ],
+      "order": 2
+    },
+    {
+      "slug": "underwater-robot-cooperation",
+      "title": "Underwater Robot Cooperation",
+      "summary": "Research on cooperative underwater robotics, grasp planning, vision, autonomous docking, and mission-oriented control for marine systems.",
+      "period": "2022 \u2013 2024",
+      "status": "completed",
+      "featured": true,
+      "keywords": [
+        "Underwater Robotics",
+        "Grasp Planning",
+        "Cooperative Robots",
+        "Autonomous Docking",
+        "Marine Robotics"
+      ],
+      "coverImage": "/assets/images/research/underwater-robot-cooperation/cover.jpg",
+      "projectIds": [
+        "grasp-planning",
+        "bluerov-treasure",
+        "bluerov-trajectory",
+        "underwater-auv",
+        "oceanography"
+      ],
+      "publicationIds": [],
+      "order": 3
+    },
+    {
+      "slug": "ship-identification",
+      "title": "Ship Maneuvering System Identification",
+      "summary": "System identification research for ship maneuvering dynamics using optimization-driven ARX modelling for marine control applications.",
+      "period": "2024 \u2013 2025",
+      "status": "completed",
+      "featured": true,
+      "keywords": [
+        "System Identification",
+        "Marine Systems",
+        "ARX Models",
+        "Optimization"
+      ],
+      "coverImage": "/assets/images/research/ship-identification/cover.jpg",
+      "projectIds": [
+        "ship-identification"
+      ],
+      "publicationIds": [
+        "apo-arx-ship-2025"
+      ],
+      "order": 4
+    },
+    {
+      "slug": "microgrid-control",
+      "title": "Microgrid Control and Learning-Based Energy Systems",
+      "summary": "Research on reinforcement learning-based control strategies for microgrid systems and energy management.",
+      "period": "2025 \u2013 Present",
+      "status": "ongoing",
+      "featured": false,
+      "keywords": [
+        "Microgrid Control",
+        "Reinforcement Learning",
+        "Energy Systems"
+      ],
+      "coverImage": "/assets/images/research/microgrid-control/cover.jpg",
+      "projectIds": [
+        "microgrid-control"
+      ],
+      "publicationIds": [],
+      "order": 5
+    },
+    {
+      "slug": "probabilistic-sensor-fusion",
+      "title": "Probabilistic Sensor Fusion and Adaptive Kalman Filtering",
+      "summary": "Research on adaptive Kalman filtering, uncertainty quantification, and robust sensor fusion under noise mis-specification.",
+      "period": "2025 \u2013 Present",
+      "status": "ongoing",
+      "featured": false,
+      "keywords": [
+        "Kalman Filtering",
+        "Sensor Fusion",
+        "Probabilistic Guarantees"
+      ],
+      "coverImage": "/assets/images/research/probabilistic-sensor-fusion/cover.jpg",
+      "projectIds": [
+        "prob-kalman-filter"
+      ],
+      "publicationIds": [],
+      "order": 6
+    },
+    {
+      "slug": "autonomous-aerial-systems",
+      "title": "Autonomous Aerial Systems",
+      "summary": "Research and development work on unmanned aerial systems for surveillance, delivery, modelling, and control.",
+      "period": "2019 \u2013 2021",
+      "status": "completed",
+      "featured": false,
+      "keywords": [
+        "Unmanned Aerial Systems",
+        "Autonomous Flight",
+        "Control Systems"
+      ],
+      "coverImage": "/assets/images/research/autonomous-aerial-systems/cover.jpg",
+      "projectIds": [
+        "uas-development"
+      ],
+      "publicationIds": [],
+      "order": 7
+    }
+  ]
+}

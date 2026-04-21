@@ -1,14 +1,17 @@
 ---
-import profileData from '../data/profile.json';
+import profileData from '../data/site/profile.json';
+import navigationData from '../data/site/navigation.json';
+import socialData from '../data/site/social.json';
+import type { SocialLink } from '../shared/types';
 
 interface Props {
-  activePage: string;
+  activePath: string;
 }
 
-const { activePage } = Astro.props;
-const profile = profileData as typeof profileData & {
-  social: Array<{ label: string; href: string; icon?: string; iconClass?: string; emoji?: string }>;
-};
+const { activePath } = Astro.props;
+const profile = profileData;
+const navigation = navigationData;
+const social: SocialLink[] = socialData;
 ---
 
 <aside class="sidebar">
@@ -38,10 +41,10 @@ const profile = profileData as typeof profileData & {
     <section class="sidebar-section">
       <h3>Navigation</h3>
       <nav class="sidebar-nav" aria-label="Site navigation">
-        {profile.nav.map((item) => (
+        {navigation.map((item) => (
           <a
-            href={`/${item.href}`}
-            class={`nav-link${activePage === item.href ? ' active' : ''}`}
+            href={item.href.startsWith('/') ? item.href : `/${item.href}`}
+            class={`nav-link${activePath === item.href ? ' active' : ''}`}
           >
             {item.label}
           </a>
@@ -53,17 +56,15 @@ const profile = profileData as typeof profileData & {
     <section class="sidebar-section">
       <h3>Connect</h3>
       <div class="social-links-sidebar">
-        {profile.social.map((link) => (
+        {social.map((link) => (
           <a
             href={link.href}
-            class={`social-link${link.iconClass ? ` ${link.iconClass}` : ''}`}
+            class={`social-link`}
             target={link.href.startsWith('mailto:') ? undefined : '_blank'}
             rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
           >
-            {link.icon ? (
+            {link.icon && (
               <img src={link.icon} alt="" class="social-link-img" aria-hidden="true" />
-            ) : (
-              <span aria-hidden="true">{link.emoji ?? ''}</span>
             )}
             {link.label}
           </a>

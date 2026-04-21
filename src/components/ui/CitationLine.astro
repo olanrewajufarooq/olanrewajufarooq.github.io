@@ -1,0 +1,61 @@
+---
+interface Props {
+  authors: string | Array<{ name: string; isSelf?: boolean }>;
+  venue: string;
+  year: number;
+  highlight?: boolean;
+}
+
+const { authors, venue, year, highlight = false } = Astro.props;
+
+let authorString = '';
+if (typeof authors === 'string') {
+  authorString = authors;
+} else if (Array.isArray(authors)) {
+  authorString = authors
+    .map((a) => (typeof a === 'string' ? a : a.isSelf ? `<strong>${a.name}</strong>` : a.name))
+    .join(', ');
+}
+---
+
+<div class:list={['citation-line', { 'citation-line--highlight': highlight }]}>
+  <p class="citation-authors" set:html={authorString} />
+  <p class="citation-venue">
+    <em>{venue}</em> · {year}
+  </p>
+</div>
+
+<style>
+  .citation-line {
+    padding: var(--space-4);
+    border-left: 3px solid var(--color-border);
+    background-color: var(--color-citation-bg);
+    border-radius: var(--radius-md);
+  }
+
+  .citation-line--highlight {
+    border-left-color: var(--color-primary);
+    background-color: rgba(37, 99, 235, 0.05);
+  }
+
+  .citation-authors {
+    margin: 0 0 var(--space-2) 0;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+
+    strong {
+      font-weight: var(--font-weight-bold);
+    }
+  }
+
+  .citation-venue {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+
+    em {
+      font-style: italic;
+      color: var(--color-citation-text);
+    }
+  }
+</style>

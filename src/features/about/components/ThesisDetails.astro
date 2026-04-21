@@ -1,0 +1,145 @@
+---
+import type { Thesis } from '../../../shared/types';
+
+interface Props {
+  title: string;
+  details: Thesis;
+}
+
+const { title, details } = Astro.props;
+---
+
+<details class="thesis-details">
+  <summary class="thesis-summary">
+    <span class="summary-title">{title}</span>
+    <span class="summary-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 8L10 12L14 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </span>
+  </summary>
+
+  <div class="thesis-content">
+    <p class="thesis-name">{details.title}</p>
+
+    {details.advisor && details.advisor.length > 0 && (
+      <div class="thesis-info">
+        <span class="label">Advisor:</span>
+        <span class="value">
+          {details.advisor.map((a, i) => (
+            <>
+              {a.url ? (
+                <a href={a.url} target="_blank" rel="noopener noreferrer">{a.name}</a>
+              ) : (
+                <span>{a.name}</span>
+              )}
+              {i < details.advisor.length - 1 && ', '}
+            </>
+          ))}
+        </span>
+      </div>
+    )}
+
+    {details.lab && (
+      <div class="thesis-info">
+        <span class="label">Lab:</span>
+        <span class="value">
+          {details.lab.url ? (
+            <a href={details.lab.url} target="_blank" rel="noopener noreferrer">
+              {details.lab.name}
+            </a>
+          ) : (
+            <span>{details.lab.name}</span>
+          )}
+        </span>
+      </div>
+    )}
+  </div>
+</details>
+
+<style>
+  .thesis-details {
+    margin: var(--space-4) 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-secondary);
+    overflow: hidden;
+
+    &[open] {
+      .summary-icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .thesis-summary {
+    padding: var(--space-3) var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    background-color: var(--color-bg-tertiary);
+    transition: background-color var(--transition-fast);
+
+    &:hover {
+      background-color: var(--color-bg-secondary);
+    }
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  .summary-title {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+  }
+
+  .summary-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-text-secondary);
+    transition: transform var(--transition-fast);
+  }
+
+  .thesis-content {
+    padding: var(--space-4);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .thesis-name {
+    margin: 0 0 var(--space-3) 0;
+    font-style: italic;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+
+  .thesis-info {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    margin: var(--space-2) 0;
+    font-size: var(--font-size-sm);
+  }
+
+  .label {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+  }
+
+  .value {
+    color: var(--color-text);
+  }
+
+  .thesis-description {
+    margin: var(--space-3) 0 0 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+</style>

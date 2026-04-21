@@ -1,0 +1,58 @@
+---
+import SectionHeading from '../../../components/ui/SectionHeading.astro';
+import styles from '../styles/research.module.css';
+
+interface Project {
+  id: string;
+  title: string;
+  summary: string;
+  period: string;
+  status: string;
+  url?: string | null;
+  repositoryVisibility?: 'public' | 'private' | null;
+  technologies: string[];
+}
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+{projects.length > 0 && (
+  <section class={styles.section}>
+    <SectionHeading eyebrow="Projects" title="Related Projects" />
+
+    <div class={styles.itemGrid}>
+      {projects.map((project) => (
+        <article class={styles.itemPanel}>
+          <h3 class={styles.panelTitle}>{project.title}</h3>
+          <p class={styles.panelMeta}>
+            {project.period} · {project.status}
+          </p>
+          <p>{project.summary}</p>
+
+          {project.technologies.length > 0 && (
+            <ul class={styles.keywordList}>
+              {project.technologies.map((technology) => (
+                <li>{technology}</li>
+              ))}
+            </ul>
+          )}
+
+          {project.url && (
+            <p class={styles.linkRow}>
+              <a href={project.url} target="_blank" rel="noopener noreferrer">
+                View repository
+              </a>
+              {project.repositoryVisibility && (
+                <span class={styles.inlineMeta}> · {project.repositoryVisibility}</span>
+              )}
+            </p>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+)}

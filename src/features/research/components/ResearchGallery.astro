@@ -1,0 +1,29 @@
+---
+import SectionHeading from '../../../components/ui/SectionHeading.astro';
+import styles from '../styles/research.module.css';
+
+interface Props {
+  images: string[];
+  title: string;
+}
+
+const { images, title } = Astro.props;
+---
+
+{images.length > 0 && (
+  <section class={styles.section}>
+    <SectionHeading eyebrow="Images" title="Gallery" />
+    <div class={styles.galleryGrid}>
+      {images.map((image, index) => (
+        <figure class={styles.galleryItem}>
+          <img
+            src={image}
+            alt={`${title} image ${index + 1}`}
+            class={styles.galleryImage}
+            loading="lazy"
+          />
+        </figure>
+      ))}
+    </div>
+  </section>
+)}

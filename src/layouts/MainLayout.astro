@@ -8,13 +8,13 @@ import '../styles/layout-design5.css';
 interface Props {
   title: string;
   description?: string;
-  activePage?: string;
+  activePath?: string;
 }
 
 const {
   title,
   description = 'Farooq Olanrewaju - Doctoral Researcher in Robotics and Control Engineering',
-  activePage = 'index.html',
+  activePath = '/',
 } = Astro.props;
 ---
 
@@ -44,7 +44,7 @@ const {
   <slot name="hero" />
 
   <div class="main-layout">
-    <Sidebar activePage={activePage} />
+    <Sidebar activePath={activePath} />
 
     <button class="hamburger-menu" aria-label="Toggle menu">
       <span></span>

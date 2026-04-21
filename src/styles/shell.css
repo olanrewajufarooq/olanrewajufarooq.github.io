@@ -1,0 +1,140 @@
+.site-shell {
+  min-height: 100vh;
+}
+
+.site-shell__content {
+  min-width: 0;
+}
+
+.site-main {
+  width: min(100%, 72rem);
+  padding: var(--space-6) var(--space-5) var(--space-8);
+  margin: 0 auto;
+}
+
+.sidebar {
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.sidebar__inner {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-5);
+}
+
+.sidebar__identity {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.sidebar__photo {
+  width: 4.75rem;
+  height: 4.75rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+}
+
+.sidebar__name {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.sidebar__role,
+.sidebar__institution {
+  margin: 0.2rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.sidebar__nav ul,
+.sidebar__social ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar__nav {
+  display: block;
+}
+
+.sidebar__nav-link {
+  display: block;
+  padding: 0.55rem 0;
+  color: var(--color-text);
+}
+
+.sidebar__nav-link.is-active {
+  color: var(--color-accent);
+}
+
+.sidebar__social {
+  display: block;
+}
+
+.sidebar__social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0;
+  color: var(--color-text-muted);
+}
+
+.sidebar__social-icon {
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+}
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-5);
+  color: var(--color-text-muted);
+}
+
+.site-footer__inner {
+  width: min(100%, 72rem);
+  margin: 0 auto;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+@media (min-width: 1100px) {
+  .site-shell {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    border-bottom: 0;
+    border-right: 1px solid var(--color-border);
+  }
+
+  .sidebar__inner {
+    align-content: start;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .site-main {
+    padding: var(--space-7) var(--space-6) var(--space-8);
+  }
+}

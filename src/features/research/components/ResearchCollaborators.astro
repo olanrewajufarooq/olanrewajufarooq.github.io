@@ -1,0 +1,38 @@
+---
+import SectionHeading from '../../../components/ui/SectionHeading.astro';
+import styles from '../styles/research.module.css';
+
+interface Collaborator {
+  name: string;
+  affiliation?: string;
+  url?: string | null;
+}
+
+interface Props {
+  collaborators: Collaborator[];
+}
+
+const { collaborators } = Astro.props;
+---
+
+{collaborators.length > 0 && (
+  <section class={styles.section}>
+    <SectionHeading eyebrow="People" title="Collaborators" />
+    <ul class={styles.detailList}>
+      {collaborators.map((collaborator) => (
+        <li class={styles.detailListItem}>
+          <strong>
+            {collaborator.url ? (
+              <a href={collaborator.url} target="_blank" rel="noopener noreferrer">
+                {collaborator.name}
+              </a>
+            ) : (
+              collaborator.name
+            )}
+          </strong>
+          {collaborator.affiliation && <span> · {collaborator.affiliation}</span>}
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

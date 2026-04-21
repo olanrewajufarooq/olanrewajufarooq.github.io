@@ -1,0 +1,15 @@
+---
+import ContentLayout from './ContentLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  activePath: string;
+}
+
+const { title, description, activePath } = Astro.props;
+---
+
+<ContentLayout title={title} description={description || ''} activePath={activePath}>
+  <slot />
+</ContentLayout>

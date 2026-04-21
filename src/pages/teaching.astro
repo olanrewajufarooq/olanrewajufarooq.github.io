@@ -1,0 +1,19 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import TeachingIntro from '../features/teaching/components/TeachingIntro.astro';
+import TeachingList from '../features/teaching/components/TeachingList.astro';
+---
+
+<ContentLayout title="Teaching | Farooq Olanrewaju" description="Teaching experience and courses" activePath="/teaching">
+  <main class="teaching-content">
+    <TeachingIntro />
+    <TeachingList />
+  </main>
+</ContentLayout>
+
+<style>
+  .teaching-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+</style>

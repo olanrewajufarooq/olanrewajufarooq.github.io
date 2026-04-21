@@ -1,0 +1,72 @@
+---
+import profile from '../../data/site/profile.json';
+import navigation from '../../data/site/navigation.json';
+import social from '../../data/site/social.json';
+import ThemeToggle from '../ui/ThemeToggle';
+
+interface Props {
+  activePath: string;
+}
+
+const { activePath } = Astro.props;
+---
+
+<aside class="sidebar">
+  <div class="sidebar__inner">
+    <div class="sidebar__identity">
+      <img src={profile.photo} alt={profile.name} class="sidebar__photo" />
+      <div class="sidebar__identity-text">
+        <h1 class="sidebar__name">{profile.name}</h1>
+        <p class="sidebar__role">{profile.title}</p>
+        <p class="sidebar__institution">{profile.institution}</p>
+      </div>
+    </div>
+
+    <div class="sidebar__theme">
+      <ThemeToggle client:load />
+    </div>
+
+    <nav class="sidebar__nav" aria-label="Primary navigation">
+      <ul>
+        {navigation.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={[
+                'sidebar__nav-link',
+                item.href === activePath && 'is-active'
+              ]}
+              aria-current={item.href === activePath ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="sidebar__cv">
+      <a href={profile.cvPath} download class="button-link button-link--primary">
+        Download CV
+      </a>
+    </div>
+
+    <section class="sidebar__social" aria-label="Social links">
+      <ul>
+        {social.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              target={item.external ? '_blank' : undefined}
+              rel={item.external ? 'noopener noreferrer' : undefined}
+              class="sidebar__social-link"
+            >
+              <img src={item.icon} alt="" aria-hidden="true" class="sidebar__social-icon" />
+              <span>{item.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</aside>

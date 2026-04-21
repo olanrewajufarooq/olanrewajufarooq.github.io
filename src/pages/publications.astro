@@ -1,67 +1,24 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import Hero from '../components/Hero.astro';
-import publicationsData from '../data/publications.json';
+import ContentLayout from '../layouts/ContentLayout.astro';
+import PublicationsIntro from '../features/publications/components/PublicationsIntro.astro';
+import PublicationsList from '../features/publications/components/PublicationsList.tsx';
+import publicationsData from '../data/publications/publications.json';
+import type { Publication } from '../shared/types';
 
-const publishedPubs = publicationsData.publications.filter((p) => p.status === 'published');
-const reviewPubs = publicationsData.publications.filter((p) => p.status === 'review');
+const publications = publicationsData.publications as Publication[];
 ---
 
-<MainLayout
-  title="Publications | Farooq Olanrewaju"
-  description="Published papers and manuscripts under review by Farooq Olanrewaju in robotics and control engineering."
-  activePage="publications.html"
->
-  <Hero slot="hero" variant="sm" title="Publications" subtitle="Research Papers & Academic Work" />
+<ContentLayout title="Publications | Farooq Olanrewaju" description="Research publications and papers" activePath="/publications">
+  <main class="publications-content">
+    <PublicationsIntro />
+    <PublicationsList client:load publications={publications} />
+  </main>
+</ContentLayout>
 
-  <section class="content-section">
-    <h2>Published</h2>
-    <div class="publications-list">
-      {publishedPubs.map((pub) => (
-        <div class="publication-item">
-          <span class="pub-badge pub-badge--published">Published</span>
-          <h4 class="pub-title">{pub.title}</h4>
-          <p class="pub-authors">{pub.authors}</p>
-          <p class="pub-venue">{pub.venue} · {pub.year}</p>
-          <p class="pub-description">{pub.description}</p>
-          {pub.url && (
-            <a href={pub.url} target="_blank" rel="noopener noreferrer" class="project-link">
-              View on IEEE Xplore →
-            </a>
-          )}
-        </div>
-      ))}
-    </div>
-  </section>
+<style>
+  .publications-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+</style>
 
-  <section class="content-section">
-    <h2>Under Review</h2>
-    <div class="publications-list">
-      {reviewPubs.map((pub) => (
-        <div class="publication-item">
-          <span class="pub-badge pub-badge--review">Under Review</span>
-          <h4 class="pub-title">{pub.title}</h4>
-          <p class="pub-authors">{pub.authors}</p>
-          <p class="pub-venue">{pub.venue}</p>
-          <p class="pub-description">{pub.description}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <section class="content-section">
-    <h2>Find Me Online</h2>
-    <p>You can find my academic work and profiles on:</p>
-    <div class="cta-buttons">
-      <a href="https://orcid.org/0000-0002-8953-4564" class="cta-btn primary" target="_blank" rel="noopener noreferrer">
-        ORCID Profile
-      </a>
-      <a href="https://scholar.google.com/citations?user=olanrewajufarooq" class="cta-btn primary" target="_blank" rel="noopener noreferrer">
-        Google Scholar
-      </a>
-      <a href="https://github.com/olanrewajufarooq" class="cta-btn secondary" target="_blank" rel="noopener noreferrer">
-        GitHub
-      </a>
-    </div>
-  </section>
-</MainLayout>

@@ -1,0 +1,23 @@
+---
+import profile from '../../../data/site/profile.json';
+import ButtonLink from '../../../components/ui/ButtonLink.astro';
+import styles from '../styles/home.module.css';
+---
+
+<section class={styles.hero}>
+  <div class={styles.heroInner}>
+    <p class={styles.kicker}>Research Portfolio</p>
+    <h1 class={styles.heroTitle}>{profile.name}</h1>
+    <p class={styles.heroMeta}>
+      {profile.title} in {profile.department}, {profile.institution}
+    </p>
+    <p class={styles.heroSummary}>
+      {profile.researchFocus}
+    </p>
+
+    <div class={styles.heroActions}>
+      <ButtonLink href="/research" variant="primary">Explore Research</ButtonLink>
+      <ButtonLink href={profile.cvPath} variant="secondary">Download CV</ButtonLink>
+    </div>
+  </div>
+</section>

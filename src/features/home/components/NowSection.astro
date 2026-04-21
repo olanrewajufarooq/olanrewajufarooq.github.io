@@ -1,0 +1,14 @@
+---
+import nowData from '../../../data/site/now.json';
+import SectionHeading from '../../../components/ui/SectionHeading.astro';
+import styles from '../styles/home.module.css';
+---
+
+<section class={styles.section}>
+  <SectionHeading eyebrow="Current" title={nowData.label} />
+  <ul class={styles.noteList}>
+    {nowData.items.map((item) => (
+      <li>{item}</li>
+    ))}
+  </ul>
+</section>

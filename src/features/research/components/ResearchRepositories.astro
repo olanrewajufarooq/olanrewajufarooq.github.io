@@ -1,0 +1,32 @@
+---
+import SectionHeading from '../../../components/ui/SectionHeading.astro';
+import styles from '../styles/research.module.css';
+
+interface Repository {
+  label: string;
+  url: string;
+  visibility: 'public' | 'private';
+}
+
+interface Props {
+  repositories: Repository[];
+}
+
+const { repositories } = Astro.props;
+---
+
+{repositories.length > 0 && (
+  <section class={styles.section}>
+    <SectionHeading eyebrow="Code" title="Repositories" />
+    <ul class={styles.detailList}>
+      {repositories.map((repository) => (
+        <li class={styles.detailListItem}>
+          <a href={repository.url} target="_blank" rel="noopener noreferrer">
+            {repository.label}
+          </a>
+          <span class={styles.inlineMeta}> · {repository.visibility}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

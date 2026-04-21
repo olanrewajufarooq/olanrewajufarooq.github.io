@@ -1,0 +1,65 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+---
+
+<ContentLayout title="404 - Page Not Found | Farooq Olanrewaju" description="Page not found" activePath="/404">
+  <div class="error-container">
+    <div class="error-content">
+      <h1 class="error-code">404</h1>
+      <h2 class="error-title">Page Not Found</h2>
+      <p class="error-description">
+        Sorry, we couldn't find the page you're looking for. It might have been moved or deleted.
+      </p>
+      <a href="/" class="error-link">← Return to Home</a>
+    </div>
+  </div>
+</ContentLayout>
+
+<style>
+  .error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: var(--space-8);
+  }
+
+  .error-content {
+    text-align: center;
+    max-width: 500px;
+  }
+
+  .error-code {
+    font-size: clamp(6rem, 20vw, 12rem);
+    font-weight: var(--font-weight-bold);
+    margin: 0;
+    color: var(--color-primary);
+    line-height: 1;
+  }
+
+  .error-title {
+    font-size: var(--font-size-3xl);
+    margin: var(--space-4) 0;
+  }
+
+  .error-description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin: var(--space-6) 0;
+  }
+
+  .error-link {
+    display: inline-block;
+    padding: var(--space-3) var(--space-6);
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background-color: var(--color-primary-dark);
+    }
+  }
+</style>

@@ -1,88 +1,33 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import Hero from '../components/Hero.astro';
-import ProjectsSection from '../components/ProjectsSection';
-import projectsData from '../data/projects.json';
-import publicationsData from '../data/publications.json';
+import ContentLayout from '../layouts/ContentLayout.astro';
+import HomeHero from '../features/home/components/HomeHero.astro';
+import ResearchFocusSection from '../features/home/components/ResearchFocusSection.astro';
+import CurrentAffiliationSection from '../features/home/components/CurrentAffiliationSection.astro';
+import NowSection from '../features/home/components/NowSection.astro';
+import FeaturedThemesSection from '../features/home/components/FeaturedThemesSection.astro';
+import LatestWorkSection from '../features/home/components/LatestWorkSection.astro';
+import CollaborationSection from '../features/home/components/CollaborationSection.astro';
+import {
+  getFeaturedThemes,
+  getLatestAcceptedOrPublishedPublication,
+  getCurrentProjects
+} from '../shared/content/home';
 
-const featuredProjects = projectsData.projects.slice(0, 6);
-const publishedPubs = publicationsData.publications.filter((p) => p.status === 'published');
-const reviewPubs = publicationsData.publications.filter((p) => p.status === 'review');
+const featuredThemes = getFeaturedThemes();
+const latestPublication = getLatestAcceptedOrPublishedPublication();
+const currentProjects = getCurrentProjects();
 ---
 
-<MainLayout
-  title="Farooq Olanrewaju | Robotics & Control Researcher"
-  description="Doctoral Researcher in Systems and Control Engineering at KFUPM. Specialising in geometric port-Hamiltonian systems and vehicle-manipulator systems."
-  activePage="index.html"
+<ContentLayout
+  title="Farooq Olanrewaju | PhD Student in Robotics and Control"
+  description="Academic portfolio of Farooq Olanrewaju, PhD Student in robotics, control engineering, and autonomous systems research."
+  activePath="/"
 >
-  <Hero slot="hero" variant="full" />
-
-  <section class="content-section" id="about">
-    <h2>Welcome</h2>
-    <p>
-      I'm a <strong>Doctoral Researcher</strong> in <strong>Systems and Control Engineering</strong>
-      at <a href="https://www.kfupm.edu.sa" target="_blank" rel="noopener noreferrer">KFUPM</a>,
-      focused on developing advanced geometric control methodologies for complex robotic systems.
-    </p>
-
-    <h3>Research Interests</h3>
-    <div class="interests-grid">
-      <div class="interest-tag">Geometric Control</div>
-      <div class="interest-tag">Port-Hamiltonian Systems</div>
-      <div class="interest-tag">Vehicle-Manipulator Systems</div>
-      <div class="interest-tag">Physical Human-Robot Interaction</div>
-      <div class="interest-tag">Adaptive Control</div>
-      <div class="interest-tag">Energy-Aware Robotics</div>
-    </div>
-  </section>
-
-  <section class="content-section" id="featured-projects">
-    <h2>Featured Projects</h2>
-    <p>Latest research and development work. <a href="/research.html">View all projects →</a></p>
-    <ProjectsSection client:visible projects={featuredProjects} />
-  </section>
-
-  <section class="content-section" id="publications-preview">
-    <h2>Recent Publications</h2>
-    <div class="publications-preview">
-      {publishedPubs.slice(0, 1).map((pub) => (
-        <div class="publication-item">
-          <span class="pub-badge pub-badge--published">Published</span>
-          <h4 class="pub-title">{pub.title}</h4>
-          <p class="pub-venue">{pub.venue} · {pub.year}</p>
-          <p class="pub-description">{pub.description}</p>
-        </div>
-      ))}
-      {reviewPubs.slice(0, 1).map((pub) => (
-        <div class="publication-item">
-          <span class="pub-badge pub-badge--review">Under Review</span>
-          <h4 class="pub-title">{pub.title}</h4>
-          <p class="pub-venue">{pub.venue}</p>
-          <p class="pub-description">{pub.description}</p>
-        </div>
-      ))}
-    </div>
-    <p style="text-align: center; margin-top: 1.5rem;">
-      <a href="/publications.html">View all publications →</a>
-    </p>
-  </section>
-
-  <section class="content-section" id="cta">
-    <h2>Let's Connect</h2>
-    <p>Interested in collaboration on robotics, control systems, or maritime applications?</p>
-    <div class="cta-buttons">
-      <a
-        href="https://www.linkedin.com/in/olanrewajufarooq/"
-        class="cta-btn primary"
-        target="_blank"
-        rel="noopener noreferrer"
-      >Let's talk on LinkedIn</a>
-      <a
-        href="https://github.com/olanrewajufarooq"
-        class="cta-btn secondary"
-        target="_blank"
-        rel="noopener noreferrer"
-      >View my code on GitHub</a>
-    </div>
-  </section>
-</MainLayout>
+  <HomeHero />
+  <ResearchFocusSection />
+  <CurrentAffiliationSection />
+  <NowSection />
+  <FeaturedThemesSection themes={featuredThemes} />
+  <LatestWorkSection publication={latestPublication} projects={currentProjects} />
+  <CollaborationSection />
+</ContentLayout>
