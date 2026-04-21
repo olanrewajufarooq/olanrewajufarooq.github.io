@@ -1,122 +1,52 @@
-/* Teaching Page Module Styles */
-
-.teachingContainer {
-  max-width: 900px;
-  margin: 0 auto;
+.section {
+  padding: var(--space-7) 0;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.contentSection {
-  margin-bottom: var(--space-16);
+.introBlock {
+  max-width: 48rem;
 }
 
-.sectionTitle {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--space-6);
-  color: var(--color-text);
+.introBlock p + p {
+  margin-top: var(--space-4);
 }
 
 .teachingList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
-  gap: var(--space-6);
+  gap: var(--space-5);
 }
 
 .teachingItem {
-  padding: var(--space-6);
+  padding: var(--space-5);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-primary);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-bg-secondary);
-  transition: all var(--transition-fast);
+  border-radius: var(--radius-md);
 }
 
-.teachingItem:hover {
-  border-left-color: var(--color-link);
-  background-color: var(--color-bg-tertiary);
+.courseTitle {
+  margin: 0 0 var(--space-2);
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
-.itemHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--space-4);
-  margin-bottom: var(--space-2);
+.courseMeta {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
 }
 
-.itemTitle {
-  margin: 0;
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text);
+.courseDescription {
+  margin: var(--space-3) 0 0;
 }
 
-.itemYear {
-  display: inline-block;
-  padding: var(--space-1) var(--space-2);
-  background-color: var(--color-bg-tertiary);
-  border-radius: var(--radius-sm);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text-secondary);
-  flex-shrink: 0;
-}
-
-.itemInstitution {
-  margin: 0 0 var(--space-1) 0;
-  font-size: var(--font-size-base);
-  color: var(--color-text-secondary);
-}
-
-.itemRole {
-  margin: 0 0 var(--space-2) 0;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-tertiary);
-  font-style: italic;
-}
-
-.itemDescription {
-  margin: 0 0 var(--space-3) 0;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-}
-
-.itemLink {
-  display: inline-block;
-  font-size: var(--font-size-sm);
-  color: var(--color-link);
-  text-decoration: none;
-  font-weight: var(--font-weight-semibold);
-}
-
-.itemLink:hover {
-  text-decoration: underline;
-}
-
-.emptyState {
-  padding: var(--space-8);
-  text-align: center;
-  color: var(--color-text-tertiary);
-  border: 1px dashed var(--color-border);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-bg-secondary);
-}
-
-.emptyState p {
-  margin: 0 0 var(--space-2) 0;
-  font-size: var(--font-size-base);
-}
-
-.emptyState p:last-child {
-  margin: 0;
-}
-
-@media (max-width: var(--breakpoint-md)) {
-  .itemHeader {
-    flex-direction: column;
-  }
-
-  .itemYear {
-    align-self: flex-start;
-  }
+.emptyBlock {
+  max-width: 48rem;
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
 }
