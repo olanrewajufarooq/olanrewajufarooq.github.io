@@ -4,19 +4,54 @@ import Hero from '../components/Hero.astro';
 import educationData from '../data/education.json';
 import moocData from '../data/mooc.json';
 
-const degrees = educationData.degrees;
+const degrees = educationData.degrees as any[];
 const certs = moocData.certificates;
 
 const techStack = [
-  { name: 'Python',      logo: '/assets/images/logos/python.svg' },
-  { name: 'MATLAB',      logo: '/assets/images/logos/matlab.png' },
-  { name: 'C++',         logo: '/assets/images/logos/cpp.png' },
-  { name: 'JavaScript',  logo: '/assets/images/logos/js.png' },
-  { name: 'ROS 2',       logoDark: '/assets/images/logos/ros2-white.svg',    logoLight: '/assets/images/logos/ros2.svg' },
-  { name: 'Gazebo',      logoDark: '/assets/images/logos/gazebo-dark.svg',   logoLight: '/assets/images/logos/gazebo.svg' },
-  { name: 'Git',         logo: '/assets/images/logos/git.svg' },
-  { name: 'Ubuntu',      logoDark: '/assets/images/logos/ubuntu-dark.svg',   logoLight: '/assets/images/logos/ubuntu.svg' },
+  { name: 'Python',   logo: '/assets/images/logos/python.svg' },
+  { name: 'MATLAB',   logo: '/assets/images/logos/matlab.png' },
+  { name: 'C++',      logo: '/assets/images/logos/cpp.png' },
+  { name: 'ROS 2',    logoDark: '/assets/images/logos/ros2-white.svg',  logoLight: '/assets/images/logos/ros2.svg' },
+  { name: 'Gazebo',   logoDark: '/assets/images/logos/gazebo-dark.svg', logoLight: '/assets/images/logos/gazebo.svg' },
+  { name: 'Git',      logo: '/assets/images/logos/git.svg' },
+  { name: 'Ubuntu',   logoDark: '/assets/images/logos/ubuntu-dark.svg', logoLight: '/assets/images/logos/ubuntu.svg' },
 ];
+
+// Group consecutive Erasmus Mundus degrees into one visual block
+type Degree = (typeof degrees)[0];
+type DegreeGroup = { type: 'single'; deg: Degree } | { type: 'erasmus'; degs: Degree[] };
+const groups: DegreeGroup[] = [];
+let erasmusBuf: Degree[] = [];
+for (const deg of degrees) {
+  if ((deg.degree as string).startsWith('Erasmus Mundus')) {
+    erasmusBuf.push(deg);
+  } else {
+    if (erasmusBuf.length) { groups.push({ type: 'erasmus', degs: erasmusBuf }); erasmusBuf = []; }
+    groups.push({ type: 'single', deg });
+  }
+}
+if (erasmusBuf.length) groups.push({ type: 'erasmus', degs: erasmusBuf });
+
+function buildAdvisorProse(deg: Degree): string | null {
+  if (!deg.advisor) return null;
+  const advisors: string[] = Array.isArray(deg.advisor) ? deg.advisor : [deg.advisor];
+  const links: (string | null)[] = Array.isArray(deg.advisorLink) ? deg.advisorLink : [deg.advisorLink];
+  const parts = advisors.map((a: string, i: number) =>
+    links[i] ? `<a href="${links[i]}" target="_blank" rel="noopener noreferrer">${a}</a>` : a
+  );
+  const verb = advisors.length > 1 ? 'co-supervised' : 'supervised';
+  const who = advisors.length === 1
+    ? parts[0]
+    : parts.slice(0, -1).join(', ') + ' and ' + parts[parts.length - 1];
+  let prose = `The thesis associated with this degree was ${verb} by ${who}`;
+  if (deg.lab) {
+    const labStr = deg.labLink
+      ? `<a href="${deg.labLink}" target="_blank" rel="noopener noreferrer">${deg.lab}</a>`
+      : deg.lab;
+    prose += ` at the ${labStr}`;
+  }
+  return prose + '.';
+}
 ---
 
 <MainLayout
@@ -30,49 +65,60 @@ const techStack = [
   <section class="content-section" id="degrees">
     <h2>Academic Degrees</h2>
     <div class="degree-cards">
-      {degrees.map((deg) => (
-        <div class="degree-card">
-          {deg.logo ? (
-            <img
-              src={deg.logo}
-              alt={deg.institution}
-              class="degree-card-logo"
-              onerror="this.style.visibility='hidden'"
-            />
-          ) : (
-            <div class="degree-card-logo-placeholder">🎓</div>
-          )}
-          <div class="degree-card-body">
-            <p class="degree-card-institution">
-              {deg.url ? (
-                <a href={deg.url} target="_blank" rel="noopener noreferrer">{deg.institution}</a>
-              ) : deg.institution}
-            </p>
-            <p class="degree-card-degree">{deg.degree}</p>
-            <p class="degree-card-field">{deg.field}</p>
-            <p class="degree-card-meta">{deg.location} · <span class="degree-card-period">{deg.period}</span></p>
-
-            {(deg.advisor || deg.lab) && (
-              <p class="degree-card-note">
-                {deg.advisor && (
-                  <>Advisor: <a href={deg.advisorLink ?? '#'} target="_blank" rel="noopener noreferrer">{deg.advisor}</a>{deg.lab ? ' · ' : ''}</>
+      {groups.map((group) => {
+        const renderCard = (deg: any) => {
+          const advisorProse = buildAdvisorProse(deg);
+          return (
+            <div class="degree-card">
+              <div class="degree-card-logo-wrap">
+                {deg.logo ? (
+                  <img
+                    src={deg.logo}
+                    alt={deg.institution}
+                    class="degree-card-logo"
+                    onerror="this.style.visibility='hidden'"
+                  />
+                ) : (
+                  <span class="degree-card-logo-placeholder">🎓</span>
                 )}
-                {deg.lab && (
-                  <a href={deg.labLink ?? '#'} target="_blank" rel="noopener noreferrer">{deg.lab}</a>
-                )}
-              </p>
-            )}
-
-            {deg.skills.length > 0 && (
-              <div class="degree-card-skills">
-                {deg.skills.map((skill) => (
-                  <span class="tech-tag">{skill}</span>
-                ))}
               </div>
-            )}
-          </div>
-        </div>
-      ))}
+              <div class="degree-card-body">
+                <p class="degree-card-heading">
+                  {deg.url ? (
+                    <a href={deg.url} target="_blank" rel="noopener noreferrer" class="degree-inst-link">{deg.institution}</a>
+                  ) : <span>{deg.institution}</span>}
+                  {deg.location && <span class="degree-location-sep">·</span>}
+                  {deg.location && <span class="degree-location">{deg.location}</span>}
+                </p>
+                <p class="degree-card-sub">
+                  <span class="degree-name-text">{deg.degree}</span>
+                  <span class="degree-card-sep"> · </span>
+                  <span class="degree-field-text">{deg.field}</span>
+                </p>
+                <p class="degree-card-period-line">{deg.period}</p>
+                {advisorProse && (
+                  <p class="degree-card-advisor" set:html={advisorProse} />
+                )}
+                {deg.note && (
+                  <p class="degree-card-footnote">{deg.note}</p>
+                )}
+              </div>
+            </div>
+          );
+        };
+
+        if (group.type === 'erasmus') {
+          return (
+            <div class="erasmus-group">
+              <div class="erasmus-group-header">
+                <span class="erasmus-badge">Erasmus Mundus Joint Master's Programme</span>
+              </div>
+              {group.degs.map(renderCard)}
+            </div>
+          );
+        }
+        return renderCard(group.deg);
+      })}
     </div>
   </section>
 
