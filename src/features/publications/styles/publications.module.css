@@ -39,16 +39,16 @@
   color: var(--color-text);
   font-size: var(--font-size-base);
   transition: all var(--transition-fast);
+}
 
-  &:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.1);
-  }
+.searchInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.1);
+}
 
-  &::placeholder {
-    color: var(--color-text-tertiary);
-  }
+.searchInput::placeholder {
+  color: var(--color-text-tertiary);
 }
 
 .filterSection {
@@ -72,15 +72,15 @@
   font-size: var(--font-size-sm);
   cursor: pointer;
   transition: all var(--transition-fast);
+}
 
-  &:focus {
-    outline: none;
-    border-color: var(--color-primary);
-  }
+.filterSelect:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
 
-  &:hover {
-    border-color: var(--color-primary);
-  }
+.filterSelect:hover {
+  border-color: var(--color-primary);
 }
 
 .publicationsList {
@@ -117,10 +117,10 @@
   border-radius: var(--radius-lg);
   background-color: var(--color-bg-secondary);
   transition: all var(--transition-fast);
+}
 
-  &:hover {
-    background-color: var(--color-bg-tertiary);
-  }
+.publicationItem:hover {
+  background-color: var(--color-bg-tertiary);
 }
 
 .pubHeader {
@@ -148,11 +148,11 @@
   margin: 0 0 var(--space-3) 0;
   font-size: var(--font-size-sm);
   color: var(--color-text-tertiary);
+}
 
-  em {
-    font-style: italic;
-    color: var(--color-text-secondary);
-  }
+.pubVenue em {
+  font-style: italic;
+  color: var(--color-text-secondary);
 }
 
 .pubDescription {
@@ -167,10 +167,10 @@
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   margin-top: var(--space-2);
+}
 
-  &:hover {
-    text-decoration: underline;
-  }
+.pubLink:hover {
+  text-decoration: underline;
 }
 
 .emptyState {
@@ -189,10 +189,10 @@
   text-align: center;
   color: var(--color-text-tertiary);
   font-size: var(--font-size-sm);
+}
 
-  p {
-    margin: 0;
-  }
+.resultsInfo p {
+  margin: 0;
 }
 
 @media (max-width: var(--breakpoint-md)) {

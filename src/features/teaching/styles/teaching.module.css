@@ -28,11 +28,11 @@
   border-radius: var(--radius-lg);
   background-color: var(--color-bg-secondary);
   transition: all var(--transition-fast);
+}
 
-  &:hover {
-    border-left-color: var(--color-link);
-    background-color: var(--color-bg-tertiary);
-  }
+.teachingItem:hover {
+  border-left-color: var(--color-link);
+  background-color: var(--color-bg-tertiary);
 }
 
 .itemHeader {
@@ -87,10 +87,10 @@
   color: var(--color-link);
   text-decoration: none;
   font-weight: var(--font-weight-semibold);
+}
 
-  &:hover {
-    text-decoration: underline;
-  }
+.itemLink:hover {
+  text-decoration: underline;
 }
 
 .emptyState {
@@ -100,15 +100,15 @@
   border: 1px dashed var(--color-border);
   border-radius: var(--radius-lg);
   background-color: var(--color-bg-secondary);
+}
 
-  p {
-    margin: 0 0 var(--space-2) 0;
-    font-size: var(--font-size-base);
+.emptyState p {
+  margin: 0 0 var(--space-2) 0;
+  font-size: var(--font-size-base);
+}
 
-    &:last-child {
-      margin: 0;
-    }
-  }
+.emptyState p:last-child {
+  margin: 0;
 }
 
 @media (max-width: var(--breakpoint-md)) {

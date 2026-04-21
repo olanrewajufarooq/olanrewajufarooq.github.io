@@ -29,10 +29,10 @@
   border-radius: var(--radius-lg);
   background-color: var(--color-bg-secondary);
   transition: all var(--transition-fast);
+}
 
-  &:hover {
-    background-color: var(--color-bg-tertiary);
-  }
+.educationEntry:hover {
+  background-color: var(--color-bg-tertiary);
 }
 
 .degreeName {
@@ -68,10 +68,10 @@
   margin-bottom: var(--space-3);
   text-decoration: none;
   font-weight: var(--font-weight-semibold);
+}
 
-  &:hover {
-    text-decoration: underline;
-  }
+.institutionLink:hover {
+  text-decoration: underline;
 }
 
 .institutionLogo {
@@ -145,23 +145,23 @@
   list-style: none;
   padding: 0;
   margin: 0;
+}
 
-  li {
-    display: inline;
+.advisorList li {
+  display: inline;
+}
 
-    &:not(:last-child)::after {
-      content: ', ';
-    }
+.advisorList li:not(:last-child)::after {
+  content: ', ';
+}
 
-    a {
-      color: var(--color-link);
-      text-decoration: none;
+.advisorList a {
+  color: var(--color-link);
+  text-decoration: none;
+}
 
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
+.advisorList a:hover {
+  text-decoration: underline;
 }
 
 /* Certificates Section */
@@ -192,15 +192,15 @@
   cursor: pointer;
   color: var(--color-text);
   transition: all var(--transition-fast);
+}
 
-  &:hover {
-    background-color: var(--color-bg-tertiary);
-  }
+.scrollButton:hover {
+  background-color: var(--color-bg-tertiary);
+}
 
-  svg {
-    width: 20px;
-    height: 20px;
-  }
+.scrollButton svg {
+  width: 20px;
+  height: 20px;
 }
 
 .scrollButtonLeft {
@@ -218,23 +218,23 @@
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   padding: var(--space-2) 0;
+}
 
-  &::-webkit-scrollbar {
-    height: 6px;
-  }
+.scrollContainer::-webkit-scrollbar {
+  height: 6px;
+}
 
-  &::-webkit-scrollbar-track {
-    background: var(--color-bg-tertiary);
-  }
+.scrollContainer::-webkit-scrollbar-track {
+  background: var(--color-bg-tertiary);
+}
 
-  &::-webkit-scrollbar-thumb {
-    background: var(--color-text-tertiary);
-    border-radius: var(--radius-full);
+.scrollContainer::-webkit-scrollbar-thumb {
+  background: var(--color-text-tertiary);
+  border-radius: var(--radius-full);
+}
 
-    &:hover {
-      background: var(--color-text-secondary);
-    }
-  }
+.scrollContainer::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
 }
 
 .certificateCard {
@@ -247,12 +247,12 @@
   background-color: var(--color-bg-secondary);
   text-align: center;
   transition: all var(--transition-fast);
+}
 
-  &:hover {
-    border-color: var(--color-primary);
-    background-color: var(--color-bg-tertiary);
-    transform: translateY(-2px);
-  }
+.certificateCard:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-bg-tertiary);
+  transform: translateY(-2px);
 }
 
 .certIcon {
@@ -265,17 +265,17 @@
   background-color: var(--color-bg-tertiary);
   border-radius: var(--radius-lg);
   color: var(--color-text-secondary);
+}
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
+.certIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-  svg {
-    width: 32px;
-    height: 32px;
-  }
+.certIcon svg {
+  width: 32px;
+  height: 32px;
 }
 
 .certName {
@@ -303,10 +303,10 @@
   color: var(--color-link);
   text-decoration: none;
   font-weight: var(--font-weight-semibold);
+}
 
-  &:hover {
-    text-decoration: underline;
-  }
+.certLink:hover {
+  text-decoration: underline;
 }
 
 /* Awards Section */
@@ -326,11 +326,11 @@
   border-radius: var(--radius-lg);
   background-color: var(--color-bg-secondary);
   transition: all var(--transition-fast);
+}
 
-  &:hover {
-    border-color: var(--color-primary);
-    background-color: var(--color-bg-tertiary);
-  }
+.awardItem:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-bg-tertiary);
 }
 
 .awardName {
@@ -370,10 +370,10 @@
   color: var(--color-link);
   text-decoration: none;
   font-weight: var(--font-weight-semibold);
+}
 
-  &:hover {
-    text-decoration: underline;
-  }
+.awardLink:hover {
+  text-decoration: underline;
 }
 
 /* CV Panel */
@@ -440,20 +440,20 @@
   cursor: pointer;
   transition: all var(--transition-fast);
   flex-shrink: 0;
+}
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
+.cvDownloadButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
-  &:active {
-    transform: translateY(0);
-  }
+.cvDownloadButton:active {
+  transform: translateY(0);
+}
 
-  svg {
-    width: 20px;
-    height: 20px;
-  }
+.cvDownloadButton svg {
+  width: 20px;
+  height: 20px;
 }
 
 /* Empty State */

@@ -121,10 +121,10 @@ th {
 ::-webkit-scrollbar-thumb {
   background: var(--color-neutral-400);
   border-radius: var(--radius-md);
+}
 
-  &:hover {
-    background: var(--color-neutral-500);
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-500);
 }
 
 /* Print Styles */
