@@ -1,149 +1,38 @@
 ---
-import type { AwardItem } from '../../../shared/types';
 import awardsData from '../../../data/about/awards.json';
+import SectionHeading from '../../../components/ui/SectionHeading.astro';
+import styles from '../styles/about.module.css';
+import type { AwardsData } from '../../../shared/types/award';
 
-interface Props {
-  title?: string;
-}
-
-const { title = 'Awards & Honors' } = Astro.props;
-const awards = awardsData.awards as AwardItem[];
+const data = awardsData as AwardsData;
+const awards = data.awards;
 ---
 
-<section class="awards-section">
-  <h2 class="section-title">{title}</h2>
+<section class={styles.section}>
+  <SectionHeading eyebrow="Awards" title="Awards and Recognition" />
 
-  {awards && awards.length > 0 ? (
-    <div class="awards-list">
-      {awards.map((award, index) => (
-        <article class="award-item">
-          <div class="award-header">
-            <h3 class="award-name">{award.title}</h3>
-            {award.date && <span class="award-year">{award.date}</span>}
-          </div>
-
-          {award.issuer && (
-            <p class="award-organization">{award.issuer}</p>
-          )}
-
-          {award.description && (
-            <p class="award-description">{award.description}</p>
-          )}
-
+  {awards.length > 0 ? (
+    <ul class={styles.awardsList}>
+      {awards.map((award) => (
+        <li class={styles.awardItem}>
+          <h3 class={styles.awardTitle}>{award.title}</h3>
+          <p class={styles.awardMeta}>
+            {award.issuer} · {award.date}
+          </p>
+          {award.description && <p>{award.description}</p>}
           {award.url && (
-            <a href={award.url} target="_blank" rel="noopener noreferrer" class="award-link">
-              Learn more →
-            </a>
+            <p>
+              <a href={award.url} target="_blank" rel="noopener noreferrer">
+                View details
+              </a>
+            </p>
           )}
-        </article>
+        </li>
       ))}
-    </div>
+    </ul>
   ) : (
-    <div class="empty-state">
-      <p>No awards to display at this time.</p>
+    <div class={styles.emptyBlock}>
+      <p>Awards and recognitions will appear here as they are added.</p>
     </div>
   )}
 </section>
-
-<style>
-  .awards-section {
-    margin-bottom: var(--space-16);
-  }
-
-  .section-title {
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
-    margin: 0 0 var(--space-6) 0;
-    color: var(--color-text);
-  }
-
-  .awards-list {
-    display: grid;
-    gap: var(--space-4);
-  }
-
-  .award-item {
-    padding: var(--space-4);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background-color: var(--color-bg-secondary);
-    transition: all var(--transition-fast);
-
-    &:hover {
-      border-color: var(--color-primary);
-      background-color: var(--color-bg-tertiary);
-    }
-  }
-
-  .award-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: var(--space-4);
-    margin-bottom: var(--space-2);
-  }
-
-  .award-name {
-    margin: 0;
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text);
-    flex: 1;
-  }
-
-  .award-year {
-    display: inline-block;
-    padding: var(--space-1) var(--space-2);
-    background-color: var(--color-bg-tertiary);
-    border-radius: var(--radius-md);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-secondary);
-    flex-shrink: 0;
-  }
-
-  .award-organization {
-    margin: 0 0 var(--space-2) 0;
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-  }
-
-  .award-description {
-    margin: 0 0 var(--space-3) 0;
-    font-size: var(--font-size-sm);
-    color: var(--color-text-tertiary);
-    line-height: 1.5;
-  }
-
-  .award-link {
-    display: inline-block;
-    font-size: var(--font-size-sm);
-    color: var(--color-link);
-    text-decoration: none;
-    font-weight: var(--font-weight-semibold);
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  .empty-state {
-    padding: var(--space-8);
-    text-align: center;
-    color: var(--color-text-tertiary);
-    border: 1px dashed var(--color-border);
-    border-radius: var(--radius-lg);
-    background-color: var(--color-bg-secondary);
-  }
-
-  @media (max-width: var(--breakpoint-md)) {
-    .award-header {
-      flex-direction: column;
-      gap: var(--space-2);
-    }
-
-    .award-year {
-      align-self: flex-start;
-    }
-  }
-</style>

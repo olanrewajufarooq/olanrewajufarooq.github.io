@@ -6,12 +6,14 @@ interface Props {
   title: string;
   description: string;
   activePath: string;
+  canonical?: string;
+  ogImage?: string;
 }
 
-const { title, description, activePath } = Astro.props;
+const { title, description, activePath, canonical, ogImage } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} canonical={canonical} ogImage={ogImage}>
   <SiteShell activePath={activePath}>
     <slot />
   </SiteShell>

@@ -1,32 +1,29 @@
 ---
 import ContentLayout from '../layouts/ContentLayout.astro';
-import PageHero from '../components/layout/PageHero.astro';
-import Sidebar from '../components/layout/Sidebar.astro';
-import Footer from '../components/layout/Footer.astro';
-import SiteShell from '../components/layout/SiteShell.astro';
-import IdentityBlock from '../features/profile/components/IdentityBlock.astro';
-import SocialLinks from '../features/profile/components/SocialLinks.astro';
-import AffiliationMeta from '../features/profile/components/AffiliationMeta.astro';
 import AboutIntro from '../features/about/components/AboutIntro.astro';
 import EducationSection from '../features/about/components/EducationSection.astro';
-import CertificatesSection from '../features/about/components/CertificatesSection.tsx';
+import CertificatesSection from '../features/about/components/CertificatesSection';
 import AwardsSection from '../features/about/components/AwardsSection.astro';
 import CvDownloadPanel from '../features/about/components/CvDownloadPanel.astro';
+import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
+
+const meta = buildMetadata({
+  title: 'About | Farooq Olanrewaju',
+  description: 'About Farooq Olanrewaju, including education, certifications, awards, and CV.',
+  canonical: getCanonicalUrl('/about'),
+});
 ---
 
-<ContentLayout title="About | Farooq Olanrewaju" description="Education and background of Farooq Olanrewaju" activePath="/about">
-  <main class="about-content">
-    <AboutIntro />
-    <EducationSection />
-    <CertificatesSection client:load />
-    <AwardsSection />
-    <CvDownloadPanel />
-  </main>
+<ContentLayout
+  title={meta.title}
+  description={meta.description}
+  activePath="/about"
+  canonical={meta.canonical}
+  ogImage={meta.openGraph?.image}
+>
+  <AboutIntro />
+  <EducationSection />
+  <CertificatesSection client:load />
+  <AwardsSection />
+  <CvDownloadPanel />
 </ContentLayout>
-
-<style>
-  .about-content {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-</style>

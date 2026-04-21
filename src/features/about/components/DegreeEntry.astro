@@ -1,5 +1,7 @@
 ---
-import type { SingleDegreeEntry } from '../../../shared/types';
+import ThesisDetails from './ThesisDetails.astro';
+import styles from '../styles/about.module.css';
+import type { SingleDegreeEntry } from '../../../shared/types/education';
 
 interface Props {
   degree: SingleDegreeEntry;
@@ -8,155 +10,36 @@ interface Props {
 const { degree } = Astro.props;
 ---
 
-<article class="degree-entry">
-  <div class="degree-header">
-    <h3 class="degree-name">{degree.degree}</h3>
-    {degree.logo && (
-      <img src={degree.logo} alt={degree.institution} class="institution-logo" />
-    )}
-  </div>
+<article class={styles.educationItem}>
+  <div class={styles.educationHeader}>
+    <div class={styles.educationMain}>
+      <h3 class={styles.degreeInstitution}>
+        {degree.url ? (
+          <a href={degree.url} target="_blank" rel="noopener noreferrer">
+            {degree.institution}
+          </a>
+        ) : (
+          degree.institution
+        )}
+      </h3>
 
-  <div class="degree-details">
-    <p class="degree-field">{degree.field}</p>
-    <p class="degree-location">{degree.location}</p>
-    <p class="degree-period">{degree.period}</p>
-    {degree.url && (
-      <a href={degree.url} target="_blank" rel="noopener noreferrer" class="institution-link">
-        {degree.institution}
-      </a>
-    )}
-  </div>
+      <p class={styles.degreeMeta}>
+        <strong>{degree.degree}</strong> in {degree.field}
+      </p>
 
-  {degree.thesis && (
-    <div class="thesis-section">
-      <h4 class="thesis-title">Thesis</h4>
-      <p class="thesis-name">{degree.thesis.title}</p>
-      {degree.thesis.advisor && degree.thesis.advisor.length > 0 && (
-        <div class="thesis-info">
-          <span class="label">Advisor:</span>
-          <span>
-            {degree.thesis.advisor.map((a, i) => (
-              <>
-                {a.url ? (
-                  <a href={a.url} target="_blank" rel="noopener noreferrer">{a.name}</a>
-                ) : (
-                  <span>{a.name}</span>
-                )}
-                {degree.thesis && i < degree.thesis.advisor.length - 1 && ', '}
-              </>
-            ))}
-          </span>
-        </div>
-      )}
-      {degree.thesis.lab && (
-        <div class="thesis-info">
-          <span class="label">Lab:</span>
-          {degree.thesis.lab.url ? (
-            <a href={degree.thesis.lab.url} target="_blank" rel="noopener noreferrer">
-              {degree.thesis.lab.name}
-            </a>
-          ) : (
-            <span>{degree.thesis.lab.name}</span>
-          )}
-        </div>
-      )}
+      <p class={styles.degreeSubmeta}>
+        <span>{degree.location}</span>
+        <span aria-hidden="true"> · </span>
+        <span>{degree.period}</span>
+      </p>
     </div>
-  )}
+
+    {degree.logo && (
+      <div class={styles.educationLogoWrap}>
+        <img src={degree.logo} alt="" aria-hidden="true" class={styles.educationLogo} />
+      </div>
+    )}
+  </div>
+
+  {degree.thesis && <ThesisDetails thesis={degree.thesis} />}
 </article>
-
-<style>
-  .degree-entry {
-    padding: var(--space-6);
-    border-left: 3px solid var(--color-primary);
-    border-radius: var(--radius-lg);
-    background-color: var(--color-bg-secondary);
-  }
-
-  .degree-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: var(--space-4);
-    margin-bottom: var(--space-4);
-  }
-
-  .degree-name {
-    margin: 0;
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text);
-    flex: 1;
-  }
-
-  .institution-logo {
-    max-height: 80px;
-    width: auto;
-    opacity: 0.8;
-    flex-shrink: 0;
-  }
-
-  .degree-details {
-    margin-bottom: var(--space-4);
-  }
-
-  .degree-field {
-    margin: 0 0 var(--space-2) 0;
-    color: var(--color-text-secondary);
-    font-size: var(--font-size-base);
-  }
-
-  .degree-location {
-    margin: 0 0 var(--space-2) 0;
-    font-size: var(--font-size-sm);
-    color: var(--color-text-tertiary);
-  }
-
-  .degree-period {
-    margin: 0 0 var(--space-2) 0;
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-secondary);
-  }
-
-  .institution-link {
-    display: inline-block;
-    color: var(--color-link);
-    font-size: var(--font-size-sm);
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  .thesis-section {
-    margin-top: var(--space-4);
-    padding-top: var(--space-4);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .thesis-title {
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-semibold);
-    margin: 0 0 var(--space-2) 0;
-    color: var(--color-text-secondary);
-  }
-
-  .thesis-name {
-    margin: 0 0 var(--space-3) 0;
-    font-style: italic;
-    color: var(--color-text);
-    line-height: 1.5;
-  }
-
-  .thesis-info {
-    margin: var(--space-1) 0;
-    font-size: var(--font-size-sm);
-  }
-
-  .label {
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-secondary);
-    margin-right: var(--space-2);
-  }
-</style>
