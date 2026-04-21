@@ -1,0 +1,130 @@
+---
+import Sidebar from '../components/Sidebar.astro';
+import '../styles/themes.css';
+import '../styles/style.css';
+import '../styles/animations.css';
+import '../styles/layout-design5.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  activePage?: string;
+}
+
+const {
+  title,
+  description = 'Farooq Olanrewaju - Doctoral Researcher in Robotics and Control Engineering',
+  activePage = 'index.html',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="keywords" content="Robotics, Control Systems, Port-Hamiltonian, Vehicle-Manipulator Systems, Physical Human-Robot Interaction" />
+  <title>{title}</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Prevent theme flash — must run BEFORE first paint, before any CSS -->
+  <script is:inline>
+    if (localStorage.getItem('website-theme-preference') === 'light') {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
+</head>
+<body>
+  <!-- Hero slot: each page provides its own hero component -->
+  <slot name="hero" />
+
+  <div class="main-layout">
+    <Sidebar activePage={activePage} />
+
+    <button class="hamburger-menu" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <main class="main-content">
+      <slot />
+    </main>
+  </div>
+
+  <footer>
+    <p>Built with ❤️ by <a href="https://github.com/olanrewajufarooq">Farooq Olanrewaju</a></p>
+    <p>© 2026 | Robotics &amp; Control Research</p>
+  </footer>
+
+  <!-- Particles animation (targets #hero-particles rendered by Hero slot) -->
+  <script is:inline src="/assets/js/particles.js"></script>
+
+  <!-- Hamburger + sidebar interactions — vanilla JS, no framework needed -->
+  <script>
+    (function () {
+      const sidebar = document.querySelector('.sidebar') as HTMLElement | null;
+      const hamburger = document.querySelector('.hamburger-menu') as HTMLElement | null;
+      const sidebarClose = document.querySelector('.sidebar-close') as HTMLElement | null;
+
+      if (!sidebar || !hamburger) return;
+
+      function openSidebar() {
+        hamburger!.classList.add('active');
+        sidebar!.classList.add('active');
+      }
+
+      function closeSidebar() {
+        hamburger!.classList.remove('active');
+        sidebar!.classList.remove('active');
+      }
+
+      hamburger.addEventListener('click', () => {
+        sidebar.classList.contains('active') ? closeSidebar() : openSidebar();
+      });
+
+      sidebarClose?.addEventListener('click', closeSidebar);
+
+      // Close on nav-link click (mobile)
+      sidebar.addEventListener('click', (e) => {
+        const link = (e.target as HTMLElement).closest('.nav-link');
+        if (link && window.innerWidth <= 1024) closeSidebar();
+      });
+
+      // Close on outside click (mobile)
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 1024) {
+          if (!sidebar.contains(e.target as Node) && !hamburger.contains(e.target as Node)) {
+            closeSidebar();
+          }
+        }
+      });
+
+      // Reset on resize to desktop
+      let resizeTimer: ReturnType<typeof setTimeout>;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          if (window.innerWidth > 1024) closeSidebar();
+        }, 200);
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          const href = (link as HTMLAnchorElement).getAttribute('href');
+          if (href && href !== '#') {
+            e.preventDefault();
+            document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

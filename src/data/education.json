@@ -1,0 +1,112 @@
+{
+  "degrees": [
+    {
+      "degree": "Doctor of Philosophy (PhD)",
+      "field": "Systems and Control Engineering",
+      "institution": "King Fahd University of Petroleum & Minerals (KFUPM)",
+      "location": "Dhahran, Saudi Arabia",
+      "period": "Aug 2024 – Jul 2028",
+      "url": "https://www.kfupm.edu.sa",
+      "logo": "/assets/images/logos/kfupm.png",
+      "advisor": "Dr. Ramy Rashad",
+      "advisorLink": "https://scholar.google.com/citations?user=M7fdYekAAAAJ",
+      "lab": "ARM4L Lab",
+      "labLink": "https://ri.kfupm.edu.sa/irc-sml/facilities/arm4l-lab",
+      "skills": [
+        "Simulink",
+        "MATLAB",
+        "Artificial Intelligence",
+        "Robotics",
+        "Control",
+        "Model Identification"
+      ]
+    },
+    {
+      "degree": "Master's Degree",
+      "field": "Electrical and Computer Engineering",
+      "institution": "Instituto Superior Tecnico (IST Lisbon)",
+      "location": "Lisbon, Portugal",
+      "period": "Sep 2023 – Aug 2024",
+      "url": "https://tecnico.ulisboa.pt",
+      "logo": "/assets/images/logos/ist-lisbon.jpg",
+      "advisor": [
+        "Dr. Pedro Sanz",
+        "Dr. Rodrigo Ventura"
+      ],
+      "advisorLink": [
+        "https://www.researchgate.net/profile/Pedro-Sanz",
+        "https://isr.tecnico.ulisboa.pt/author/rodrigomartinsdematos/"
+      ],
+      "lab": "CIRTESU Lab",
+      "labLink": null,
+      "skills": [
+        "Machine Learning",
+        "Kalman Filtering",
+        "Optimal Control",
+        "MATLAB",
+        "ROS",
+        "Computer Vision",
+        "Linux",
+        "Python",
+        "Git"
+      ]
+    },
+    {
+      "degree": "Master's Degree",
+      "field": "Engineering of Complex Systems — Marine & Maritime Intelligent Robotics",
+      "institution": "Universite de Toulon",
+      "location": "Toulon, France",
+      "period": "Sep 2022 – Aug 2023",
+      "url": "https://www.univ-tln.fr",
+      "logo": "/assets/images/logos/univ-toulon.jpg",
+      "advisor": null,
+      "advisorLink": null,
+      "lab": null,
+      "labLink": null,
+      "skills": [
+        "Deep Learning",
+        "Reinforcement Learning",
+        "Machine Learning",
+        "ROS",
+        "Computer Vision",
+        "Control",
+        "Python",
+        "MATLAB"
+      ]
+    },
+    {
+      "degree": "Bachelor of Engineering (B.Eng.)",
+      "field": "Mechanical Engineering",
+      "institution": "University of Ilorin",
+      "location": "Ilorin, Nigeria",
+      "period": "Nov 2015 – Oct 2021",
+      "url": "https://www.unilorin.edu.ng",
+      "logo": "/assets/images/logos/unilorin.jpg",
+      "advisor": "Dr. H. A. Ajimotokan",
+      "advisorLink": "https://scholar.google.com/citations?user=yA_cH54AAAAJ&hl=en",
+      "lab": null,
+      "labLink": null,
+      "skills": [
+        "Engineering Analysis",
+        "Mechanical Design",
+        "Thermodynamics",
+        "Fluid Mechanics",
+        "Control Systems"
+      ]
+    },
+    {
+      "degree": "West African Senior School Certificate (WASSCE)",
+      "field": "Science",
+      "institution": "Government College Lagos",
+      "location": "Lagos, Nigeria",
+      "period": "Oct 2008 – May 2014",
+      "url": "https://www.gclagos.org",
+      "logo": "/assets/images/logos/gov-college.jpg",
+      "advisor": null,
+      "advisorLink": null,
+      "lab": null,
+      "labLink": null,
+      "skills": []
+    }
+  ]
+}

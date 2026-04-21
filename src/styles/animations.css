@@ -1,0 +1,141 @@
+/* Particle Animation Styles */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes drift-left {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-30px);
+  }
+}
+
+@keyframes drift-right {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(30px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes rotate-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Particle Container */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Individual Particles */
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: float 6s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(0, 212, 255, 0.6);
+}
+
+.particle.large {
+  width: 4px;
+  height: 4px;
+  opacity: 0.4;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
+}
+
+.particle.small {
+  width: 1px;
+  height: 1px;
+  opacity: 0.3;
+  box-shadow: 0 0 3px rgba(0, 212, 255, 0.4);
+}
+
+/* Particle Variations */
+.particle-1 { animation: float 8s ease-in-out -2s infinite, drift-left 20s linear -5s infinite; }
+.particle-2 { animation: float 6s ease-in-out -1s infinite, drift-right 15s linear -3s infinite; }
+.particle-3 { animation: float 7s ease-in-out -3s infinite, drift-left 18s linear -7s infinite; }
+.particle-4 { animation: float 5s ease-in-out infinite, drift-right 22s linear infinite; }
+.particle-5 { animation: float 9s ease-in-out -4s infinite, drift-left 25s linear -8s infinite; }
+.particle-6 { animation: float 6.5s ease-in-out -1.5s infinite, drift-right 17s linear -4s infinite; }
+.particle-7 { animation: float 7.5s ease-in-out -2.5s infinite, drift-left 20s linear -6s infinite; }
+.particle-8 { animation: float 5.5s ease-in-out -0.5s infinite, drift-right 19s linear -2s infinite; }
+
+/* Connecting Lines (Optional) */
+.particle-line {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+  opacity: 0.3;
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Light Mode Adjustments */
+html.light-mode .particle {
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(0, 153, 204, 0.5);
+}
+
+html.light-mode .particle.large {
+  box-shadow: 0 0 12px rgba(0, 153, 204, 0.4);
+}
+
+html.light-mode .particle.small {
+  box-shadow: 0 0 3px rgba(0, 153, 204, 0.3);
+}
+
+html.light-mode .particle-line {
+  background: linear-gradient(90deg, transparent, rgba(0, 153, 204, 0.2), transparent);
+}
+
+/* Particle Animation Performance */
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .particle-line {
+    animation: none;
+  }
+}
+
+/* Particle Density Control */
+.particles-sparse .particle {
+  opacity: 0.3;
+}
+
+.particles-dense .particle {
+  opacity: 0.6;
+}
+
+.particles-dense .particle.large {
+  opacity: 0.5;
+}

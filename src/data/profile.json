@@ -1,0 +1,36 @@
+{
+  "name": "Farooq Olanrewaju",
+  "title": "PhD Student",
+  "institution": "King Fahd University of Petroleum & Minerals",
+  "photo": "/assets/images/me/headshot.png",
+  "bio": "Doctoral researcher at KFUPM focused on geometric port-Hamiltonian systems and vehicle-manipulator systems for physical human-robot interaction.",
+  "nav": [
+    { "label": "Home",        "href": "index.html" },
+    { "label": "Education",   "href": "education.html" },
+    { "label": "Research",    "href": "research.html" },
+    { "label": "Publication", "href": "publications.html" }
+  ],
+  "social": [
+    {
+      "label": "GitHub",
+      "href": "https://github.com/olanrewajufarooq",
+      "icon": "/assets/images/logos/github.svg",
+      "iconClass": "icon-github"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/olanrewajufarooq/",
+      "icon": "/assets/images/logos/linkedin.png"
+    },
+    {
+      "label": "ORCID",
+      "href": "https://orcid.org/0000-0002-8953-4564",
+      "icon": "/assets/images/logos/orcid.svg"
+    },
+    {
+      "label": "Google Scholar",
+      "href": "https://scholar.google.com/citations?user=olanrewajufarooq",
+      "emoji": "📖"
+    }
+  ]
+}

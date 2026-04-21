@@ -1,0 +1,51 @@
+---
+import ThemeToggle from './ThemeToggle';
+
+interface Props {
+  variant?: 'full' | 'sm';
+  title?: string;
+  subtitle?: string;
+}
+
+const { variant = 'full', title, subtitle } = Astro.props;
+---
+
+<div class={`hero-section${variant === 'sm' ? ' hero-sm' : ''}`}>
+  <div class="particles-container" id="hero-particles"></div>
+
+  {variant === 'full' ? (
+    <div class="hero-content">
+      <div class="profile-section">
+        <div class="profile-photo-placeholder">
+          <img src="/assets/images/me/headshot.png" alt="Farooq Olanrewaju" />
+        </div>
+        <h1>Farooq Olanrewaju</h1>
+        <p class="hero-subtitle">Doctoral Researcher in Robotics &amp; Control Engineering</p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">11+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">1</span>
+            <span class="stat-label">Published</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">2+</span>
+            <span class="stat-label">Under Review</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div class="hero-content">
+      <div class="profile-section">
+        <h1>{title}</h1>
+        {subtitle && <p class="hero-subtitle">{subtitle}</p>}
+      </div>
+    </div>
+  )}
+
+  <!-- ThemeToggle is a React island — runs only on client, zero SSR cost -->
+  <ThemeToggle client:load />
+</div>

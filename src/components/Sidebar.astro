@@ -1,0 +1,68 @@
+---
+import profileData from '../data/profile.json';
+
+interface Props {
+  activePage: string;
+}
+
+const { activePage } = Astro.props;
+const profile = profileData as typeof profileData & {
+  social: Array<{ label: string; href: string; icon?: string; iconClass?: string; emoji?: string }>;
+};
+---
+
+<aside class="sidebar">
+  <button class="sidebar-close" aria-label="Close sidebar">✕</button>
+
+  <div class="sidebar-content">
+    <!-- Identity -->
+    <div class="sidebar-identity">
+      <img src={profile.photo} alt={profile.name} class="sidebar-photo" />
+      <h2 class="sidebar-name">{profile.name}</h2>
+      <p class="sidebar-title">{profile.title}</p>
+      <p class="sidebar-institution">{profile.institution}</p>
+    </div>
+
+    <!-- Short bio -->
+    <section class="sidebar-section">
+      <p class="sidebar-bio">{profile.bio}</p>
+    </section>
+
+    <!-- Navigation -->
+    <section class="sidebar-section">
+      <h3>Navigation</h3>
+      <nav class="sidebar-nav" aria-label="Site navigation">
+        {profile.nav.map((item) => (
+          <a
+            href={`/${item.href}`}
+            class={`nav-link${activePage === item.href ? ' active' : ''}`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </section>
+
+    <!-- Connect -->
+    <section class="sidebar-section">
+      <h3>Connect</h3>
+      <div class="social-links-sidebar">
+        {profile.social.map((link) => (
+          <a
+            href={link.href}
+            class={`social-link${link.iconClass ? ` ${link.iconClass}` : ''}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {link.icon ? (
+              <img src={link.icon} alt="" class="social-link-img" aria-hidden="true" />
+            ) : (
+              <span aria-hidden="true">{link.emoji ?? ''}</span>
+            )}
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</aside>

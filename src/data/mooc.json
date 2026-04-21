@@ -1,0 +1,21 @@
+{
+  "certificates": [
+    { "name": "Control Onramp",                                    "institute": "MathWorks",                         "date": "", "link": "", "image": "control-onramp-certificate.png" },
+    { "name": "Simulink Onramp",                                   "institute": "MathWorks",                         "date": "", "link": "", "image": "simulink-onramp.png" },
+    { "name": "MATLAB Onramp",                                     "institute": "MathWorks",                         "date": "", "link": "", "image": "matlab-onramp-certificate.png" },
+    { "name": "Introduction to MATLAB",                            "institute": "Vanderbilt University / Coursera",  "date": "", "link": "", "image": "intro-matlab-vanderbuilt.png" },
+    { "name": "Master MATLAB Through Guided Problem Solving",      "institute": "Vanderbilt University / Coursera",  "date": "", "link": "", "image": "master-matlab-vanderbuilt.png" },
+    { "name": "Neural Networks and Deep Learning",                 "institute": "deeplearning.ai / Coursera",        "date": "", "link": "", "image": "neural-networks-and-deep-learning.png" },
+    { "name": "Improving Deep Neural Networks",                    "institute": "deeplearning.ai / Coursera",        "date": "", "link": "", "image": "improving-deep-neural-networks-hyperparameter-tuning-regularization-and-optimization.png" },
+    { "name": "Convolutional Neural Networks",                     "institute": "deeplearning.ai / Coursera",        "date": "", "link": "", "image": "convolutional-neural-networks.png" },
+    { "name": "Neural Networks and PyTorch",                       "institute": "IBM / Coursera",                    "date": "", "link": "", "image": "neural-networks-and-pytorch.png" },
+    { "name": "IBM Data Science Professional Certificate",         "institute": "IBM / Coursera",                    "date": "", "link": "", "image": "coursera-ibm-data-science.png" },
+    { "name": "Data Visualization with Python",                    "institute": "IBM / Coursera",                    "date": "", "link": "", "image": "data-viz-ibm.png" },
+    { "name": "Exploratory Data Analysis for Machine Learning",    "institute": "IBM / Coursera",                    "date": "", "link": "", "image": "eda-ml-ibm.png" },
+    { "name": "Master Python for Data Science",                    "institute": "IBM / Coursera",                    "date": "", "link": "", "image": "master-python-for-data-science.png" },
+    { "name": "Statistics with Python Specialization",             "institute": "University of Michigan / Coursera", "date": "", "link": "", "image": "statistics-with-python-specialization.png" },
+    { "name": "Linux and Shell Scripting",                         "institute": "IBM / Coursera",                    "date": "", "link": "", "image": "linux-and-shell-scripting.png" },
+    { "name": "Git Version Control",                               "institute": "Atlassian / Coursera",              "date": "", "link": "", "image": "git-atlassian.png" },
+    { "name": "Git and GitHub",                                    "institute": "Google / Coursera",                 "date": "", "link": "", "image": "git-and-github-google.png" }
+  ]
+}

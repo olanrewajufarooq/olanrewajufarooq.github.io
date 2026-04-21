@@ -1,0 +1,32 @@
+{
+  "publications": [
+    {
+      "id": "apo-arx-ship-2025",
+      "title": "APO-Optimized ARX-Based System Identification of a Ship Maneuvering System",
+      "authors": "Farooq Olanrewaju, et al.",
+      "venue": "IEEE SSD 2025",
+      "year": 2025,
+      "status": "published",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10989967/",
+      "description": "System identification using adaptive parameter optimization for autonomous vessel control and maneuvering characteristics."
+    },
+    {
+      "id": "geometric-adaptive-se3-aerial",
+      "title": "Geometric Adaptive Control on SE(3) for Fully-Actuated Aerial Vehicles With Online Parameter Estimation",
+      "authors": "Farooq Olanrewaju, et al.",
+      "venue": "ICUAS 2026",
+      "year": 2026,
+      "status": "review",
+      "description": "Novel adaptive control method for aerial vehicles using geometric control on the SE(3) manifold with real-time parameter estimation."
+    },
+    {
+      "id": "variable-tilt-hexacopter",
+      "title": "From Modeling to Control Allocation: A Geometric Approach to Variable-Tilt Hexacopter",
+      "authors": "Farooq Olanrewaju, et al.",
+      "venue": "ICUAS 2026",
+      "year": 2026,
+      "status": "review",
+      "description": "Comprehensive geometric framework for modeling and control allocation of variable-tilt hexacopter systems."
+    }
+  ]
+}
