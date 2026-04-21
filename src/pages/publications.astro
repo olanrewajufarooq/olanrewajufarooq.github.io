@@ -4,11 +4,24 @@ import PublicationsIntro from '../features/publications/components/PublicationsI
 import PublicationsList from '../features/publications/components/PublicationsList.tsx';
 import publicationsData from '../data/publications/publications.json';
 import type { Publication } from '../shared/types';
+import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
 
 const publications = publicationsData.publications as Publication[];
+
+const meta = buildMetadata({
+  title: 'Publications | Farooq Olanrewaju',
+  description: 'Accepted and published works by Farooq Olanrewaju in robotics, control, and autonomous systems.',
+  canonical: getCanonicalUrl('/publications'),
+});
 ---
 
-<ContentLayout title="Publications | Farooq Olanrewaju" description="Research publications and papers" activePath="/publications">
+<ContentLayout
+  title={meta.title}
+  description={meta.description}
+  activePath="/publications"
+  canonical={meta.canonical}
+  ogImage={meta.openGraph?.image}
+>
   <main class="publications-content">
     <PublicationsIntro />
     <PublicationsList client:load publications={publications} />

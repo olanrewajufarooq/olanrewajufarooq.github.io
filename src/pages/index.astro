@@ -12,16 +12,26 @@ import {
   getLatestAcceptedOrPublishedPublication,
   getCurrentProjects
 } from '../shared/content/home';
+import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
 
 const featuredThemes = getFeaturedThemes();
 const latestPublication = getLatestAcceptedOrPublishedPublication();
 const currentProjects = getCurrentProjects();
+
+const meta = buildMetadata({
+  title: 'Farooq Olanrewaju | PhD Student in Robotics and Control',
+  description: 'Academic portfolio of Farooq Olanrewaju, PhD Student in robotics, control engineering, and autonomous systems research.',
+  canonical: getCanonicalUrl('/'),
+  image: '/assets/images/me/headshot.png',
+});
 ---
 
 <ContentLayout
-  title="Farooq Olanrewaju | PhD Student in Robotics and Control"
-  description="Academic portfolio of Farooq Olanrewaju, PhD Student in robotics, control engineering, and autonomous systems research."
+  title={meta.title}
+  description={meta.description}
   activePath="/"
+  canonical={meta.canonical}
+  ogImage={meta.openGraph?.image}
 >
   <HomeHero />
   <ResearchFocusSection />

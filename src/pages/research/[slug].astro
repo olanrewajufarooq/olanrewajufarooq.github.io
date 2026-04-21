@@ -14,6 +14,7 @@ import ResearchVideos from '../../features/research/components/ResearchVideos.as
 import publicationsData from '../../data/publications/publications.json';
 import projectsData from '../../data/research/projects.json';
 import type { Project, Publication } from '../../shared/types';
+import { buildMetadata, getCanonicalUrl } from '../../shared/content/metadata';
 
 export async function getStaticPaths() {
   const entries = await getCollection('research');
@@ -36,12 +37,21 @@ const relatedProjects = allProjects.filter((project) =>
 const relatedPublications = allPublications.filter((publication) =>
   entry.data.publicationIds.includes(publication.id)
 );
+
+const meta = buildMetadata({
+  title: `${entry.data.title} | Farooq Olanrewaju`,
+  description: entry.data.seoDescription ?? entry.data.summary,
+  canonical: getCanonicalUrl(`/research/${entry.data.slug}`),
+  image: entry.data.coverImage,
+});
 ---
 
 <ContentLayout
-  title={`${entry.data.title} | Farooq Olanrewaju`}
-  description={entry.data.seoDescription ?? entry.data.summary}
+  title={meta.title}
+  description={meta.description}
   activePath="/research"
+  canonical={meta.canonical}
+  ogImage={meta.openGraph?.image}
 >
   <Breadcrumbs
     items={[

@@ -4,16 +4,25 @@ import ResearchIntro from '../../features/research/components/ResearchIntro.astr
 import ResearchTimeline from '../../features/research/components/ResearchTimeline';
 import themesData from '../../data/research/themes.json';
 import type { ResearchThemeSummary } from '../../shared/types/research';
+import { buildMetadata, getCanonicalUrl } from '../../shared/content/metadata';
 
 const themes = (themesData.themes as ResearchThemeSummary[]).sort(
   (a, b) => a.order - b.order
 );
+
+const meta = buildMetadata({
+  title: 'Research | Farooq Olanrewaju',
+  description: 'Research themes, portfolio, and current directions of Farooq Olanrewaju.',
+  canonical: getCanonicalUrl('/research'),
+});
 ---
 
 <ContentLayout
-  title="Research | Farooq Olanrewaju"
-  description="Research themes, portfolio, and current directions of Farooq Olanrewaju."
+  title={meta.title}
+  description={meta.description}
   activePath="/research"
+  canonical={meta.canonical}
+  ogImage={meta.openGraph?.image}
 >
   <ResearchIntro />
   <ResearchTimeline client:load themes={themes} />

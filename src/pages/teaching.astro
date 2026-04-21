@@ -2,9 +2,22 @@
 import ContentLayout from '../layouts/ContentLayout.astro';
 import TeachingIntro from '../features/teaching/components/TeachingIntro.astro';
 import TeachingList from '../features/teaching/components/TeachingList.astro';
+import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
+
+const meta = buildMetadata({
+  title: 'Teaching | Farooq Olanrewaju',
+  description: 'Teaching activities, courses, and academic support by Farooq Olanrewaju.',
+  canonical: getCanonicalUrl('/teaching'),
+});
 ---
 
-<ContentLayout title="Teaching | Farooq Olanrewaju" description="Teaching experience and courses" activePath="/teaching">
+<ContentLayout
+  title={meta.title}
+  description={meta.description}
+  activePath="/teaching"
+  canonical={meta.canonical}
+  ogImage={meta.openGraph?.image}
+>
   <main class="teaching-content">
     <TeachingIntro />
     <TeachingList />
