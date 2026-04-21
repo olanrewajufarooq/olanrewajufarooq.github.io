@@ -1,4 +1,5 @@
 ---
+slug: "variable-tilt-hexacopter"
 title: "Variable-Tilt Hexacopter Design and Control"
 summary: "Design and implementation of a novel hexacopter with variable tilt motors for enhanced maneuverability"
 period: "2021 - 2023"
@@ -57,3 +58,4 @@ This section will be auto-populated by ResearchProjects component
 ## Collaborators
 
 This section will be auto-populated by ResearchCollaborators component
+

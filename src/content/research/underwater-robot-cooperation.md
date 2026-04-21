@@ -1,4 +1,5 @@
 ---
+slug: "underwater-robot-cooperation"
 title: "Cooperative Control of Underwater Robotic Systems"
 summary: "Multi-robot coordination and control strategies for underwater exploration and manipulation"
 period: "2022 - 2024"
@@ -57,3 +58,4 @@ This section will be auto-populated by ResearchProjects component
 ## Collaborators
 
 This section will be auto-populated by ResearchCollaborators component
+

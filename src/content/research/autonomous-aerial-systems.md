@@ -1,4 +1,5 @@
 ---
+slug: "autonomous-aerial-systems"
 title: "Autonomous Aerial Systems and Control"
 summary: "Research on autonomous aerial vehicle control, path planning, and cooperative flight"
 period: "2021 - 2024"
@@ -57,3 +58,4 @@ This section will be auto-populated by ResearchProjects component
 ## Collaborators
 
 This section will be auto-populated by ResearchCollaborators component
+

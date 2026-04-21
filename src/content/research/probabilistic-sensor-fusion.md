@@ -1,4 +1,5 @@
 ---
+slug: "probabilistic-sensor-fusion"
 title: "Probabilistic Sensor Fusion for Robotic Perception"
 summary: "Bayesian and particle filter approaches for combining heterogeneous sensor data in robotic systems"
 period: "2020 - 2021"
@@ -58,3 +59,4 @@ This section will be auto-populated by ResearchProjects component
 ## Collaborators
 
 This section will be auto-populated by ResearchCollaborators component
+

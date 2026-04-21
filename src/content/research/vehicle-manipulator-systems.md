@@ -1,4 +1,5 @@
 ---
+slug: "vehicle-manipulator-systems"
 title: "Geometric Port-Hamiltonian Modelling and Control of Vehicle-Manipulator Systems"
 summary: "Development of control frameworks for integrated vehicle-manipulator platforms with focus on safe physical interaction"
 period: "2024 - Present"

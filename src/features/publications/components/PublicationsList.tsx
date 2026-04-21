@@ -100,7 +100,12 @@ const PublicationsList: React.FC<Props> = ({ publications: initialPubs }) => {
                       <div className="pub-meta">
                         <h4 className="pub-title">{pub.title}</h4>
                         <p className="pub-authors">
-                          {pub.authors.map((a) => (a.isMe ? `${a.name}` : a.name)).join(', ')}
+                          {pub.authors.map((a, idx) => (
+                            <span key={a.name}>
+                              {a.isMe ? <strong>{a.name}</strong> : a.name}
+                              {idx < pub.authors.length - 1 && ', '}
+                            </span>
+                          ))}
                         </p>
                       </div>
                     </div>

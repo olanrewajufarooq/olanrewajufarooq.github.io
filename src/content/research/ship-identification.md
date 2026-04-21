@@ -1,4 +1,5 @@
 ---
+slug: "ship-identification"
 title: "Automated Ship Identification and Classification"
 summary: "Computer vision and machine learning approaches for maritime vessel identification from satellite imagery"
 period: "2021 - 2022"
@@ -58,3 +59,4 @@ This section will be auto-populated by ResearchProjects component
 ## Collaborators
 
 This section will be auto-populated by ResearchCollaborators component
+

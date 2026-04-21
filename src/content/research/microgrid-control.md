@@ -1,4 +1,5 @@
 ---
+slug: "microgrid-control"
 title: "Microgrid Control and Energy Management"
 summary: "Distributed control strategies for microgrids with renewable energy integration"
 period: "2020 - 2022"
@@ -58,3 +59,4 @@ This section will be auto-populated by ResearchProjects component
 ## Collaborators
 
 This section will be auto-populated by ResearchCollaborators component
+
