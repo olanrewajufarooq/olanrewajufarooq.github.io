@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import navData from '../../data/profile.json';
-import socialData from '../../data/profile.json';
+import navData from '../../data/site/navigation.json';
+import socialData from '../../data/site/social.json';
+import profileData from '../../data/site/profile.json';
 
 interface Props {
   isOpen?: boolean;
@@ -59,7 +60,7 @@ const MobileDrawer: React.FC<Props> = ({ isOpen = false, onClose }) => {
 
           <nav className="drawer-nav">
             <ul className="nav-list">
-              {navData.nav.map((item) => (
+              {navData.map((item) => (
                 <li key={item.href}>
                   <a href={item.href} onClick={handleClose}>
                     {item.label}
@@ -74,7 +75,7 @@ const MobileDrawer: React.FC<Props> = ({ isOpen = false, onClose }) => {
           <div className="drawer-social">
             <div className="social-label">Connect</div>
             <ul className="social-list">
-              {socialData.social.map((link) => (
+              {socialData.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
@@ -93,7 +94,7 @@ const MobileDrawer: React.FC<Props> = ({ isOpen = false, onClose }) => {
 
           <div className="drawer-cta">
             <a
-              href="/assets/cv.pdf"
+              href={profileData.cvPath}
               download="Farooq_Olanrewaju_CV.pdf"
               className="cv-link"
             >
