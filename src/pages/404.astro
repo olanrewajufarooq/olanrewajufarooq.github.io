@@ -33,7 +33,7 @@ import ContentLayout from '../layouts/ContentLayout.astro';
     font-size: clamp(6rem, 20vw, 12rem);
     font-weight: var(--font-weight-bold);
     margin: 0;
-    color: var(--color-primary);
+    color: var(--color-accent);
     line-height: 1;
   }
 
@@ -44,22 +44,22 @@ import ContentLayout from '../layouts/ContentLayout.astro';
 
   .error-description {
     font-size: var(--font-size-lg);
-    color: var(--color-text-secondary);
+    color: var(--color-text-muted);
     margin: var(--space-6) 0;
   }
 
   .error-link {
     display: inline-block;
     padding: var(--space-3) var(--space-6);
-    background-color: var(--color-primary);
-    color: var(--color-text-inverse);
+    background-color: var(--color-accent);
+    color: var(--color-bg);
     border-radius: var(--radius-md);
     text-decoration: none;
     font-weight: var(--font-weight-semibold);
     transition: all var(--transition-fast);
+  }
 
-    &:hover {
-      background-color: var(--color-primary-dark);
-    }
+  .error-link:hover {
+    opacity: 0.85;
   }
 </style>

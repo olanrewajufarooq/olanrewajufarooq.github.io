@@ -2,12 +2,12 @@
 slug: "autonomous-aerial-systems"
 title: "Autonomous Aerial Systems and Control"
 summary: "Research on autonomous aerial vehicle control, path planning, and cooperative flight"
-period: "2021 - 2024"
+period: "2019 - 2021"
 status: "completed"
-featured: true
-keywords: ["aerial robotics", "control", "autonomous systems", "UAV"]
+featured: false
+keywords: ["Unmanned Aerial Systems", "Autonomous Flight", "Control Systems"]
 coverImage: null
-projectIds: []
+projectIds: ["uas-development"]
 publicationIds: []
 ---
 
@@ -58,4 +58,3 @@ This section will be auto-populated by ResearchProjects component
 ## Collaborators
 
 This section will be auto-populated by ResearchCollaborators component
-

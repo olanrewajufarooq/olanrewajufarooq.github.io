@@ -27,4 +27,17 @@
 
   --transition-fast: 160ms ease;
   --transition-base: 220ms ease;
+
+  --color-primary: #7c94ad;
+  --color-text-inverse: #111214;
+  --color-bg-secondary: #1e2126;
+  --font-family-sans: "Inter", system-ui, sans-serif;
+  --font-size-base: 1rem;
+  --line-height-normal: 1.7;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --color-neutral-400: #5c5f66;
+  --color-neutral-500: #484c52;
 }

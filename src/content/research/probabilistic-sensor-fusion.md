@@ -2,12 +2,12 @@
 slug: "probabilistic-sensor-fusion"
 title: "Probabilistic Sensor Fusion for Robotic Perception"
 summary: "Bayesian and particle filter approaches for combining heterogeneous sensor data in robotic systems"
-period: "2020 - 2021"
-status: "completed"
+period: "2025 - Present"
+status: "ongoing"
 featured: false
-keywords: ["sensor fusion", "probability", "Bayesian methods", "robotic perception"]
-coverImage: null
-projectIds: []
+keywords: ["Kalman Filtering", "Sensor Fusion", "Probabilistic Guarantees"]
+coverImage: "/assets/images/research/probabilistic-sensor-fusion/cover.jpg"
+projectIds: ["prob-kalman-filter"]
 publicationIds: []
 ---
 
@@ -15,7 +15,7 @@ publicationIds: []
 
 ## Overview
 
-Modern robotic systems are equipped with diverse sensor modalities—cameras, LiDAR, radar, inertial measurement units, and ultrasonic sensors—each providing complementary information about the robot's environment and state. The challenge of combining these heterogeneous measurements into coherent and reliable perception estimates is central to autonomous robotics. This research develops principled probabilistic frameworks for sensor fusion that enable robust estimation despite sensor noise, outliers, and model uncertainties.
+Modern robotic systems are equipped with diverse sensor modalities-cameras, LiDAR, radar, inertial measurement units, and ultrasonic sensors-each providing complementary information about the robot's environment and state. The challenge of combining these heterogeneous measurements into coherent and reliable perception estimates is central to autonomous robotics. This research develops principled probabilistic frameworks for sensor fusion that enable robust estimation despite sensor noise, outliers, and model uncertainties.
 
 Probabilistic approaches to sensor fusion provide a rigorous mathematical framework for combining measurements from multiple sensors while properly accounting for uncertainty in each sensor modality. Rather than treating sensors independently or using ad hoc combination rules, probabilistic methods enable optimal integration of information when the measurement models and uncertainties are well characterized. This includes handling multimodal distributions arising from multiple hypothesis (e.g., multiple potential object interpretations) and dynamic environments.
 
@@ -59,4 +59,3 @@ This section will be auto-populated by ResearchProjects component
 ## Collaborators
 
 This section will be auto-populated by ResearchCollaborators component
-

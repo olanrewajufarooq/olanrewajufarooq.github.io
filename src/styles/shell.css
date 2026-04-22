@@ -64,6 +64,11 @@
   display: block;
   padding: 0.55rem 0;
   color: var(--color-text);
+  text-decoration: none;
+}
+
+.sidebar__nav-link:hover {
+  color: var(--color-accent);
 }
 
 .sidebar__nav-link.is-active {
@@ -80,6 +85,11 @@
   gap: 0.55rem;
   padding: 0.45rem 0;
   color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.sidebar__social-link:hover {
+  color: var(--color-text);
 }
 
 .sidebar__social-icon {
@@ -92,6 +102,15 @@
   border-top: 1px solid var(--color-border);
   padding: var(--space-5);
   color: var(--color-text-muted);
+}
+
+.site-footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-footer a:hover {
+  color: var(--color-accent);
 }
 
 .site-footer__inner {

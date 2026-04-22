@@ -93,10 +93,8 @@
 }
 
 .themeEntry {
-  padding: var(--space-5);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  border-left: 3px solid var(--color-accent);
 }
 
 .themeHeader {
@@ -172,14 +170,12 @@
 
 .itemGrid {
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .itemPanel {
-  padding: var(--space-5);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .panelTitle {

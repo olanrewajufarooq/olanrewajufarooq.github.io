@@ -1,3 +1,5 @@
+export type CertificateGroup = 'ai' | 'matlab' | 'others';
+
 export interface CertificateItem {
   id: string;
   name: string;
@@ -6,6 +8,7 @@ export interface CertificateItem {
   platform?: string | null;
   verificationUrl?: string | null;
   image: string;
+  group: CertificateGroup;
 }
 
 export interface CertificateProviderGroup {
