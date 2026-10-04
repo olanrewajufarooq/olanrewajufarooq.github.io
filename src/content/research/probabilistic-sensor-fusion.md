@@ -6,7 +6,7 @@ period: "2025 - Present"
 status: "ongoing"
 featured: false
 keywords: ["Kalman Filtering", "Sensor Fusion", "Probabilistic Guarantees"]
-coverImage: null
+coverImage: "/assets/images/research/research-placeholder.svg"
 projectIds: ["prob-kalman-filter"]
 publicationIds: []
 ---

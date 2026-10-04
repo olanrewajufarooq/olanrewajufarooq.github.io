@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Research image coming soon</title>
+  <desc id="desc">An abstract placeholder image with a grid, orbital paths, and a control point.</desc>
+  <rect width="1600" height="900" fill="#e7e2d8"/>
+  <g fill="none" stroke="#b8c3c5" stroke-width="2" opacity=".75">
+    <path d="M0 180h1600M0 360h1600M0 540h1600M0 720h1600"/>
+    <path d="M160 0v900M400 0v900M640 0v900M880 0v900M1120 0v900M1360 0v900"/>
+    <ellipse cx="800" cy="450" rx="520" ry="215" transform="rotate(-16 800 450)"/>
+    <ellipse cx="800" cy="450" rx="300" ry="430" transform="rotate(28 800 450)"/>
+  </g>
+  <path d="M240 704 620 508l280 76 460-306" fill="none" stroke="#536f7a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="620" cy="508" r="20" fill="#d67d58"/>
+  <circle cx="900" cy="584" r="20" fill="#d67d58"/>
+  <circle cx="1360" cy="278" r="20" fill="#d67d58"/>
+  <text x="120" y="130" fill="#536f7a" font-family="Arial, sans-serif" font-size="30" letter-spacing="7">RESEARCH ATLAS</text>
+  <text x="120" y="820" fill="#18232d" font-family="Georgia, serif" font-size="54">Image coming soon</text>
+</svg>

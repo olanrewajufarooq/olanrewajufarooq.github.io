@@ -6,7 +6,7 @@ period: "2025 - Present"
 status: "ongoing"
 featured: false
 keywords: ["Microgrid Control", "Reinforcement Learning", "Energy Systems"]
-coverImage: null
+coverImage: "/assets/images/research/research-placeholder.svg"
 projectIds: ["microgrid-control"]
 publicationIds: []
 ---
