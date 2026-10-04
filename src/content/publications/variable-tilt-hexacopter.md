@@ -4,11 +4,17 @@ title: "From Modeling to Control Allocation: A Geometric Approach to Variable-Ti
 authors:
   - name: Farooq Olanrewaju
     isMe: true
-  - name: Coauthors
+  - name: Ziad Shoeib
     isMe: false
-venue: ICUAS 2026
-year: 2026
-status: in-review
+  - name: Ahmed Abdelrazeq
+    isMe: false
+  - name: MD Tarique bin Hamid
+    isMe: false
+  - name: Ramy Rashad
+    isMe: false
+venue: SSD Conference 2027
+year: 2027
+status: submitted
 publisherUrl: null
 themeSlugs: [variable-tilt-hexacopter]
 projectIds: [adaptive-hexacopter, se3-hexacopter]
@@ -23,7 +29,7 @@ provider:
   doi: null
   title: "From Modeling to Control Allocation: A Geometric Approach to Variable-Tilt Hexacopter"
   type: conference-paper
-  year: 2026
+  year: 2027
 ---
 
-Research on modelling, estimation, and control allocation for a variable-tilt aerial vehicle.
+Submitted to SSD Conference 2027; research on modelling, estimation, and control allocation for a variable-tilt aerial vehicle.

@@ -4,26 +4,30 @@ title: "Geometric Adaptive Control on SE(3) for Fully-Actuated Aerial Vehicles W
 authors:
   - name: Farooq Olanrewaju
     isMe: true
-  - name: Coauthors
+  - name: Aymen Benyahia
     isMe: false
-venue: ICUAS 2026
+  - name: Ramy Rashad
+    isMe: false
+  - name: Sami El-Ferik
+    isMe: false
+venue: 2026 International Conference on Unmanned Aircraft Systems (ICUAS)
 year: 2026
-status: accepted
-publisherUrl: null
+status: published
+publisherUrl: https://ieeexplore.ieee.org/document/11598698/
 themeSlugs: [variable-tilt-hexacopter]
 projectIds: [adaptive-hexacopter, se3-hexacopter]
 citation:
-  pages: null
+  pages: 88-95
   volume: null
   issue: null
-  doi: null
-bibtexPath: null
+  doi: 10.1109/ICUAS69441.2026.11598698
+bibtexPath: /assets/references/2026-icuas-geometric-adaptive-se3.bib
 provider:
   orcidWorkId: null
-  doi: null
+  doi: 10.1109/ICUAS69441.2026.11598698
   title: "Geometric Adaptive Control on SE(3) for Fully-Actuated Aerial Vehicles With Online Parameter Estimation"
   type: conference-paper
   year: 2026
 ---
 
-Accepted work on adaptive geometric control for fully-actuated aerial vehicles.
+Published work on adaptive geometric control for fully-actuated aerial vehicles.

@@ -3,8 +3,9 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import { buildMetadata, getCanonicalUrl } from '../../shared/content/metadata';
+import { sortResearchLatestFirst } from '../../shared/content/research';
 
-const themes = (await getCollection('research')).sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
+const themes = (await getCollection('research')).sort(sortResearchLatestFirst);
 const themeSlug = (theme: CollectionEntry<'research'>) => theme.data.slug ?? theme.id.replace(/\.md$/, '');
 const meta = buildMetadata({
   title: 'Research',
