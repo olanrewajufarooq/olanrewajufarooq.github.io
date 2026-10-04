@@ -5,7 +5,7 @@ import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
 
 const publications = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title));
 const publishedCount = publications.filter((publication) => publication.data.status === 'published').length;
-const activeCount = publications.filter((publication) => publication.data.status !== 'published').length;
+const underReviewCount = publications.filter((publication) => publication.data.status !== 'published').length;
 const meta = buildMetadata({
   title: 'Publications',
   description: 'Publication record of Farooq Olanrewaju in robotics, control, and autonomous systems.',
@@ -14,16 +14,13 @@ const meta = buildMetadata({
 ---
 
 <ContentLayout title={meta.title} description={meta.description} activePath="/publications" canonical={meta.canonical} ogImage={meta.openGraph.image}>
-  <header class="page-intro page-intro--index">
+  <header class="page-intro page-intro--index page-intro--publications">
     <p class="eyebrow">Publication record</p>
     <h1>Work you can read and cite.</h1>
-    <p>Published and active work across geometric control, aerial robotics, marine systems, and system identification.</p>
+    <p>Published work and submissions under review across geometric control, aerial robotics, marine systems, and system identification.</p>
+    <p class="publication-summary">{publications.length} works · {publishedCount} published · {underReviewCount} under review</p>
   </header>
-  <section class="section" aria-labelledby="publication-list-title">
-    <div class="section__heading">
-      <p class="eyebrow">{publications.length} works · {publishedCount} published · {activeCount} active</p>
-      <div><h2 id="publication-list-title">A record ready to cite.</h2><p>Use the publisher, DOI, or BibTeX link when available. The newest work appears first.</p></div>
-    </div>
+  <section class="section" aria-label="Publication list">
     <div class="record-list">
       {publications.map((publication) => (
         <article class="record">
