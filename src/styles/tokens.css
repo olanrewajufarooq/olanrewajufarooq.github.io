@@ -8,6 +8,7 @@
   --color-border: #d9d3c8;
   --color-accent: #2457d6;
   --color-accent-strong: #173da0;
+  --color-success: #24704f;
   --color-warm: #e36b2c;
   --color-focus: #173da0;
   --space-1: 0.25rem;
@@ -35,6 +36,7 @@ html[data-theme='dark'] {
   --color-border: #34434e;
   --color-accent: #8eafff;
   --color-accent-strong: #b7c9ff;
+  --color-success: #7ed6a7;
   --color-warm: #f39a68;
   --color-focus: #b7c9ff;
 }

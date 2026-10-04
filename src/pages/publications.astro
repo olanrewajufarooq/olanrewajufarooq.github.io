@@ -4,6 +4,8 @@ import ContentLayout from '../layouts/ContentLayout.astro';
 import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
 
 const publications = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title));
+const publishedCount = publications.filter((publication) => publication.data.status === 'published').length;
+const activeCount = publications.filter((publication) => publication.data.status !== 'published').length;
 const meta = buildMetadata({
   title: 'Publications',
   description: 'Publication record of Farooq Olanrewaju in robotics, control, and autonomous systems.',
@@ -15,19 +17,18 @@ const meta = buildMetadata({
   <header class="page-intro page-intro--index">
     <p class="eyebrow">Publication record</p>
     <h1>Work you can read and cite.</h1>
-    <p>Published, accepted, and active work across geometric control, aerial robotics, marine systems, and system identification.</p>
+    <p>Published and active work across geometric control, aerial robotics, marine systems, and system identification.</p>
   </header>
   <section class="section" aria-labelledby="publication-list-title">
     <div class="section__heading">
-      <p class="eyebrow">Selected record</p>
-      <div><h2 id="publication-list-title">Research in formal form.</h2><p>For a citation-ready version of a paper, use its publisher or DOI link when available.</p></div>
+      <p class="eyebrow">{publications.length} works · {publishedCount} published · {activeCount} active</p>
+      <div><h2 id="publication-list-title">A record ready to cite.</h2><p>Use the publisher, DOI, or BibTeX link when available. The newest work appears first.</p></div>
     </div>
     <div class="record-list">
       {publications.map((publication) => (
         <article class="record">
-          <div class="record__side"><span class="meta">{publication.data.year}</span><span class:list={['status-label', publication.data.status === 'published' && 'status-label--warm']}>{publication.data.status}</span></div>
-          <div><h3>{publication.data.title}</h3><p>{publication.data.authors.map((author) => author.name).join(', ')}</p></div>
-          <div class="record__side"><span>{publication.data.venue}</span>{publication.data.publisherUrl && <a href={publication.data.publisherUrl} target="_blank" rel="noreferrer">Publisher</a>}{publication.data.citation?.doi && <a href={`https://doi.org/${publication.data.citation.doi}`} target="_blank" rel="noreferrer">DOI</a>}</div>
+          <div class="record__side"><span class="meta">{publication.data.year}</span><span class:list={['status-label', publication.data.status === 'published' && 'status-label--published']}>{publication.data.status}</span></div>
+          <div class="record__content"><h3>{publication.data.title}</h3><p>{publication.data.authors.map((author) => author.name).join(', ')}</p><div class="record__details"><span>{publication.data.venue}</span><span class="record__actions">{publication.data.publisherUrl && <a href={publication.data.publisherUrl} target="_blank" rel="noreferrer">Publisher</a>}{publication.data.citation?.doi && <a href={`https://doi.org/${publication.data.citation.doi}`} target="_blank" rel="noreferrer">DOI</a>}{publication.data.bibtexPath && <a href={publication.data.bibtexPath} download>BibTeX</a>}</span></div></div>
         </article>
       ))}
     </div>
