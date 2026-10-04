@@ -102,6 +102,15 @@
 .page-intro--reading p { max-width: 48ch; }
 .page-intro--publications { max-width: 58rem; }
 .publication-summary { color: var(--color-accent-strong); font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.about-hero { max-width: 72rem; grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.55fr); gap: var(--space-8); align-items: end; }
+.about-hero__copy { display: grid; gap: var(--space-4); }
+.about-facts { display: grid; gap: 1rem; margin: 0; padding: 1.25rem 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+.about-facts div { display: grid; gap: 0.25rem; }
+.about-facts dt { color: var(--color-text-muted); font-size: 0.8rem; }
+.about-facts dd { margin: 0; }
+.about-education { padding-top: var(--space-5); }
+.about-record .record__side { gap: 0.65rem; }
+.record__note { margin-top: 0.75rem; font-size: 0.95rem; }
 
 .section { padding: var(--space-6) 0; border-top: 1px solid var(--color-border); }
 
@@ -214,6 +223,7 @@
   .site-header__nav { display: none; }
   .mobile-menu { display: block; }
   .section__heading,
+  .about-hero,
   .detail-layout,
   .contact-grid,
   .about-grid { grid-template-columns: 1fr; }
@@ -226,6 +236,7 @@
   .page-intro { padding: var(--space-5) 0 var(--space-5); }
   .page-intro--reading h1 { max-width: 18ch; }
   .page-intro--home h1 { max-width: 15ch; }
+  .about-hero { gap: var(--space-5); }
   .research-grid { grid-template-columns: 1fr; }
   .record { grid-template-columns: 1fr; gap: 0.75rem; }
   .record__side { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.85rem; }

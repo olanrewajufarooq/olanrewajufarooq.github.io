@@ -9,22 +9,31 @@ const meta = buildMetadata({ title: 'About', description: 'About Farooq Olanrewa
 ---
 
 <ContentLayout title={meta.title} description={meta.description} activePath="/about" canonical={meta.canonical} ogImage={meta.openGraph.image}>
-  <header class="page-intro page-intro--profile">
-    <p class="eyebrow">About</p>
-    <h1>A control engineer learning from real machines.</h1>
-    <p>I am a PhD student in Systems and Control Engineering at KFUPM, working at the intersection of geometric modelling, autonomous robotics, and safe physical interaction.</p>
-    <div class="button-row"><ButtonLink href={profile.cvPath} variant="primary">Download CV</ButtonLink><ButtonLink href="/contact" variant="secondary">Contact me</ButtonLink></div>
+  <header class="page-intro page-intro--profile about-hero">
+    <div class="about-hero__copy">
+      <p class="eyebrow">About</p>
+      <h1>A control engineer learning from real machines.</h1>
+      <p>I am a PhD student in Systems and Control Engineering at KFUPM, working at the intersection of geometric modelling, autonomous robotics, and safe physical interaction.</p>
+      <div class="button-row"><ButtonLink href={profile.cvPath} variant="primary">Download CV</ButtonLink><ButtonLink href="/contact" variant="secondary">Contact me</ButtonLink></div>
+    </div>
+    <dl class="about-facts">
+      <div><dt>Role</dt><dd>{profile.title}, {profile.department}</dd></div>
+      <div><dt>Based in</dt><dd>{profile.location}</dd></div>
+      <div><dt>Research focus</dt><dd>{profile.researchFocus}</dd></div>
+    </dl>
   </header>
-  <section class="section about-grid" aria-labelledby="education-title">
-    <div><img class="profile-image" src={profile.photo} alt={`${profile.name} portrait`} /></div>
-    <div>
+  <section class="section about-education" aria-labelledby="education-title">
+    <div class="section__heading">
       <p class="eyebrow">Formation</p>
-      <h2 id="education-title">Education across engineering and intelligent robotics.</h2>
-      <div class="record-list">
-        {education.degrees.map((degree) => (
-          <article class="record"><div class="record__side"><span class="meta">{degree.period}</span></div><div><h3>{degree.type === 'joint' ? degree.programName : degree.degree}</h3><p>{degree.type === 'joint' ? (degree.entries ?? []).map((entry) => `${entry.degree}, ${entry.institution}`).join(' · ') : `${degree.field}, ${degree.institution}`}</p></div><div class="record__side"><span>{degree.location ?? ''}</span></div></article>
-        ))}
-      </div>
+      <div><h2 id="education-title">Education across engineering and intelligent robotics.</h2><p>Training across control engineering, marine robotics, and intelligent physical systems.</p></div>
+    </div>
+    <div class="record-list">
+      {education.degrees.map((degree) => (
+        <article class="record about-record">
+          <div class="record__side"><span class="meta">{degree.type === 'joint' ? '2022 – 2024' : degree.period}</span><span>{degree.type === 'joint' ? 'Joint degree' : degree.location}</span></div>
+          <div class="record__content"><h3>{degree.type === 'joint' ? degree.programName : degree.degree}</h3><p>{degree.type === 'joint' ? (degree.entries ?? []).map((entry) => `${entry.degree}, ${entry.institution}`).join(' · ') : `${degree.field}, ${degree.institution}`}</p>{degree.thesis && <p class="record__note">Thesis: {degree.thesis.title}</p>}</div>
+        </article>
+      ))}
     </div>
   </section>
 </ContentLayout>
