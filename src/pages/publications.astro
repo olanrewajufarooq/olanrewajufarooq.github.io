@@ -27,7 +27,7 @@ const meta = buildMetadata({
     <div class="record-list">
       {publications.map((publication) => (
         <article class="record">
-          <div class="record__side"><span class="meta">{publication.data.year}</span><span class:list={['status-label', publication.data.status === 'published' && 'status-label--published']}>{publication.data.status}</span></div>
+          <div class="record__side"><span class="meta">{publication.data.year}</span><span class:list={['status-label', publication.data.status === 'published' ? 'status-label--published' : 'status-label--warm']}>{publication.data.status}</span></div>
           <div class="record__content"><h3>{publication.data.title}</h3><p>{publication.data.authors.map((author) => author.name).join(', ')}</p><div class="record__details"><span>{publication.data.venue}</span><span class="record__actions">{publication.data.publisherUrl && <a href={publication.data.publisherUrl} target="_blank" rel="noreferrer">Publisher</a>}{publication.data.citation?.doi && <a href={`https://doi.org/${publication.data.citation.doi}`} target="_blank" rel="noreferrer">DOI</a>}{publication.data.bibtexPath && <a href={publication.data.bibtexPath} download>BibTeX</a>}</span></div></div>
         </article>
       ))}

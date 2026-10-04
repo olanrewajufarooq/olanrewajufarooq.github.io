@@ -182,6 +182,7 @@
 }
 
 .status-label--published { color: var(--color-success); }
+.status-label--warm { color: var(--color-warm); }
 
 .detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 0.28fr); gap: var(--space-6); align-items: start; }
 .detail-content { max-width: var(--reading-width); }
