@@ -1,29 +1,39 @@
 ---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import ContentLayout from '../../layouts/ContentLayout.astro';
-import ResearchIntro from '../../features/research/components/ResearchIntro.astro';
-import ResearchTimeline from '../../features/research/components/ResearchTimeline';
-import themesData from '../../data/research/themes.json';
-import type { ResearchThemeSummary } from '../../shared/types/research';
 import { buildMetadata, getCanonicalUrl } from '../../shared/content/metadata';
 
-const themes = (themesData.themes as ResearchThemeSummary[]).sort(
-  (a, b) => a.order - b.order
-);
-
+const themes = (await getCollection('research')).sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
+const themeSlug = (theme: CollectionEntry<'research'>) => theme.data.slug ?? theme.id.replace(/\.md$/, '');
 const meta = buildMetadata({
-  title: 'Research | Farooq Olanrewaju',
-  description: 'Research themes, portfolio, and current directions of Farooq Olanrewaju.',
+  title: 'Research',
+  description: 'Research themes and projects by Farooq Olanrewaju across robotics, control, and autonomous systems.',
   canonical: getCanonicalUrl('/research'),
 });
 ---
 
-<ContentLayout
-  title={meta.title}
-  description={meta.description}
-  activePath="/research"
-  canonical={meta.canonical}
-  ogImage={meta.openGraph?.image}
->
-  <ResearchIntro />
-  <ResearchTimeline client:load themes={themes} />
+<ContentLayout title={meta.title} description={meta.description} activePath="/research" canonical={meta.canonical} ogImage={meta.openGraph.image}>
+  <header class="page-intro page-intro--index">
+    <p class="eyebrow">Research atlas</p>
+    <h1>Research in motion.</h1>
+    <p>A map of the questions, machines, and control problems that shape my work.</p>
+  </header>
+  <section class="section" aria-labelledby="research-list-title">
+    <div class="section__heading">
+      <p class="eyebrow">Themes</p>
+      <div><h2 id="research-list-title">From geometric structure to physical interaction.</h2><p>Each theme is a working record: a question, a set of methods, and evidence that changes over time.</p></div>
+    </div>
+    <div class="research-grid">
+      {themes.map((theme) => (
+        <article class="research-card">
+          {theme.data.coverImage && <img class="atlas-image" src={theme.data.coverImage} alt="" loading="eager" />}
+          <div class="research-card__meta meta"><span>{theme.data.period}</span><span>{theme.data.status}</span></div>
+          <h3><a href={`/research/${themeSlug(theme)}`}>{theme.data.title}</a></h3>
+          <p>{theme.data.summary}</p>
+          <a class="research-card__link" href={`/research/${themeSlug(theme)}`}>Open theme</a>
+        </article>
+      ))}
+    </div>
+  </section>
 </ContentLayout>

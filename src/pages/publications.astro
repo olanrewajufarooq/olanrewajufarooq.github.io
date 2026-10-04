@@ -1,37 +1,35 @@
 ---
+import { getCollection } from 'astro:content';
 import ContentLayout from '../layouts/ContentLayout.astro';
-import PublicationsIntro from '../features/publications/components/PublicationsIntro.astro';
-import PublicationsList from '../features/publications/components/PublicationsList.tsx';
-import publicationsData from '../data/publications/publications.json';
-import type { Publication } from '../shared/types';
 import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
 
-const publications = publicationsData.publications as Publication[];
-
+const publications = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title));
 const meta = buildMetadata({
-  title: 'Publications | Farooq Olanrewaju',
-  description: 'Accepted and published works by Farooq Olanrewaju in robotics, control, and autonomous systems.',
+  title: 'Publications',
+  description: 'Publication record of Farooq Olanrewaju in robotics, control, and autonomous systems.',
   canonical: getCanonicalUrl('/publications'),
 });
 ---
 
-<ContentLayout
-  title={meta.title}
-  description={meta.description}
-  activePath="/publications"
-  canonical={meta.canonical}
-  ogImage={meta.openGraph?.image}
->
-  <main class="publications-content">
-    <PublicationsIntro />
-    <PublicationsList client:load publications={publications} />
-  </main>
+<ContentLayout title={meta.title} description={meta.description} activePath="/publications" canonical={meta.canonical} ogImage={meta.openGraph.image}>
+  <header class="page-intro page-intro--index">
+    <p class="eyebrow">Publication record</p>
+    <h1>Work you can read and cite.</h1>
+    <p>Published, accepted, and active work across geometric control, aerial robotics, marine systems, and system identification.</p>
+  </header>
+  <section class="section" aria-labelledby="publication-list-title">
+    <div class="section__heading">
+      <p class="eyebrow">Selected record</p>
+      <div><h2 id="publication-list-title">Research in formal form.</h2><p>For a citation-ready version of a paper, use its publisher or DOI link when available.</p></div>
+    </div>
+    <div class="record-list">
+      {publications.map((publication) => (
+        <article class="record">
+          <div class="record__side"><span class="meta">{publication.data.year}</span><span class:list={['status-label', publication.data.status === 'published' && 'status-label--warm']}>{publication.data.status}</span></div>
+          <div><h3>{publication.data.title}</h3><p>{publication.data.authors.map((author) => author.name).join(', ')}</p></div>
+          <div class="record__side"><span>{publication.data.venue}</span>{publication.data.publisherUrl && <a href={publication.data.publisherUrl} target="_blank" rel="noreferrer">Publisher</a>}{publication.data.citation?.doi && <a href={`https://doi.org/${publication.data.citation.doi}`} target="_blank" rel="noreferrer">DOI</a>}</div>
+        </article>
+      ))}
+    </div>
+  </section>
 </ContentLayout>
-
-<style>
-  .publications-content {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-</style>
-

@@ -11,8 +11,6 @@ projectIds: ["ship-identification"]
 publicationIds: ["apo-arx-ship-2025"]
 ---
 
-# Automated Ship Identification and Classification
-
 ## Overview
 
 Maritime vessel identification and classification from satellite imagery is a critical capability for maritime surveillance, traffic monitoring, and environmental protection.

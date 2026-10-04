@@ -11,8 +11,6 @@ projectIds: ["uas-development"]
 publicationIds: []
 ---
 
-# Autonomous Aerial Systems and Control
-
 ## Overview
 
 Autonomous aerial systems represent one of the most dynamic and challenging areas of modern robotics research. This work encompasses the development of advanced control algorithms, path planning strategies, and cooperative flight frameworks for unmanned aerial vehicles (UAVs) operating in complex, dynamic environments. The research spans from theoretical foundations in control theory to practical implementation on experimental platforms.
@@ -46,15 +44,3 @@ Our approach integrates classical and modern control theory with computational a
 - **Search and Rescue**: Autonomous navigation in GPS-denied environments for disaster response
 - **Cooperative Delivery**: Multi-UAV systems for coordinated package delivery and logistics
 - **Scientific Research**: Autonomous platforms for atmospheric and meteorological data collection
-
-## Related Publications
-
-This section will be auto-populated by ResearchPublications component
-
-## Related Projects
-
-This section will be auto-populated by ResearchProjects component
-
-## Collaborators
-
-This section will be auto-populated by ResearchCollaborators component

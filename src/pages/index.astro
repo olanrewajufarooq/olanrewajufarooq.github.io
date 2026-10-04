@@ -1,43 +1,92 @@
 ---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import ContentLayout from '../layouts/ContentLayout.astro';
-import HomeHero from '../features/home/components/HomeHero.astro';
-import ResearchFocusSection from '../features/home/components/ResearchFocusSection.astro';
-import CurrentAffiliationSection from '../features/home/components/CurrentAffiliationSection.astro';
-import NowSection from '../features/home/components/NowSection.astro';
-import FeaturedThemesSection from '../features/home/components/FeaturedThemesSection.astro';
-import LatestWorkSection from '../features/home/components/LatestWorkSection.astro';
-import CollaborationSection from '../features/home/components/CollaborationSection.astro';
-import {
-  getFeaturedThemes,
-  getLatestAcceptedOrPublishedPublication,
-  getCurrentProjects
-} from '../shared/content/home';
+import ButtonLink from '../components/ui/ButtonLink.astro';
+import profile from '../data/site/profile.json';
+import projectsData from '../data/research/projects.json';
 import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
 
-const featuredThemes = getFeaturedThemes();
-const latestPublication = getLatestAcceptedOrPublishedPublication();
-const currentProjects = getCurrentProjects();
-
+const themes = (await getCollection('research'))
+  .filter((entry) => entry.data.featured)
+  .sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999))
+  .slice(0, 4);
+const publications = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year);
+const latestPublication = publications.find((entry) => ['published', 'accepted'].includes(entry.data.status));
+const currentProjects = projectsData.projects.filter((project) => project.status === 'ongoing').slice(0, 2);
+const themeSlug = (theme: CollectionEntry<'research'>) => theme.data.slug ?? theme.id.replace(/\.md$/, '');
 const meta = buildMetadata({
-  title: 'Farooq Olanrewaju | PhD Student in Robotics and Control',
-  description: 'Academic portfolio of Farooq Olanrewaju, PhD Student in robotics, control engineering, and autonomous systems research.',
+  title: 'Farooq Olanrewaju | Robotics and Control Research',
+  description: 'Research profile of Farooq Olanrewaju, a PhD student working on geometric control, autonomous robotics, and safe physical interaction.',
   canonical: getCanonicalUrl('/'),
-  image: '/assets/images/me/headshot.png',
+  image: profile.photo,
 });
 ---
 
-<ContentLayout
-  title={meta.title}
-  description={meta.description}
-  activePath="/"
-  canonical={meta.canonical}
-  ogImage={meta.openGraph?.image}
->
-  <HomeHero />
-  <ResearchFocusSection />
-  <CurrentAffiliationSection />
-  <NowSection />
-  <FeaturedThemesSection themes={featuredThemes} />
-  <LatestWorkSection publication={latestPublication} projects={currentProjects} />
-  <CollaborationSection />
+<ContentLayout title={meta.title} description={meta.description} activePath="/" canonical={meta.canonical} ogImage={meta.openGraph.image}>
+  <section class="page-intro page-intro--home home-hero" aria-labelledby="home-title">
+    <p class="eyebrow">Robotics · control · autonomous systems</p>
+    <h1 id="home-title">I study how robots move, adapt, and interact safely.</h1>
+    <p>{profile.researchFocus} I am a {profile.title.toLowerCase()} in {profile.department} at {profile.institution}.</p>
+    <div class="button-row">
+      <ButtonLink href="/research" variant="primary">Explore research</ButtonLink>
+      <ButtonLink href="/contact" variant="secondary">Start a conversation</ButtonLink>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="themes-title">
+    <div class="section__heading">
+      <p class="eyebrow">Research atlas</p>
+      <div>
+        <h2 id="themes-title">Questions that move across machines and environments.</h2>
+        <p>From aerial vehicles to underwater robots, my work connects geometric modelling, control, and physical-world autonomy.</p>
+      </div>
+    </div>
+    <div class="research-grid">
+      {themes.map((theme, index) => (
+        <article class:list={['research-card', index === 0 && 'research-card--lead']}>
+          {index === 0 && theme.data.coverImage && <img class="atlas-image" src={theme.data.coverImage} alt="" loading="lazy" />}
+          <div class="research-card__meta meta"><span>{theme.data.period}</span><span>{theme.data.status}</span></div>
+          <h3><a href={`/research/${themeSlug(theme)}`}>{theme.data.title}</a></h3>
+          <p>{theme.data.summary}</p>
+          <a class="research-card__link" href={`/research/${themeSlug(theme)}`}>Read the research</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="current-title">
+    <div class="section__heading">
+      <p class="eyebrow">At the moment</p>
+      <div>
+        <h2 id="current-title">Current work, kept in motion.</h2>
+        <p>Today I am developing research directions in safe interaction, geometric control, and energy-aware robotic systems.</p>
+      </div>
+    </div>
+    <div class="research-grid">
+      {currentProjects.map((project) => (
+        <article class="research-card">
+          <div class="research-card__meta meta"><span>{project.period}</span><span>{project.technologies.join(' · ')}</span></div>
+          <h3>{project.title}</h3>
+          <p>{project.summary}</p>
+          {project.url && <a class="research-card__link" href={project.url} target="_blank" rel="noreferrer">View project</a>}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  {latestPublication && <section class="section" aria-labelledby="publication-title">
+    <div class="section__heading">
+      <p class="eyebrow">Latest work</p>
+      <div>
+        <h2 id="publication-title">One recent contribution.</h2>
+        <p>See the full publication record for works in progress, accepted papers, and published research.</p>
+      </div>
+    </div>
+    <article class="record">
+      <div class="record__side"><span class="meta">{latestPublication.data.year}</span><span class="status-label">{latestPublication.data.status}</span></div>
+      <div><h3>{latestPublication.data.title}</h3><p>{latestPublication.data.authors.map((author) => author.name).join(', ')}</p></div>
+      <div class="record__side"><span>{latestPublication.data.venue}</span><a href="/publications">All publications</a></div>
+    </article>
+  </section>}
 </ContentLayout>

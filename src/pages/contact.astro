@@ -1,0 +1,22 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import profile from '../data/site/profile.json';
+import social from '../data/site/social.json';
+import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
+
+const meta = buildMetadata({ title: 'Contact', description: 'Contact Farooq Olanrewaju about robotics, control, and autonomous systems research.', canonical: getCanonicalUrl('/contact') });
+---
+
+<ContentLayout title={meta.title} description={meta.description} activePath="/contact" canonical={meta.canonical} ogImage={meta.openGraph.image}>
+  <header class="page-intro page-intro--action">
+    <p class="eyebrow">Contact</p>
+    <h1>Let’s talk about robots in the real world.</h1>
+    <p>I am open to conversations about research collaboration, doctoral work, robotics projects, and control systems.</p>
+  </header>
+  <section class="section contact-grid" aria-labelledby="contact-title">
+    <div><p class="eyebrow">Start here</p><h2 id="contact-title">The shortest route is email.</h2><p><a href={`mailto:${profile.email}`}>{profile.email}</a></p><p>{profile.location}</p></div>
+    <ul class="link-list" aria-label="External profiles">
+      {social.filter((item) => item.label !== 'Email').map((item) => <li><a href={item.href} target="_blank" rel="noreferrer"><span>{item.label}</span><span aria-hidden="true">↗</span></a></li>)}
+    </ul>
+  </section>
+</ContentLayout>

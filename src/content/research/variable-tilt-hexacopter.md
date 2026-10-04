@@ -11,8 +11,6 @@ projectIds: ["adaptive-hexacopter", "se3-hexacopter"]
 publicationIds: ["geometric-adaptive-se3-aerial", "variable-tilt-hexacopter"]
 ---
 
-# Variable-Tilt Hexacopter Design and Control
-
 ## Overview
 
 Traditional multirotor designs are fundamentally limited in their maneuverability and control authority due to fixed motor orientation. This research explores a novel hexacopter architecture featuring variable-tilt motors.

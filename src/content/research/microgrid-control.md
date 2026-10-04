@@ -6,12 +6,10 @@ period: "2025 - Present"
 status: "ongoing"
 featured: false
 keywords: ["Microgrid Control", "Reinforcement Learning", "Energy Systems"]
-coverImage: "/assets/images/research/microgrid-control/cover.jpg"
+coverImage: null
 projectIds: ["microgrid-control"]
 publicationIds: []
 ---
-
-# Microgrid Control and Energy Management
 
 ## Overview
 

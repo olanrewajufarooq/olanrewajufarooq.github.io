@@ -6,12 +6,10 @@ period: "2025 - Present"
 status: "ongoing"
 featured: false
 keywords: ["Kalman Filtering", "Sensor Fusion", "Probabilistic Guarantees"]
-coverImage: "/assets/images/research/probabilistic-sensor-fusion/cover.jpg"
+coverImage: null
 projectIds: ["prob-kalman-filter"]
 publicationIds: []
 ---
-
-# Probabilistic Sensor Fusion for Robotic Perception
 
 ## Overview
 
@@ -47,15 +45,3 @@ Our approach integrates probabilistic theory with practical robotic implementati
 - **Motion Estimation**: Ego-motion and velocity estimation from multiple inertial and visual measurements
 - **Obstacle Detection**: Combining radar, LiDAR, and camera data for robust obstacle detection
 - **Human-Robot Interaction**: Robust estimation of human state and intent from multiple sensing modalities
-
-## Related Publications
-
-This section will be auto-populated by ResearchPublications component
-
-## Related Projects
-
-This section will be auto-populated by ResearchProjects component
-
-## Collaborators
-
-This section will be auto-populated by ResearchCollaborators component

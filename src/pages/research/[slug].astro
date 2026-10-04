@@ -1,81 +1,46 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import ContentLayout from '../../layouts/ContentLayout.astro';
-import Breadcrumbs from '../../components/layout/Breadcrumbs.astro';
-import ResearchHeader from '../../features/research/components/ResearchHeader.astro';
-import ResearchOverview from '../../features/research/components/ResearchOverview.astro';
-import ResearchCollaborators from '../../features/research/components/ResearchCollaborators.astro';
-import ResearchProjects from '../../features/research/components/ResearchProjects.astro';
-import ResearchRepositories from '../../features/research/components/ResearchRepositories.astro';
-import ResearchPublications from '../../features/research/components/ResearchPublications.astro';
-import ResearchGallery from '../../features/research/components/ResearchGallery.astro';
-import ResearchVideos from '../../features/research/components/ResearchVideos.astro';
-
-import publicationsData from '../../data/publications/publications.json';
 import projectsData from '../../data/research/projects.json';
-import type { Project, Publication } from '../../shared/types';
 import { buildMetadata, getCanonicalUrl } from '../../shared/content/metadata';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('research');
-  return entries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry }
-  }));
+  const themes = await getCollection('research');
+  return themes.map((theme) => ({ params: { slug: theme.data.slug ?? theme.id.replace(/\.md$/, '') }, props: { theme } }));
 }
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
-
-const allProjects = projectsData.projects as Project[];
-const allPublications = publicationsData.publications as Publication[];
-
-const relatedProjects = allProjects.filter((project) =>
-  entry.data.projectIds.includes(project.id)
-);
-
-const relatedPublications = allPublications.filter((publication) =>
-  entry.data.publicationIds.includes(publication.id)
-);
-
+const { theme } = Astro.props;
+const { Content } = await render(theme);
+const projects = projectsData.projects.filter((project) => theme.data.projectIds.includes(project.id));
+const publications = (await getCollection('publications')).filter((publication) => theme.data.publicationIds.includes(publication.data.id));
 const meta = buildMetadata({
-  title: `${entry.data.title} | Farooq Olanrewaju`,
-  description: entry.data.seoDescription ?? entry.data.summary,
-  canonical: getCanonicalUrl(`/research/${entry.data.slug}`),
-  image: entry.data.coverImage,
+  title: theme.data.title,
+  description: theme.data.summary,
+  canonical: getCanonicalUrl(`/research/${theme.data.slug ?? theme.id.replace(/\.md$/, '')}`),
+  image: theme.data.coverImage ?? '/assets/images/me/headshot.png',
+  ogType: 'article',
 });
 ---
 
-<ContentLayout
-  title={meta.title}
-  description={meta.description}
-  activePath="/research"
-  canonical={meta.canonical}
-  ogImage={meta.openGraph?.image}
->
-  <Breadcrumbs
-    items={[
-      { label: 'Home', href: '/' },
-      { label: 'Research', href: '/research' },
-      { label: entry.data.title }
-    ]}
-  />
-
-  <ResearchHeader
-    title={entry.data.title}
-    period={entry.data.period}
-    status={entry.data.status}
-    keywords={entry.data.keywords}
-  />
-
-  <ResearchOverview summary={entry.data.summary}>
-    <Content />
-  </ResearchOverview>
-
-  <ResearchCollaborators collaborators={entry.data.collaborators} />
-  <ResearchProjects projects={relatedProjects} />
-  <ResearchGallery images={entry.data.gallery} title={entry.data.title} />
-  <ResearchVideos videos={entry.data.videos} />
-  <ResearchRepositories repositories={entry.data.repositories} />
-  <ResearchPublications publications={relatedPublications} />
+<ContentLayout title={meta.title} description={meta.description} activePath="/research" canonical={meta.canonical} ogImage={meta.openGraph.image}>
+  <header class="page-intro page-intro--reading">
+    <p class="eyebrow">Research theme</p>
+    <h1>{theme.data.title}</h1>
+    <p>{theme.data.summary}</p>
+  </header>
+  <div class="detail-layout reading-page">
+    <article class="detail-content"><Content /></article>
+    <aside class="detail-aside" aria-label="Research theme details">
+      <dl><dt>Period</dt><dd>{theme.data.period}</dd></dl>
+      <dl><dt>Status</dt><dd>{theme.data.status}</dd></dl>
+      <dl><dt>Keywords</dt><dd>{theme.data.keywords.join(', ')}</dd></dl>
+      {projects.length > 0 && <dl><dt>Projects</dt><dd>{projects.map((project) => <div>{project.url ? <a href={project.url} target="_blank" rel="noreferrer">{project.title}</a> : project.title}</div>)}</dd></dl>}
+    </aside>
+  </div>
+  {publications.length > 0 && <section class="section" aria-labelledby="related-publications-title">
+    <div class="section__heading"><p class="eyebrow">Related work</p><div><h2 id="related-publications-title">Publications from this theme.</h2></div></div>
+    <div class="record-list">
+      {publications.map((publication) => <article class="record"><div class="record__side"><span class="meta">{publication.data.year}</span><span class="status-label">{publication.data.status}</span></div><div><h3>{publication.data.title}</h3><p>{publication.data.authors.map((author) => author.name).join(', ')}</p></div><div class="record__side"><span>{publication.data.venue}</span></div></article>)}
+    </div>
+  </section>}
 </ContentLayout>

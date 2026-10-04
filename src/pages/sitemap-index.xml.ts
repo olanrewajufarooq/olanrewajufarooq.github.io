@@ -1,17 +1,26 @@
 import { SITE } from '../shared/constants/site';
+import { getCollection } from 'astro:content';
 
 export const prerender = true;
 
-const pages = [
+const staticPages = [
   { path: '/', priority: 1.0, lastMod: '2024-01-01' },
   { path: '/about', priority: 0.9, lastMod: '2024-01-01' },
   { path: '/publications', priority: 0.9, lastMod: '2024-01-01' },
   { path: '/research', priority: 0.9, lastMod: '2024-01-01' },
-  { path: '/teaching', priority: 0.8, lastMod: '2024-01-01' },
-  { path: '/projects', priority: 0.7, lastMod: '2024-01-01' },
+  { path: '/contact', priority: 0.8, lastMod: '2024-01-01' },
 ];
 
-export function GET() {
+export async function GET() {
+  const themes = await getCollection('research');
+  const pages = [
+    ...staticPages,
+    ...themes.map((theme) => ({
+      path: `/research/${theme.data.slug ?? theme.id.replace(/\.md$/, '')}`,
+      priority: 0.8,
+      lastMod: '2024-01-01',
+    })),
+  ];
   const sitemapEntries = pages
     .map((page) => {
       const url = new URL(page.path, SITE.url).href;

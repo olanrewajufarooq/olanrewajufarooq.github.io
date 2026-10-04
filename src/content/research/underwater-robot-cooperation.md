@@ -11,8 +11,6 @@ projectIds: ["grasp-planning", "bluerov-treasure", "bluerov-trajectory", "underw
 publicationIds: []
 ---
 
-# Cooperative Control of Underwater Robotic Systems
-
 ## Overview
 
 Underwater robotics presents unique challenges due to the complex hydrodynamic environment, severe communication constraints, and the need for coordinated multi-robot operations in unexplored marine domains.

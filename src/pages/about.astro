@@ -1,29 +1,30 @@
 ---
 import ContentLayout from '../layouts/ContentLayout.astro';
-import AboutIntro from '../features/about/components/AboutIntro.astro';
-import EducationSection from '../features/about/components/EducationSection.astro';
-import CertificatesSection from '../features/about/components/CertificatesSection';
-import AwardsSection from '../features/about/components/AwardsSection.astro';
-import CvDownloadPanel from '../features/about/components/CvDownloadPanel.astro';
+import ButtonLink from '../components/ui/ButtonLink.astro';
+import profile from '../data/site/profile.json';
+import education from '../data/about/education.json';
 import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
 
-const meta = buildMetadata({
-  title: 'About | Farooq Olanrewaju',
-  description: 'About Farooq Olanrewaju, including education, certifications, awards, and CV.',
-  canonical: getCanonicalUrl('/about'),
-});
+const meta = buildMetadata({ title: 'About', description: 'About Farooq Olanrewaju, a PhD student in systems and control engineering.', canonical: getCanonicalUrl('/about'), image: profile.photo });
 ---
 
-<ContentLayout
-  title={meta.title}
-  description={meta.description}
-  activePath="/about"
-  canonical={meta.canonical}
-  ogImage={meta.openGraph?.image}
->
-  <AboutIntro />
-  <EducationSection />
-  <CertificatesSection client:load />
-  <AwardsSection />
-  <CvDownloadPanel />
+<ContentLayout title={meta.title} description={meta.description} activePath="/about" canonical={meta.canonical} ogImage={meta.openGraph.image}>
+  <header class="page-intro page-intro--profile">
+    <p class="eyebrow">About</p>
+    <h1>A control engineer learning from real machines.</h1>
+    <p>I am a PhD student in Systems and Control Engineering at KFUPM, working at the intersection of geometric modelling, autonomous robotics, and safe physical interaction.</p>
+    <div class="button-row"><ButtonLink href={profile.cvPath} variant="primary">Download CV</ButtonLink><ButtonLink href="/contact" variant="secondary">Contact me</ButtonLink></div>
+  </header>
+  <section class="section about-grid" aria-labelledby="education-title">
+    <div><img class="profile-image" src={profile.photo} alt={`${profile.name} portrait`} /></div>
+    <div>
+      <p class="eyebrow">Formation</p>
+      <h2 id="education-title">Education across engineering and intelligent robotics.</h2>
+      <div class="record-list">
+        {education.degrees.map((degree) => (
+          <article class="record"><div class="record__side"><span class="meta">{degree.period}</span></div><div><h3>{degree.type === 'joint' ? degree.programName : degree.degree}</h3><p>{degree.type === 'joint' ? (degree.entries ?? []).map((entry) => `${entry.degree}, ${entry.institution}`).join(' · ') : `${degree.field}, ${degree.institution}`}</p></div><div class="record__side"><span>{degree.location ?? ''}</span></div></article>
+        ))}
+      </div>
+    </div>
+  </section>
 </ContentLayout>

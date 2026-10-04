@@ -11,8 +11,6 @@ projectIds: []
 publicationIds: []
 ---
 
-# Geometric Port-Hamiltonian Modelling and Control of Vehicle-Manipulator Systems
-
 ## Overview
 
 This research addresses the fundamental challenge of coordinating vehicle motion with manipulator control in integrated robotic platforms. Vehicle-manipulator systems represent a critical frontier in robotics, enabling applications from aerial manipulation to mobile manipulation in challenging environments.
