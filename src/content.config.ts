@@ -29,7 +29,7 @@ const research = defineCollection({
     collaborators: z
       .array(z.object({ name: z.string(), affiliation: z.string().optional(), url: z.string().nullable().optional() }))
       .default([]),
-    advisor: z.string().optional(),
+    advisors: z.array(z.string()).default([]),
     projectIds: z.array(z.string()).default([]),
     publicationIds: z.array(z.string()).default([]),
     order: z.number().default(999),

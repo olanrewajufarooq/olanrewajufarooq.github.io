@@ -4,15 +4,12 @@ import ContentLayout from '../layouts/ContentLayout.astro';
 import ButtonLink from '../components/ui/ButtonLink.astro';
 import profile from '../data/site/profile.json';
 import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
-import { sortResearchLatestFirst } from '../shared/content/research';
 
-const themes = (await getCollection('research'))
-  .filter((entry) => entry.data.featured)
-  .sort(sortResearchLatestFirst)
-  .slice(0, 3);
+const research = await getCollection('research');
+const phdTheme = research.find((entry) => entry.data.slug === 'vehicle-manipulator-systems');
 const publications = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year);
 const latestPublication = publications.find((entry) => ['published', 'accepted'].includes(entry.data.status));
-const themeSlug = (theme: (typeof themes)[number]) => theme.data.slug ?? theme.id.replace(/\.md$/, '');
+const themeSlug = (theme: NonNullable<typeof phdTheme>) => theme.data.slug ?? theme.id.replace(/\.md$/, '');
 const meta = buildMetadata({
   title: 'Farooq Olanrewaju | Robotics and Control Research',
   description: 'Research profile of Farooq Olanrewaju, a PhD student working on geometric control, autonomous robotics, and safe physical interaction.',
@@ -32,34 +29,36 @@ const meta = buildMetadata({
     </div>
   </section>
 
-  <section class="section" aria-labelledby="themes-title">
+  {phdTheme && <section class="section" aria-labelledby="themes-title">
     <div class="section__heading">
-      <p class="eyebrow">Research directions</p>
-      <div>
-        <h2 id="themes-title">Three ways I work with physical systems.</h2>
-        <p>Geometric modelling, control, and autonomy meet in the machines and environments I study.</p>
+      <p class="eyebrow">Current Research</p>
+      <h2 id="themes-title">My PhD work.</h2>
+    </div>
+    <div class="phd-research">
+      <a class="phd-research__feature" href={`/research/${themeSlug(phdTheme)}`}>
+        <div class="phd-research__feature-copy">
+          <div class="research-card__meta meta"><span>{phdTheme.data.period}</span><span>{phdTheme.data.status}</span></div>
+          <h3>{phdTheme.data.title}</h3>
+          <p>{phdTheme.data.summary}</p>
+          <span class="research-card__link">Open theme <span aria-hidden="true">↗</span></span>
+        </div>
+        <img src="/assets/images/research/vehicle-manipulator-systems/cover.jpg" alt="Placeholder image for Vehicle-Manipulator Systems" loading="lazy" />
+      </a>
+      <div class="phd-research__pillars" aria-label="PhD research pillars">
+        {[
+          ['Differential Geometry', 'Geometric descriptions of configuration, motion, and interaction.'],
+          ['Port-Hamiltonian Control', 'Structure-preserving models and energy-aware control design.'],
+          ['Safe Interaction', 'Control methods for reliable physical human–robot interaction.'],
+        ].map(([title, description]) => (
+          <article class="phd-research__pillar">
+            <img src="/assets/images/research/research-placeholder.svg" alt={`Placeholder image for ${title}`} loading="lazy" />
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </article>
+        ))}
       </div>
     </div>
-    <div class="research-grid">
-      {themes.map((theme) => (
-        <article class="research-card">
-          <div class="research-card__meta meta"><span>{theme.data.period}</span><span>{theme.data.status}</span></div>
-          <h3><a href={`/research/${themeSlug(theme)}`}>{theme.data.title}</a></h3>
-          <p>{theme.data.summary}</p>
-          <a class="research-card__link" href={`/research/${themeSlug(theme)}`}>Open theme</a>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="section section--quiet" aria-labelledby="current-title">
-    <div class="section__heading">
-      <p class="eyebrow">Current focus</p>
-      <h2 id="current-title">Building control methods that remain useful outside the lab.</h2>
-    </div>
-    <p class="section__lead">My current work connects geometric control, adaptive estimation, vehicle-manipulator systems, and safe physical human–robot interaction.</p>
-    <a class="text-link" href="/about">More about my work <span aria-hidden="true">↗</span></a>
-  </section>
+  </section>}
 
   {latestPublication && <section class="section" aria-labelledby="publication-title">
     <div class="section__heading">
@@ -70,9 +69,8 @@ const meta = buildMetadata({
       </div>
     </div>
     <article class="record">
-      <div class="record__side"><span class="meta">{latestPublication.data.year}</span><span class="status-label">{latestPublication.data.status}</span></div>
-      <div><h3>{latestPublication.data.title}</h3><p>{latestPublication.data.authors.map((author) => author.name).join(', ')}</p></div>
-      <div class="record__side"><span>{latestPublication.data.venue}</span><a href="/publications">All publications</a></div>
+      <div class="record__side"><span class="meta">{latestPublication.data.year}</span><span class:list={['status-label', latestPublication.data.status === 'published' ? 'status-label--published' : 'status-label--warm']}>{latestPublication.data.status === 'published' ? 'Published' : latestPublication.data.status}</span></div>
+      <div class="record__content"><h3>{latestPublication.data.title}</h3><p>{latestPublication.data.authors.map((author) => author.name).join(', ')}</p><div class="record__details"><span>{latestPublication.data.venue}</span><span class="record__actions"><a href="/publications">All publications</a></span></div></div>
     </article>
   </section>}
 </ContentLayout>

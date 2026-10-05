@@ -14,7 +14,7 @@ venue: 2025 IEEE 22nd International Multi-Conference on Systems, Signals & Devic
 year: 2025
 status: published
 publisherUrl: https://ieeexplore.ieee.org/abstract/document/10989967/
-themeSlugs: [ship-identification]
+themeSlugs: [underwater-robot-cooperation]
 projectIds: [ship-identification]
 citation:
   pages: 660-664

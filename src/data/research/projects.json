@@ -6,7 +6,7 @@
       "summary": "Research project at KFUPM on sensor fusion and probabilistic guarantees under noise mis-specification.",
       "period": "Sep 2025 \u2013 Dec 2025",
       "status": "ongoing",
-      "themeSlug": "probabilistic-sensor-fusion",
+      "themeSlug": "intelligent-systems-control",
       "url": "https://github.com/olanrewajufarooq/prob-sensor-fusion",
       "repositoryVisibility": "public",
       "technologies": [
@@ -21,7 +21,7 @@
       "summary": "Research on reinforcement learning-based control strategies for microgrid systems.",
       "period": "Sep 2025 \u2013 Dec 2025",
       "status": "ongoing",
-      "themeSlug": "microgrid-control",
+      "themeSlug": "intelligent-systems-control",
       "url": "https://github.com/olanrewajufarooq/microgrid-control-sim",
       "repositoryVisibility": "public",
       "technologies": [
@@ -32,8 +32,8 @@
     },
     {
       "id": "adaptive-hexacopter",
-      "title": "Adaptive Control of Variable-Tilt Hexacopter",
-      "summary": "Geometric adaptive control on SE(3) for fully-actuated aerial vehicles with online parameter estimation.",
+      "title": "Geometric Adaptive Control of a Voliro-like Robot Model",
+      "summary": "Geometric adaptive control on SE(3) for a modelled variable-tilt aerial robot with online parameter estimation.",
       "period": "Jan 2025 \u2013 May 2025",
       "status": "completed",
       "themeSlug": "variable-tilt-hexacopter",
@@ -47,8 +47,8 @@
     },
     {
       "id": "se3-hexacopter",
-      "title": "SE(3) Geometric Estimation and Control",
-      "summary": "Geometric approach to modelling, control allocation, and visual-inertial odometry for hexacopters.",
+      "title": "SE(3) Modelling, Estimation, and Control Allocation",
+      "summary": "Geometric modelling, estimation, and control allocation for a Voliro-like variable-tilt aerial robot model.",
       "period": "Jan 2025 \u2013 May 2025",
       "status": "completed",
       "themeSlug": "variable-tilt-hexacopter",
@@ -66,9 +66,11 @@
       "summary": "APO-optimized ARX-based system identification of ship maneuvering systems, later published in 2025.",
       "period": "Sep 2024 \u2013 Dec 2024",
       "status": "completed",
-      "themeSlug": "ship-identification",
+      "themeSlug": "underwater-robot-cooperation",
       "url": "https://ieeexplore.ieee.org/abstract/document/10989967/",
       "repositoryVisibility": null,
+      "image": "/assets/images/research/ship-identification/theme.svg",
+      "imageAlt": "Illustration of a ship crossing a measured horizon with identification traces",
       "technologies": [
         "Python",
         "Control Systems",
@@ -84,6 +86,8 @@
       "themeSlug": "underwater-robot-cooperation",
       "url": "https://github.com/uji-irslab/uji-irslab-cooperamos-grasp-planner",
       "repositoryVisibility": "public",
+      "image": "/assets/images/research/uji-robot.jpg",
+      "imageAlt": "Underwater robot positioned in a test tank",
       "technologies": [
         "Python",
         "ROS",
@@ -99,6 +103,8 @@
       "themeSlug": "underwater-robot-cooperation",
       "url": "https://github.com/olanrewajufarooq/BlueROVCompetition",
       "repositoryVisibility": "public",
+      "image": "/assets/images/research/underwater-robot-cooperation/cover.jpg",
+      "imageAlt": "Underwater test tank with a robotic manipulator and suspended object",
       "technologies": [
         "Python",
         "ROS",
@@ -114,6 +120,8 @@
       "themeSlug": "underwater-robot-cooperation",
       "url": "https://github.com/olanrewajufarooq/MIRBlueROV",
       "repositoryVisibility": "public",
+      "image": "/assets/images/research/uji-robot.jpg",
+      "imageAlt": "Underwater robot positioned in a test tank",
       "technologies": [
         "Python",
         "ROS",
@@ -129,6 +137,8 @@
       "themeSlug": "underwater-robot-cooperation",
       "url": "https://github.com/olanrewajufarooq/OceanographyAnalysis",
       "repositoryVisibility": "public",
+      "image": "/assets/images/research/uji-data.jpg",
+      "imageAlt": "Underwater test tank prepared for marine robotics experiments",
       "technologies": [
         "MATLAB",
         "Python",
@@ -144,6 +154,8 @@
       "themeSlug": "underwater-robot-cooperation",
       "url": "https://github.com/olanrewajufarooq/MIRUnderwaterRobotics",
       "repositoryVisibility": "public",
+      "image": "/assets/images/research/uji-data.jpg",
+      "imageAlt": "Underwater test tank prepared for marine robotics experiments",
       "technologies": [
         "MATLAB",
         "Simulink",

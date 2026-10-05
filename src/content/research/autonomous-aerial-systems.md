@@ -31,7 +31,8 @@ collaborators:
   - name: "Mohammed Mohammed Yamman"
   - name: "Tahir Muhammed"
   - name: "Muhammed Salihu Jimoh"
-advisor: "Prof. H. A. Ajomotokan"
+advisors:
+  - "Prof. H. A. Ajomotokan"
 projectIds: ["uas-development"]
 publicationIds: []
 ---

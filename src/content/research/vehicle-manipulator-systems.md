@@ -1,6 +1,6 @@
 ---
 slug: "vehicle-manipulator-systems"
-title: "Geometric Port-Hamiltonian Modelling and Control of Vehicle-Manipulator Systems"
+title: "Vehicle-Manipulator Systems"
 summary: "Development of control frameworks for integrated vehicle-manipulator platforms with focus on safe physical interaction"
 period: "2026 - Present"
 status: "ongoing"
@@ -11,9 +11,11 @@ projectIds: []
 publicationIds: []
 ---
 
-## Overview
+## Main PhD thesis work
 
-This research addresses the fundamental challenge of coordinating vehicle motion with manipulator control in integrated robotic platforms. Vehicle-manipulator systems represent a critical frontier in robotics, enabling applications from aerial manipulation to mobile manipulation in challenging environments.
+This is my main PhD thesis research. It addresses the fundamental challenge of coordinating vehicle motion with manipulator control in integrated robotic platforms, with emphasis on geometric modelling, stability, and safe physical interaction.
+
+Vehicle-manipulator systems represent a critical frontier in robotics, enabling applications from aerial manipulation to mobile manipulation in challenging environments.
 
 ## Key Contributions
 

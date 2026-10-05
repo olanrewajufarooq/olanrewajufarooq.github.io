@@ -12,8 +12,12 @@ export async function getStaticPaths() {
 const { theme } = Astro.props;
 const { Content } = await render(theme);
 const projects = projectsData.projects.filter((project) => theme.data.projectIds.includes(project.id));
-const publications = (await getCollection('publications')).filter((publication) => theme.data.publicationIds.includes(publication.data.id));
+const projectOverviews = projects.filter((project) => project.image);
+const publications = (await getCollection('publications'))
+  .filter((publication) => theme.data.publicationIds.includes(publication.data.id))
+  .sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title));
 const statusLabel = theme.data.status === 'ongoing' ? 'Current' : 'Completed';
+const publicationStatusLabel = (status: string) => ({ 'in-review': 'Under review', submitted: 'Submitted', accepted: 'Accepted', published: 'Published', 'in-draft': 'Draft' })[status] ?? status;
 const imageWidths = [320, 480, 640, 768, 896, 1024];
 const responsiveImage = (src: string) => {
   const match = src.match(/^(.*)-1024\.jpg$/);
@@ -44,10 +48,25 @@ const meta = buildMetadata({
       <dl><dt>Keywords</dt><dd>{theme.data.keywords.join(', ')}</dd></dl>
       {projects.length > 0 && <dl><dt>Projects</dt><dd>{projects.map((project) => <div>{project.url ? <a href={project.url} target="_blank" rel="noreferrer">{project.title}</a> : project.title}</div>)}</dd></dl>}
       {theme.data.collaborators.length > 0 && <dl><dt>Collaborators</dt><dd>{theme.data.collaborators.map((collaborator) => <div>{collaborator.url ? <a href={collaborator.url} target="_blank" rel="noreferrer">{collaborator.name}</a> : collaborator.name}</div>)}</dd></dl>}
-      {theme.data.advisor && <dl><dt>Advisor</dt><dd>{theme.data.advisor}</dd></dl>}
+      {theme.data.advisors.length > 0 && <dl><dt>{theme.data.advisors.length > 1 ? 'Advisors' : 'Advisor'}</dt><dd>{theme.data.advisors.map((advisor) => <div>{advisor}</div>)}</dd></dl>}
       {theme.data.repositories.length > 0 && <dl><dt>Code</dt><dd>{theme.data.repositories.map((repository) => <div><a href={repository.url} target="_blank" rel="noreferrer">{repository.label}</a></div>)}</dd></dl>}
     </aside>
   </div>
+  {projectOverviews.length > 0 && <section class="project-overviews section" aria-labelledby="project-overviews-title">
+    <div class="section__heading"><p class="eyebrow">Project portfolio</p><div><h2 id="project-overviews-title">Projects within this theme.</h2><p>Selected work, methods, and outputs across the marine-robotics portfolio.</p></div></div>
+    <div class="project-overviews__list">
+      {projectOverviews.map((project, index) => <article class:list={['project-overview', index % 2 === 1 && 'project-overview--reverse']}>
+        <img class="project-overview__image" src={project.image} alt={project.imageAlt ?? ''} loading="lazy" decoding="async" />
+        <div class="project-overview__body">
+          <div class="project-overview__meta meta"><span>{project.period}</span><span class="status-label">{project.status}</span></div>
+          <h3>{project.title}</h3>
+          <p>{project.summary}</p>
+          {project.technologies.length > 0 && <p class="project-overview__technologies">{project.technologies.join(' · ')}</p>}
+          {project.url && <a class="text-link" href={project.url} target="_blank" rel="noreferrer">{project.repositoryVisibility === 'public' ? 'View project ↗' : 'View publication ↗'}</a>}
+        </div>
+      </article>)}
+    </div>
+  </section>}
   {theme.data.gallery.length > 0 && <section class="research-gallery section" aria-labelledby="research-gallery-title">
     <div class="section__heading"><p class="eyebrow">Project record</p><div><h2 id="research-gallery-title">Design, build, and flight evidence.</h2><p>Selected documentation from the undergraduate prototype.</p></div></div>
     <div class="research-gallery__grid">
@@ -61,9 +80,12 @@ const meta = buildMetadata({
     </div>
   </section>}
   {publications.length > 0 && <section class="section" aria-labelledby="related-publications-title">
-    <div class="section__heading"><p class="eyebrow">Related work</p><div><h2 id="related-publications-title">Publications from this theme.</h2></div></div>
+    <div class="section__heading"><p class="eyebrow">Publication record</p><div><h2 id="related-publications-title">Work from this theme.</h2><p>Published and submitted work connected to this research direction.</p></div></div>
     <div class="record-list">
-      {publications.map((publication) => <article class="record"><div class="record__side"><span class="meta">{publication.data.year}</span><span class="status-label">{publication.data.status}</span></div><div><h3>{publication.data.title}</h3><p>{publication.data.authors.map((author) => author.name).join(', ')}</p></div><div class="record__side"><span>{publication.data.venue}</span></div></article>)}
+      {publications.map((publication) => <article class="record">
+        <div class="record__side"><span class="meta">{publication.data.year}</span><span class:list={['status-label', publication.data.status === 'published' ? 'status-label--published' : 'status-label--warm']}>{publicationStatusLabel(publication.data.status)}</span></div>
+        <div class="record__content"><h3>{publication.data.title}</h3><p>{publication.data.authors.map((author) => author.name).join(', ')}</p><div class="record__details"><span>{publication.data.venue}</span><span class="record__actions">{publication.data.publisherUrl && <a href={publication.data.publisherUrl} target="_blank" rel="noreferrer">Publisher</a>}{publication.data.citation?.doi && <a href={`https://doi.org/${publication.data.citation.doi}`} target="_blank" rel="noreferrer">DOI</a>}{publication.data.bibtexPath && <a href={publication.data.bibtexPath} download>BibTeX</a>}</span></div></div>
+      </article>)}
     </div>
   </section>}
 </ContentLayout>
