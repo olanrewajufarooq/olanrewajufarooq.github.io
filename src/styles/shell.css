@@ -112,12 +112,15 @@
 .about-facts dt { color: var(--color-text-muted); font-size: 0.8rem; }
 .about-facts dd { margin: 0; }
 .about-education { padding-top: var(--space-5); }
-.about-record .record__side { gap: 0.65rem; }
+.record.about-record { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-6); align-items: start; }
+.about-record--reverse .education-media { order: 2; }
+.about-record--reverse .record__content { order: 1; }
+.about-record .record__content { width: 100%; }
+.education-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-bottom: 0.9rem; color: var(--color-text-muted); }
 .record__note { margin-top: 0.75rem; font-size: 0.95rem; }
-.degree-entries { display: grid; gap: 0.85rem; margin-top: 1rem; }
-.degree-entry { display: grid; gap: 0.2rem; padding-left: 0.9rem; border-left: 2px solid var(--color-accent); }
-.degree-entry strong { color: var(--color-text); }
-.degree-entry span { color: var(--color-text-muted); }
+.education-media { display: grid; align-content: start; gap: 1rem; }
+.single-degree__details { display: grid; gap: 0.3rem; }
+.education-image { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: center; border: 1px solid var(--color-border); background: var(--color-surface); }
 
 .section { padding: var(--space-5) 0; border-top: 1px solid var(--color-border); }
 .section--quiet { padding-top: var(--space-4); padding-bottom: var(--space-4); }
@@ -270,6 +273,10 @@
   .page-title-row { display: grid; gap: var(--space-3); }
   .page-title-row .publication-summary { text-align: left; }
   .catalogue-entry { grid-template-columns: 1fr; gap: 0.7rem; }
+  .record.about-record { grid-template-columns: 1fr; gap: var(--space-5); }
+  .about-record .education-media,
+  .about-record .record__content { order: initial; }
+  .education-image { width: 100%; }
   .record { grid-template-columns: 1fr; gap: 0.75rem; }
   .record__side { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.85rem; }
   .record__details { display: grid; gap: 0.5rem; margin-top: 0.75rem; }

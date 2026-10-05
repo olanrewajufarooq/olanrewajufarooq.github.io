@@ -5,6 +5,16 @@ import profile from '../data/site/profile.json';
 import education from '../data/about/education.json';
 import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
 
+const universityImageWidths = [320, 480, 640, 768, 896, 1024];
+const getUniversityImage = (imagePath: string) => {
+  const basePath = imagePath.replace(/-\d+\.jpg$/, '');
+
+  return {
+    src: imagePath,
+    srcset: universityImageWidths.map((width) => `${basePath}-${width}.jpg ${width}w`).join(', '),
+  };
+};
+
 const meta = buildMetadata({ title: 'About', description: 'About Farooq Olanrewaju, a PhD student in systems and control engineering.', canonical: getCanonicalUrl('/about'), image: profile.photo });
 ---
 
@@ -28,22 +38,19 @@ const meta = buildMetadata({ title: 'About', description: 'About Farooq Olanrewa
       <div><h2 id="education-title">Training across engineering and intelligent robotics.</h2><p>Degrees in control engineering, marine robotics, and intelligent physical systems.</p></div>
     </div>
     <div class="record-list">
-      {education.degrees.map((degree) => (
-        <article class="record about-record">
-          <div class="record__side"><span class="meta">{degree.type === 'joint' ? '2022 – 2024' : degree.period}</span><span>{degree.type === 'joint' ? 'Joint degree' : degree.location}</span></div>
+      {education.degrees.map((degree, index) => (
+        <article class:list={['record', 'about-record', index % 2 === 1 && 'about-record--reverse']}>
+          <div class="education-media">
+            <img class="education-image" src={getUniversityImage(degree.image ?? '').src} srcset={getUniversityImage(degree.image ?? '').srcset} sizes="(max-width: 620px) 100vw, 50vw" alt={`${degree.institution} campus`} loading="lazy" decoding="async" />
+          </div>
           <div class="record__content">
-            <h3>{degree.type === 'joint' ? degree.programName : degree.degree}</h3>
-            {degree.type === 'joint' ? (
-              <div class="degree-entries" aria-label="Degrees awarded">
-                {(degree.entries ?? []).map((entry) => (
-                  <div class="degree-entry">
-                    <strong>{entry.degree}</strong>
-                    <span>{entry.field}</span>
-                    <span>{entry.institution}, {entry.location}</span>
-                  </div>
-                ))}
-              </div>
-            ) : <p>{degree.field}, {degree.institution}</p>}
+            <div class="education-meta"><span class="meta">{degree.period}</span><span>{degree.location}</span></div>
+            <h3>{degree.degree}</h3>
+            <div class="single-degree__details">
+              <strong>{degree.field}</strong>
+              <span>{degree.institution}</span>
+            </div>
+            {degree.programNote && <p class="record__note record__note--program">{degree.programNote}</p>}
             {degree.thesis && <p class="record__note">Thesis: {degree.thesis.title}</p>}
           </div>
         </article>

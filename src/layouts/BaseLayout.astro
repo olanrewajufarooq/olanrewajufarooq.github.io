@@ -48,8 +48,7 @@ const { title, description, canonical, ogImage } = Astro.props;
     <script is:inline>
       const STORAGE_KEY = 'site-theme';
       const savedTheme = localStorage.getItem(STORAGE_KEY);
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const theme = savedTheme ?? (prefersDark ? 'dark' : 'light');
+      const theme = savedTheme ?? 'dark';
       document.documentElement.setAttribute('data-theme', theme);
     </script>
   </head>

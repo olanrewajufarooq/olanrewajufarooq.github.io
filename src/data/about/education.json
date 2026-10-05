@@ -9,7 +9,7 @@
       "location": "Dhahran, Saudi Arabia",
       "period": "Aug 2024 – Jul 2028",
       "url": "https://www.kfupm.edu.sa",
-      "logo": "/assets/images/logos/kfupm-seal.png",
+      "image": "/assets/images/universities/kfupm-campus-1024.jpg",
       "thesis": {
         "title": "Geometric Port-Hamiltonian Modelling and Control of Vehicle-Manipulator Systems with Safe Interaction",
         "advisor": [
@@ -26,29 +26,16 @@
       }
     },
     {
-      "id": "erasmus-mmir",
-      "type": "joint",
-      "programName": "Erasmus Mundus Joint Master's Degree in Marine and Maritime Intelligent Robotics",
-      "entries": [
-        {
-          "degree": "Master of Engineering (M.Eng.)",
-          "field": "Electrical and Computer Engineering",
-          "institution": "Instituto Superior Tecnico",
-          "location": "Lisbon, Portugal",
-          "period": "Sep 2023 – Nov 2024",
-          "url": "https://tecnico.ulisboa.pt",
-          "logo": "/assets/images/logos/ist-lisbon.jpg"
-        },
-        {
-          "degree": "Master of Science (M.Sc.)",
-          "field": "Engineering of Complex Systems (Marine and Maritime Intelligent Robotics Specialization)",
-          "institution": "Université de Toulon",
-          "location": "Toulon, France",
-          "period": "Sep 2022 – Aug 2023",
-          "url": "https://www.univ-tln.fr",
-          "logo": "/assets/images/logos/univ-toulon.jpg"
-        }
-      ],
+      "id": "erasmus-mmir-tecnico",
+      "type": "single",
+      "degree": "Master of Engineering (M.Eng.)",
+      "field": "Electrical and Computer Engineering",
+      "institution": "Instituto Superior Tecnico",
+      "location": "Lisbon, Portugal",
+      "period": "Sep 2023 – Nov 2024",
+      "url": "https://tecnico.ulisboa.pt",
+      "image": "/assets/images/universities/tecnico-campus-1024.jpg",
+      "programNote": "Part of the Erasmus Mundus Joint Master's Degree in Marine and Maritime Intelligent Robotics.",
       "thesis": {
         "title": "Grasp Planning for Underwater Robot Cooperation",
         "advisor": [
@@ -69,6 +56,18 @@
       }
     },
     {
+      "id": "erasmus-mmir-toulon",
+      "type": "single",
+      "degree": "Master of Science (M.Sc.)",
+      "field": "Engineering of Complex Systems (Marine and Maritime Intelligent Robotics Specialization)",
+      "institution": "Université de Toulon",
+      "location": "Toulon, France",
+      "period": "Sep 2022 – Aug 2023",
+      "url": "https://www.univ-tln.fr",
+      "image": "/assets/images/universities/toulon-campus-1024.jpg",
+      "programNote": "Part of the Erasmus Mundus Joint Master's Degree in Marine and Maritime Intelligent Robotics."
+    },
+    {
       "id": "unilorin-beng",
       "type": "single",
       "degree": "Bachelor of Engineering (B.Eng.)",
@@ -77,7 +76,7 @@
       "location": "Ilorin, Nigeria",
       "period": "Nov 2015 – Oct 2021",
       "url": "https://www.unilorin.edu.ng",
-      "logo": "/assets/images/logos/unilorin.jpg",
+      "image": "/assets/images/universities/unilorin-campus-1024.jpg",
       "thesis": {
         "title": "Modeling and Simulation of Unmanned Aerial Vehicle for Aerial Surveillance and Delivery",
         "advisor": [
