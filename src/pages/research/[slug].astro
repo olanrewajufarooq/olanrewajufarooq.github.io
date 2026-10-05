@@ -14,6 +14,13 @@ const { Content } = await render(theme);
 const projects = projectsData.projects.filter((project) => theme.data.projectIds.includes(project.id));
 const publications = (await getCollection('publications')).filter((publication) => theme.data.publicationIds.includes(publication.data.id));
 const statusLabel = theme.data.status === 'ongoing' ? 'Current' : 'Completed';
+const imageWidths = [320, 480, 640, 768, 896, 1024];
+const responsiveImage = (src: string) => {
+  const match = src.match(/^(.*)-1024\.jpg$/);
+  return match
+    ? { src, srcset: imageWidths.map((width) => `${match[1]}-${width}.jpg ${width}w`).join(', ') }
+    : { src, srcset: undefined };
+};
 const meta = buildMetadata({
   title: theme.data.title,
   description: theme.data.summary,
@@ -37,9 +44,22 @@ const meta = buildMetadata({
       <dl><dt>Keywords</dt><dd>{theme.data.keywords.join(', ')}</dd></dl>
       {projects.length > 0 && <dl><dt>Projects</dt><dd>{projects.map((project) => <div>{project.url ? <a href={project.url} target="_blank" rel="noreferrer">{project.title}</a> : project.title}</div>)}</dd></dl>}
       {theme.data.collaborators.length > 0 && <dl><dt>Collaborators</dt><dd>{theme.data.collaborators.map((collaborator) => <div>{collaborator.url ? <a href={collaborator.url} target="_blank" rel="noreferrer">{collaborator.name}</a> : collaborator.name}</div>)}</dd></dl>}
+      {theme.data.advisor && <dl><dt>Advisor</dt><dd>{theme.data.advisor}</dd></dl>}
       {theme.data.repositories.length > 0 && <dl><dt>Code</dt><dd>{theme.data.repositories.map((repository) => <div><a href={repository.url} target="_blank" rel="noreferrer">{repository.label}</a></div>)}</dd></dl>}
     </aside>
   </div>
+  {theme.data.gallery.length > 0 && <section class="research-gallery section" aria-labelledby="research-gallery-title">
+    <div class="section__heading"><p class="eyebrow">Project record</p><div><h2 id="research-gallery-title">Design, build, and flight evidence.</h2><p>Selected documentation from the undergraduate prototype.</p></div></div>
+    <div class="research-gallery__grid">
+      {theme.data.gallery.map((image) => {
+        const imageAttrs = responsiveImage(image.src);
+        return <figure class="research-gallery__item">
+          <img src={imageAttrs.src} srcset={imageAttrs.srcset} sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw" alt={image.alt} loading="lazy" decoding="async" />
+          {image.caption && <figcaption>{image.caption}</figcaption>}
+        </figure>;
+      })}
+    </div>
+  </section>}
   {publications.length > 0 && <section class="section" aria-labelledby="related-publications-title">
     <div class="section__heading"><p class="eyebrow">Related work</p><div><h2 id="related-publications-title">Publications from this theme.</h2></div></div>
     <div class="record-list">

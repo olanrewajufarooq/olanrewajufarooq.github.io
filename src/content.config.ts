@@ -13,7 +13,15 @@ const research = defineCollection({
     featured: z.boolean().default(false),
     keywords: z.array(z.string()).default([]),
     coverImage: z.string().nullable().optional(),
-    gallery: z.array(z.string()).default([]),
+    gallery: z
+      .array(
+        z.object({
+          src: z.string(),
+          alt: z.string(),
+          caption: z.string().optional(),
+        }),
+      )
+      .default([]),
     videos: z.array(z.object({ title: z.string(), url: z.string() })).default([]),
     repositories: z
       .array(z.object({ label: z.string(), url: z.string(), visibility: z.enum(['public', 'private']) }))
@@ -21,6 +29,7 @@ const research = defineCollection({
     collaborators: z
       .array(z.object({ name: z.string(), affiliation: z.string().optional(), url: z.string().nullable().optional() }))
       .default([]),
+    advisor: z.string().optional(),
     projectIds: z.array(z.string()).default([]),
     publicationIds: z.array(z.string()).default([]),
     order: z.number().default(999),

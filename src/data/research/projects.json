@@ -152,17 +152,17 @@
     },
     {
       "id": "uas-development",
-      "title": "Development of Unmanned Aerial System",
-      "summary": "Research and development of an aerial surveillance and delivery system with advanced control and robotics components.",
+      "title": "Small Unmanned Aerial System Prototype",
+      "summary": "Undergraduate thesis project covering quadcopter CAD design, fabrication, preliminary ANSYS analysis, and basic flight control.",
       "period": "Nov 2019 \u2013 Aug 2021",
       "status": "completed",
       "themeSlug": "autonomous-aerial-systems",
       "url": null,
       "repositoryVisibility": null,
       "technologies": [
-        "Control Systems",
-        "Robotics",
-        "Embedded Systems"
+        "CAD Design",
+        "ANSYS",
+        "Flight Control"
       ]
     }
   ]
