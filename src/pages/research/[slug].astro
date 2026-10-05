@@ -13,6 +13,7 @@ const { theme } = Astro.props;
 const { Content } = await render(theme);
 const projects = projectsData.projects.filter((project) => theme.data.projectIds.includes(project.id));
 const publications = (await getCollection('publications')).filter((publication) => theme.data.publicationIds.includes(publication.data.id));
+const statusLabel = theme.data.status === 'ongoing' ? 'Current' : 'Completed';
 const meta = buildMetadata({
   title: theme.data.title,
   description: theme.data.summary,
@@ -24,17 +25,19 @@ const meta = buildMetadata({
 
 <ContentLayout title={meta.title} description={meta.description} activePath="/research" canonical={meta.canonical} ogImage={meta.openGraph.image}>
   <header class="page-intro page-intro--reading">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/research">Research</a><span aria-hidden="true">/</span><span>{theme.data.title}</span></nav>
     <p class="eyebrow">Research theme</p>
     <h1>{theme.data.title}</h1>
     <p>{theme.data.summary}</p>
+    <div class="detail-header-meta" aria-label="Research metadata"><span>{theme.data.period}</span><span class="status-label">{statusLabel}</span><span>{theme.data.keywords.slice(0, 3).join(' · ')}</span></div>
   </header>
   <div class="detail-layout reading-page">
     <article class="detail-content"><Content /></article>
     <aside class="detail-aside" aria-label="Research theme details">
-      <dl><dt>Period</dt><dd>{theme.data.period}</dd></dl>
-      <dl><dt>Status</dt><dd>{theme.data.status}</dd></dl>
       <dl><dt>Keywords</dt><dd>{theme.data.keywords.join(', ')}</dd></dl>
       {projects.length > 0 && <dl><dt>Projects</dt><dd>{projects.map((project) => <div>{project.url ? <a href={project.url} target="_blank" rel="noreferrer">{project.title}</a> : project.title}</div>)}</dd></dl>}
+      {theme.data.collaborators.length > 0 && <dl><dt>Collaborators</dt><dd>{theme.data.collaborators.map((collaborator) => <div>{collaborator.url ? <a href={collaborator.url} target="_blank" rel="noreferrer">{collaborator.name}</a> : collaborator.name}</div>)}</dd></dl>}
+      {theme.data.repositories.length > 0 && <dl><dt>Code</dt><dd>{theme.data.repositories.map((repository) => <div><a href={repository.url} target="_blank" rel="noreferrer">{repository.label}</a></div>)}</dd></dl>}
     </aside>
   </div>
   {publications.length > 0 && <section class="section" aria-labelledby="related-publications-title">

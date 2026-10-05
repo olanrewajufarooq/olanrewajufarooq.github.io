@@ -1,21 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 import ContentLayout from '../layouts/ContentLayout.astro';
 import ButtonLink from '../components/ui/ButtonLink.astro';
 import profile from '../data/site/profile.json';
-import projectsData from '../data/research/projects.json';
 import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
-import { researchPlaceholder, sortResearchLatestFirst } from '../shared/content/research';
+import { sortResearchLatestFirst } from '../shared/content/research';
 
 const themes = (await getCollection('research'))
   .filter((entry) => entry.data.featured)
   .sort(sortResearchLatestFirst)
-  .slice(0, 4);
+  .slice(0, 3);
 const publications = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year);
 const latestPublication = publications.find((entry) => ['published', 'accepted'].includes(entry.data.status));
-const currentProjects = projectsData.projects.filter((project) => project.status === 'ongoing').slice(0, 2);
-const themeSlug = (theme: CollectionEntry<'research'>) => theme.data.slug ?? theme.id.replace(/\.md$/, '');
+const themeSlug = (theme: (typeof themes)[number]) => theme.data.slug ?? theme.id.replace(/\.md$/, '');
 const meta = buildMetadata({
   title: 'Farooq Olanrewaju | Robotics and Control Research',
   description: 'Research profile of Farooq Olanrewaju, a PhD student working on geometric control, autonomous robotics, and safe physical interaction.',
@@ -37,52 +34,39 @@ const meta = buildMetadata({
 
   <section class="section" aria-labelledby="themes-title">
     <div class="section__heading">
-      <p class="eyebrow">Research atlas</p>
+      <p class="eyebrow">Research directions</p>
       <div>
-        <h2 id="themes-title">Questions that move across machines and environments.</h2>
-        <p>From aerial vehicles to underwater robots, my work connects geometric modelling, control, and physical-world autonomy.</p>
+        <h2 id="themes-title">Three ways I work with physical systems.</h2>
+        <p>Geometric modelling, control, and autonomy meet in the machines and environments I study.</p>
       </div>
     </div>
     <div class="research-grid">
-      {themes.map((theme, index) => (
-        <article class:list={['research-card', index === 0 && 'research-card--lead']}>
-          <img class="atlas-image" src={theme.data.coverImage ?? researchPlaceholder} alt="" loading={index === 0 ? 'eager' : 'lazy'} />
+      {themes.map((theme) => (
+        <article class="research-card">
           <div class="research-card__meta meta"><span>{theme.data.period}</span><span>{theme.data.status}</span></div>
           <h3><a href={`/research/${themeSlug(theme)}`}>{theme.data.title}</a></h3>
           <p>{theme.data.summary}</p>
-          <a class="research-card__link" href={`/research/${themeSlug(theme)}`}>Read the research</a>
+          <a class="research-card__link" href={`/research/${themeSlug(theme)}`}>Open theme</a>
         </article>
       ))}
     </div>
   </section>
 
-  <section class="section" aria-labelledby="current-title">
+  <section class="section section--quiet" aria-labelledby="current-title">
     <div class="section__heading">
-      <p class="eyebrow">At the moment</p>
-      <div>
-        <h2 id="current-title">Current work, kept in motion.</h2>
-        <p>Today I am developing research directions in safe interaction, geometric control, and energy-aware robotic systems.</p>
-      </div>
+      <p class="eyebrow">Current focus</p>
+      <h2 id="current-title">Building control methods that remain useful outside the lab.</h2>
     </div>
-    <div class="research-grid">
-      {currentProjects.map((project) => (
-        <article class="research-card">
-          <img class="atlas-image" src={researchPlaceholder} alt="" loading="lazy" />
-          <div class="research-card__meta meta"><span>{project.period}</span><span>{project.technologies.join(' · ')}</span></div>
-          <h3>{project.title}</h3>
-          <p>{project.summary}</p>
-          {project.url && <a class="research-card__link" href={project.url} target="_blank" rel="noreferrer">View project</a>}
-        </article>
-      ))}
-    </div>
+    <p class="section__lead">My current work connects geometric control, adaptive estimation, vehicle-manipulator systems, and safe physical human–robot interaction.</p>
+    <a class="text-link" href="/about">More about my work <span aria-hidden="true">↗</span></a>
   </section>
 
   {latestPublication && <section class="section" aria-labelledby="publication-title">
     <div class="section__heading">
-      <p class="eyebrow">Latest work</p>
+      <p class="eyebrow">Latest publication</p>
       <div>
-        <h2 id="publication-title">One recent contribution.</h2>
-        <p>See the full publication record for works in progress, accepted papers, and published research.</p>
+        <h2 id="publication-title">A recent contribution.</h2>
+        <p>Published work and submissions are collected in the publication record.</p>
       </div>
     </div>
     <article class="record">

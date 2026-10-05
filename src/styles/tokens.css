@@ -4,12 +4,12 @@
   --color-bg: #f5f1e8;
   --color-surface: #fffdf8;
   --color-text: #17202a;
-  --color-text-muted: #667078;
+  --color-text-muted: #59636b;
   --color-border: #d9d3c8;
   --color-accent: #2457d6;
   --color-accent-strong: #173da0;
   --color-success: #24704f;
-  --color-warm: #e36b2c;
+  --color-warm: #a94d1f;
   --color-focus: #173da0;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -18,8 +18,8 @@
   --space-5: 1.5rem;
   --space-6: 2rem;
   --space-7: 3rem;
-  --space-8: 4.5rem;
-  --space-9: 7rem;
+  --space-8: 3.5rem;
+  --space-9: 5rem;
   --content-width: 76rem;
   --reading-width: 46rem;
   --radius-sm: 0.35rem;

@@ -1,9 +1,9 @@
 ---
 slug: "variable-tilt-hexacopter"
-title: "Variable-Tilt Hexacopter Design and Control"
-summary: "Design and implementation of a novel hexacopter with variable tilt motors for enhanced maneuverability"
-period: "2024 - Present"
-status: "ongoing"
+title: "Variable-Tilt Hexacopter Modelling and Control"
+summary: "Modelling and control of a variable-tilt hexacopter for enhanced maneuverability and control authority"
+period: "2024 - 2025"
+status: "completed"
 featured: true
 keywords: ["Geometric Control", "SE(3)", "Aerial Robotics", "Adaptive Control", "Control Allocation"]
 coverImage: "/assets/images/research/variable-tilt-hexacopter/cover.jpg"

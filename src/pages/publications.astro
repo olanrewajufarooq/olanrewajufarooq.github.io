@@ -6,6 +6,7 @@ import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
 const publications = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title));
 const publishedCount = publications.filter((publication) => publication.data.status === 'published').length;
 const underReviewCount = publications.filter((publication) => publication.data.status !== 'published').length;
+const statusLabel = (status: string) => ({ 'in-review': 'Under review', submitted: 'Submitted', accepted: 'Accepted', published: 'Published', 'in-draft': 'Draft' })[status] ?? status;
 const meta = buildMetadata({
   title: 'Publications',
   description: 'Publication record of Farooq Olanrewaju in robotics, control, and autonomous systems.',
@@ -16,15 +17,14 @@ const meta = buildMetadata({
 <ContentLayout title={meta.title} description={meta.description} activePath="/publications" canonical={meta.canonical} ogImage={meta.openGraph.image}>
   <header class="page-intro page-intro--index page-intro--publications">
     <p class="eyebrow">Publication record</p>
-    <h1>Work you can read and cite.</h1>
-    <p>Published work and submissions under review across geometric control, aerial robotics, marine systems, and system identification.</p>
-    <p class="publication-summary">{publications.length} works · {publishedCount} published · {underReviewCount} under review</p>
+    <div class="page-title-row"><h1>Work you can read and cite.</h1><p class="publication-summary">{publications.length} works<br />{publishedCount} published · {underReviewCount} in progress</p></div>
+    <p>Published work and submissions across geometric control, aerial robotics, marine systems, and system identification.</p>
   </header>
   <section class="section" aria-label="Publication list">
     <div class="record-list">
       {publications.map((publication) => (
         <article class="record">
-          <div class="record__side"><span class="meta">{publication.data.year}</span><span class:list={['status-label', publication.data.status === 'published' ? 'status-label--published' : 'status-label--warm']}>{publication.data.status}</span></div>
+          <div class="record__side"><span class="meta">{publication.data.year}</span><span class:list={['status-label', publication.data.status === 'published' ? 'status-label--published' : 'status-label--warm']}>{statusLabel(publication.data.status)}</span></div>
           <div class="record__content"><h3>{publication.data.title}</h3><p>{publication.data.authors.map((author) => author.name).join(', ')}</p><div class="record__details"><span>{publication.data.venue}</span><span class="record__actions">{publication.data.publisherUrl && <a href={publication.data.publisherUrl} target="_blank" rel="noreferrer">Publisher</a>}{publication.data.citation?.doi && <a href={`https://doi.org/${publication.data.citation.doi}`} target="_blank" rel="noreferrer">DOI</a>}{publication.data.bibtexPath && <a href={publication.data.bibtexPath} download>BibTeX</a>}</span></div></div>
         </article>
       ))}

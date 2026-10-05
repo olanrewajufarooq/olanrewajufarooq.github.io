@@ -2,8 +2,8 @@
 slug: "probabilistic-sensor-fusion"
 title: "Probabilistic Sensor Fusion for Robotic Perception"
 summary: "Bayesian and particle filter approaches for combining heterogeneous sensor data in robotic systems"
-period: "2025 - Present"
-status: "ongoing"
+period: "2025 - 2026"
+status: "completed"
 featured: false
 keywords: ["Kalman Filtering", "Sensor Fusion", "Probabilistic Guarantees"]
 coverImage: "/assets/images/research/research-placeholder.svg"

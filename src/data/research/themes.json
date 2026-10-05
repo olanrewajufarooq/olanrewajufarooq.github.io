@@ -2,9 +2,9 @@
   "themes": [
     {
       "slug": "vehicle-manipulator-systems",
-      "title": "Vehicle-Manipulator Systems and Safe Interaction",
-      "summary": "Research on geometric and port-Hamiltonian modelling and control of vehicle-manipulator systems with emphasis on safe interaction and energy-aware robotic behaviour.",
-      "period": "2024 \u2013 Present",
+      "title": "Geometric Port-Hamiltonian Modelling and Control of Vehicle-Manipulator Systems",
+      "summary": "Development of control frameworks for integrated vehicle-manipulator platforms with focus on safe physical interaction",
+      "period": "2026 \u2013 Present",
       "status": "ongoing",
       "featured": true,
       "keywords": [
@@ -20,10 +20,10 @@
     },
     {
       "slug": "variable-tilt-hexacopter",
-      "title": "Variable-Tilt Hexacopter and SE(3) Geometric Control",
+      "title": "Variable-Tilt Hexacopter Modelling and Control",
       "summary": "Research on geometric modelling, adaptive control, estimation, and control allocation for fully-actuated aerial vehicles.",
-      "period": "2024 \u2013 Present",
-      "status": "ongoing",
+      "period": "2024 \u2013 2025",
+      "status": "completed",
       "featured": true,
       "keywords": [
         "Geometric Control",
@@ -94,8 +94,8 @@
       "slug": "microgrid-control",
       "title": "Microgrid Control and Learning-Based Energy Systems",
       "summary": "Research on reinforcement learning-based control strategies for microgrid systems and energy management.",
-      "period": "2025 \u2013 Present",
-      "status": "ongoing",
+      "period": "2025 \u2013 2026",
+      "status": "completed",
       "featured": false,
       "keywords": [
         "Microgrid Control",
@@ -113,8 +113,8 @@
       "slug": "probabilistic-sensor-fusion",
       "title": "Probabilistic Sensor Fusion and Adaptive Kalman Filtering",
       "summary": "Research on adaptive Kalman filtering, uncertainty quantification, and robust sensor fusion under noise mis-specification.",
-      "period": "2025 \u2013 Present",
-      "status": "ongoing",
+      "period": "2025 \u2013 2026",
+      "status": "completed",
       "featured": false,
       "keywords": [
         "Kalman Filtering",
