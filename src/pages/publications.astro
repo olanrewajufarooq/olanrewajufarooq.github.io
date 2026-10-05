@@ -15,10 +15,17 @@ const meta = buildMetadata({
 ---
 
 <ContentLayout title={meta.title} description={meta.description} activePath="/publications" canonical={meta.canonical} ogImage={meta.openGraph.image}>
-  <header class="page-intro page-intro--index page-intro--publications">
-    <p class="eyebrow">Publication record</p>
-    <div class="page-title-row"><h1>Work you can read and cite.</h1><p class="publication-summary">{publications.length} works<br />{publishedCount} published · {underReviewCount} in progress</p></div>
-    <p>Published work and submissions across geometric control, aerial robotics, marine systems, and system identification.</p>
+  <header class="page-intro page-intro--index page-intro--publications publications-hero">
+    <div class="publications-hero__main">
+      <p class="eyebrow">Publication record</p>
+      <h1>Work you can read and cite.</h1>
+      <p class="publications-hero__lede">Published work and submissions across geometric control, aerial robotics, marine systems, and system identification.</p>
+    </div>
+    <aside class="publications-hero__summary" aria-label="Publication summary">
+      <span class="publications-hero__summary-label">Record at a glance</span>
+      <div class="publications-hero__total"><strong>{publications.length}</strong><span>works</span></div>
+      <div class="publications-hero__breakdown"><span><strong>{publishedCount}</strong> published</span><span><strong>{underReviewCount}</strong> in progress</span></div>
+    </aside>
   </header>
   <section class="section" aria-label="Publication list">
     <div class="record-list">

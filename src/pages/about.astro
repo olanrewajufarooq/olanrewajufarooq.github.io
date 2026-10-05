@@ -21,16 +21,20 @@ const meta = buildMetadata({ title: 'About', description: 'About Farooq Olanrewa
 <ContentLayout title={meta.title} description={meta.description} activePath="/about" canonical={meta.canonical} ogImage={meta.openGraph.image}>
   <header class="page-intro page-intro--profile about-hero">
     <div class="about-hero__copy">
-      <p class="eyebrow">About</p>
+      <div class="about-hero__intro-meta">
+        <p class="eyebrow">About</p>
+        <span class="about-hero__affiliation">{profile.currentAffiliationLabel}</span>
+      </div>
       <h1>Control engineering for real machines.</h1>
-      <p>I am a PhD student in Systems and Control Engineering at KFUPM. My work connects geometric modelling, autonomous robotics, and safe physical interaction.</p>
+      <p class="about-hero__lede">I am a PhD student in Systems and Control Engineering at KFUPM. My work connects geometric modelling, autonomous robotics, and safe physical interaction.</p>
       <div class="button-row"><ButtonLink href={profile.cvPath} variant="primary">Download CV</ButtonLink><ButtonLink href="/contact" variant="secondary">Contact me</ButtonLink></div>
     </div>
-    <dl class="about-facts">
+    <aside class="about-facts" aria-label="Profile facts">
+      <span class="about-facts__label">At a glance</span>
       <div><dt>Role</dt><dd>{profile.title}, {profile.department}</dd></div>
       <div><dt>Based in</dt><dd>{profile.location}</dd></div>
       <div><dt>Research focus</dt><dd>{profile.researchFocus}</dd></div>
-    </dl>
+    </aside>
   </header>
   <section class="section about-education" aria-labelledby="education-title">
     <div class="section__heading">

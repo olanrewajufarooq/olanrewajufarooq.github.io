@@ -27,11 +27,10 @@ const meta = buildMetadata({
       <div><h2 id="research-list-title">Active themes and working questions.</h2><p>Each record names the problem, its period, and the methods currently shaping the work.</p></div>
     </div>
     <div class="catalogue-list">
-      {currentThemes.map((theme) => (
-        <article class="catalogue-entry">
+      {currentThemes.map((theme, index) => (
+        <article class:list={['catalogue-entry', index % 2 === 1 && 'catalogue-entry--reverse']}>
           <img class="catalogue-entry__image" src={theme.data.coverImage} alt="" />
-          <div class="catalogue-entry__meta meta"><span>{theme.data.period}</span><span class="status-label">{theme.data.status}</span></div>
-          <div class="catalogue-entry__body"><h3><a href={`/research/${themeSlug(theme)}`}>{theme.data.title}</a></h3><p>{theme.data.summary}</p><a class="text-link" href={`/research/${themeSlug(theme)}`}>Open theme <span aria-hidden="true">↗</span></a></div>
+          <div class="catalogue-entry__body"><div class="catalogue-entry__meta meta"><span>{theme.data.period}</span><span class="status-label">{theme.data.status}</span></div><h3><a href={`/research/${themeSlug(theme)}`}>{theme.data.title}</a></h3><p>{theme.data.summary}</p><a class="text-link" href={`/research/${themeSlug(theme)}`}>Open theme <span aria-hidden="true">↗</span></a></div>
         </article>
       ))}
     </div>
@@ -42,11 +41,10 @@ const meta = buildMetadata({
       <div><h2 id="archive-title">An archive of previous questions.</h2><p>Earlier projects remain useful context for the methods and systems I work with today.</p></div>
     </div>
     <div class="catalogue-list">
-      {completedThemes.map((theme) => (
-        <article class="catalogue-entry">
+      {completedThemes.map((theme, index) => (
+        <article class:list={['catalogue-entry', index % 2 === 1 && 'catalogue-entry--reverse']}>
           <img class="catalogue-entry__image" src={theme.data.coverImage} alt="" />
-          <div class="catalogue-entry__meta meta"><span>{theme.data.period}</span><span class="status-label status-label--complete">{theme.data.status}</span></div>
-          <div class="catalogue-entry__body"><h3><a href={`/research/${themeSlug(theme)}`}>{theme.data.title}</a></h3><p>{theme.data.summary}</p><a class="text-link" href={`/research/${themeSlug(theme)}`}>Open theme <span aria-hidden="true">↗</span></a></div>
+          <div class="catalogue-entry__body"><div class="catalogue-entry__meta meta"><span>{theme.data.period}</span><span class="status-label status-label--complete">{theme.data.status}</span></div><h3><a href={`/research/${themeSlug(theme)}`}>{theme.data.title}</a></h3><p>{theme.data.summary}</p><a class="text-link" href={`/research/${themeSlug(theme)}`}>Open theme <span aria-hidden="true">↗</span></a></div>
         </article>
       ))}
     </div>
