@@ -6,7 +6,7 @@ period: "2024 - 2025"
 status: "completed"
 featured: true
 keywords: ["System Identification", "Marine Systems", "ARX Models", "Optimization"]
-coverImage: "/assets/images/research/ship-identification/cover.jpg"
+coverImage: "/assets/images/research/ship-identification/theme.svg"
 projectIds: ["ship-identification"]
 publicationIds: ["apo-arx-ship-2025"]
 ---

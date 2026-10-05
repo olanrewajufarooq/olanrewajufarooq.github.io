@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Microgrid control illustration</title>
+  <desc id="desc">A distributed energy network connects generation, storage, and a local load.</desc>
+  <rect width="1200" height="675" fill="#18232c"/>
+  <g stroke="#8eafff" stroke-width="8" fill="none"><path d="M600 330 285 185M600 330l315-145M600 330v190M285 185v230M915 185v230"/></g>
+  <g fill="#2457d6" stroke="#f39a68" stroke-width="8"><circle cx="600" cy="330" r="78"/><circle cx="285" cy="185" r="62"/><circle cx="915" cy="185" r="62"/><circle cx="285" cy="415" r="62"/><circle cx="915" cy="415" r="62"/></g>
+  <g fill="#f5f1e8" font-family="IBM Plex Sans, sans-serif" font-size="24" text-anchor="middle"><text x="600" y="339">GRID</text><text x="285" y="194">PV</text><text x="915" y="194">WIND</text><text x="285" y="424">LOAD</text><text x="915" y="424">STORE</text></g>
+  <text x="72" y="92" fill="#f5f1e8" font-family="IBM Plex Sans, sans-serif" font-size="26" letter-spacing="4">DISTRIBUTED ENERGY CONTROL</text>
+</svg>

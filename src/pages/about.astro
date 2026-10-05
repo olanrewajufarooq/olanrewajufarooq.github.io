@@ -31,7 +31,21 @@ const meta = buildMetadata({ title: 'About', description: 'About Farooq Olanrewa
       {education.degrees.map((degree) => (
         <article class="record about-record">
           <div class="record__side"><span class="meta">{degree.type === 'joint' ? '2022 – 2024' : degree.period}</span><span>{degree.type === 'joint' ? 'Joint degree' : degree.location}</span></div>
-          <div class="record__content"><h3>{degree.type === 'joint' ? degree.programName : degree.degree}</h3><p>{degree.type === 'joint' ? (degree.entries ?? []).map((entry) => `${entry.degree}, ${entry.institution}`).join(' · ') : `${degree.field}, ${degree.institution}`}</p>{degree.thesis && <p class="record__note">Thesis: {degree.thesis.title}</p>}</div>
+          <div class="record__content">
+            <h3>{degree.type === 'joint' ? degree.programName : degree.degree}</h3>
+            {degree.type === 'joint' ? (
+              <div class="degree-entries" aria-label="Degrees awarded">
+                {(degree.entries ?? []).map((entry) => (
+                  <div class="degree-entry">
+                    <strong>{entry.degree}</strong>
+                    <span>{entry.field}</span>
+                    <span>{entry.institution}, {entry.location}</span>
+                  </div>
+                ))}
+              </div>
+            ) : <p>{degree.field}, {degree.institution}</p>}
+            {degree.thesis && <p class="record__note">Thesis: {degree.thesis.title}</p>}
+          </div>
         </article>
       ))}
     </div>

@@ -6,7 +6,7 @@ period: "2019 - 2021"
 status: "completed"
 featured: false
 keywords: ["Unmanned Aerial Systems", "Autonomous Flight", "Control Systems"]
-coverImage: "/assets/images/research/research-placeholder.svg"
+coverImage: "/assets/images/research/autonomous-aerial-systems/theme.svg"
 projectIds: ["uas-development"]
 publicationIds: []
 ---

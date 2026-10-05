@@ -13,7 +13,7 @@
         "Safe Interaction",
         "Physical Human-Robot Interaction"
       ],
-      "coverImage": "/assets/images/research/vehicle-manipulator-systems/cover.jpg",
+      "coverImage": "/assets/images/research/vehicle-manipulator-systems/theme.svg",
       "projectIds": [],
       "publicationIds": [],
       "order": 1
@@ -32,7 +32,7 @@
         "Adaptive Control",
         "Control Allocation"
       ],
-      "coverImage": "/assets/images/research/variable-tilt-hexacopter/cover.jpg",
+      "coverImage": "/assets/images/research/variable-tilt-hexacopter/theme.svg",
       "projectIds": [
         "adaptive-hexacopter",
         "se3-hexacopter"
@@ -57,7 +57,7 @@
         "Autonomous Docking",
         "Marine Robotics"
       ],
-      "coverImage": "/assets/images/research/underwater-robot-cooperation/cover.jpg",
+      "coverImage": "/assets/images/research/underwater-robot-cooperation/theme.svg",
       "projectIds": [
         "grasp-planning",
         "bluerov-treasure",
@@ -81,7 +81,7 @@
         "ARX Models",
         "Optimization"
       ],
-      "coverImage": "/assets/images/research/ship-identification/cover.jpg",
+      "coverImage": "/assets/images/research/ship-identification/theme.svg",
       "projectIds": [
         "ship-identification"
       ],
@@ -102,7 +102,7 @@
         "Reinforcement Learning",
         "Energy Systems"
       ],
-      "coverImage": "/assets/images/research/microgrid-control/cover.jpg",
+      "coverImage": "/assets/images/research/microgrid-control/theme.svg",
       "projectIds": [
         "microgrid-control"
       ],
@@ -121,7 +121,7 @@
         "Sensor Fusion",
         "Probabilistic Guarantees"
       ],
-      "coverImage": "/assets/images/research/probabilistic-sensor-fusion/cover.jpg",
+      "coverImage": "/assets/images/research/probabilistic-sensor-fusion/theme.svg",
       "projectIds": [
         "prob-kalman-filter"
       ],
@@ -140,7 +140,7 @@
         "Autonomous Flight",
         "Control Systems"
       ],
-      "coverImage": "/assets/images/research/autonomous-aerial-systems/cover.jpg",
+      "coverImage": "/assets/images/research/autonomous-aerial-systems/theme.svg",
       "projectIds": [
         "uas-development"
       ],

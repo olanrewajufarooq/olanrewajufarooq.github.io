@@ -6,7 +6,7 @@ period: "2024 - 2025"
 status: "completed"
 featured: true
 keywords: ["Geometric Control", "SE(3)", "Aerial Robotics", "Adaptive Control", "Control Allocation"]
-coverImage: "/assets/images/research/variable-tilt-hexacopter/cover.jpg"
+coverImage: "/assets/images/research/variable-tilt-hexacopter/theme.svg"
 projectIds: ["adaptive-hexacopter", "se3-hexacopter"]
 publicationIds: ["geometric-adaptive-se3-aerial", "variable-tilt-hexacopter"]
 ---

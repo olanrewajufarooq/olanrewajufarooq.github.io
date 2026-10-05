@@ -6,7 +6,7 @@ period: "2022 - 2024"
 status: "completed"
 featured: true
 keywords: ["Underwater Robotics", "Grasp Planning", "Cooperative Robots", "Autonomous Docking", "Marine Robotics"]
-coverImage: "/assets/images/research/underwater-robot-cooperation/cover.jpg"
+coverImage: "/assets/images/research/underwater-robot-cooperation/theme.svg"
 projectIds: ["grasp-planning", "bluerov-treasure", "bluerov-trajectory", "underwater-auv", "oceanography"]
 publicationIds: []
 ---

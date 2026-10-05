@@ -6,7 +6,7 @@ period: "2026 - Present"
 status: "ongoing"
 featured: true
 keywords: ["Vehicle-Manipulator Systems", "Port-Hamiltonian Systems", "Safe Interaction", "Physical Human-Robot Interaction"]
-coverImage: "/assets/images/research/vehicle-manipulator-systems/cover.jpg"
+coverImage: "/assets/images/research/vehicle-manipulator-systems/theme.svg"
 projectIds: []
 publicationIds: []
 ---

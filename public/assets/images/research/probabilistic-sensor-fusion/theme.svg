@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Probabilistic sensor fusion illustration</title>
+  <desc id="desc">Multiple uncertain sensor observations converge on a shared estimate.</desc>
+  <rect width="1200" height="675" fill="#18232c"/>
+  <g fill="none" stroke="#8eafff" stroke-width="5" opacity=".85"><ellipse cx="300" cy="250" rx="180" ry="90" transform="rotate(-25 300 250)"/><ellipse cx="880" cy="250" rx="180" ry="90" transform="rotate(25 880 250)"/><ellipse cx="300" cy="455" rx="180" ry="90" transform="rotate(25 300 455)"/><ellipse cx="880" cy="455" rx="180" ry="90" transform="rotate(-25 880 455)"/></g>
+  <g stroke="#f39a68" stroke-width="6" stroke-dasharray="12 14"><path d="M300 250 600 355M880 250 600 355M300 455 600 355M880 455 600 355"/></g>
+  <circle cx="600" cy="355" r="88" fill="#2457d6" stroke="#f5f1e8" stroke-width="8"/><circle cx="600" cy="355" r="28" fill="#f39a68"/>
+  <text x="72" y="92" fill="#f5f1e8" font-family="IBM Plex Sans, sans-serif" font-size="26" letter-spacing="4">PROBABILISTIC ESTIMATION</text>
+</svg>
