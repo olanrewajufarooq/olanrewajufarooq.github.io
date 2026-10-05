@@ -1,0 +1,67 @@
+name: Propose publication updates
+
+on:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: publication-sync
+  cancel-in-progress: true
+
+jobs:
+  propose:
+    name: Check ORCID works
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch and normalize ORCID works
+        run: npm run sync:orcid
+
+      - name: Validate proposal tooling and static content
+        run: |
+          npm test
+          npm run check
+
+      - name: Open proposal pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automation/orcid-publication-proposals
+          delete-branch: true
+          title: 'chore: propose publication updates from ORCID'
+          commit-message: 'chore: update ORCID publication proposals'
+          body: |
+            ## Summary
+
+            This pull request contains publication metadata proposed from ORCID.
+
+            Review the proposal and promote approved records into the canonical publication collection. Editorial summaries, theme relationships, and display decisions remain manual.
+
+            ## Evidence
+
+            - Source: ORCID public works API
+            - Validation: `npm test`
+
+            ## Merge Danger
+
+            **Door:** Two-way
+
+            Proposal-only metadata; closing or reverting this pull request leaves published content unchanged.
+
+            **Blast Radius:** Low

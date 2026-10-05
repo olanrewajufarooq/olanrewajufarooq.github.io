@@ -1,5 +1,5 @@
 ---
-import Sidebar from './Sidebar.astro';
+import SiteHeader from './SiteHeader.astro';
 import Footer from './Footer.astro';
 
 interface Props {
@@ -10,11 +10,9 @@ const { activePath } = Astro.props;
 ---
 
 <div class="site-shell">
-  <Sidebar activePath={activePath} />
-  <div class="site-shell__content">
-    <main id="main-content" class="site-main">
-      <slot />
-    </main>
-    <Footer />
-  </div>
+  <SiteHeader activePath={activePath} />
+  <main id="main-content" class="site-main">
+    <slot />
+  </main>
+  <Footer />
 </div>

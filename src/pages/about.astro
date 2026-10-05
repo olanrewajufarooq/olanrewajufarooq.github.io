@@ -1,29 +1,64 @@
 ---
 import ContentLayout from '../layouts/ContentLayout.astro';
-import AboutIntro from '../features/about/components/AboutIntro.astro';
-import EducationSection from '../features/about/components/EducationSection.astro';
-import CertificatesSection from '../features/about/components/CertificatesSection';
-import AwardsSection from '../features/about/components/AwardsSection.astro';
-import CvDownloadPanel from '../features/about/components/CvDownloadPanel.astro';
+import ButtonLink from '../components/ui/ButtonLink.astro';
+import profile from '../data/site/profile.json';
+import education from '../data/about/education.json';
 import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
 
-const meta = buildMetadata({
-  title: 'About | Farooq Olanrewaju',
-  description: 'About Farooq Olanrewaju, including education, certifications, awards, and CV.',
-  canonical: getCanonicalUrl('/about'),
-});
+const universityImageWidths = [320, 480, 640, 768, 896, 1024];
+const getUniversityImage = (imagePath: string) => {
+  const basePath = imagePath.replace(/-\d+\.jpg$/, '');
+
+  return {
+    src: imagePath,
+    srcset: universityImageWidths.map((width) => `${basePath}-${width}.jpg ${width}w`).join(', '),
+  };
+};
+
+const meta = buildMetadata({ title: 'About', description: 'About Farooq Olanrewaju, a PhD student in systems and control engineering.', canonical: getCanonicalUrl('/about'), image: profile.photo });
 ---
 
-<ContentLayout
-  title={meta.title}
-  description={meta.description}
-  activePath="/about"
-  canonical={meta.canonical}
-  ogImage={meta.openGraph?.image}
->
-  <AboutIntro />
-  <EducationSection />
-  <CertificatesSection client:load />
-  <AwardsSection />
-  <CvDownloadPanel />
+<ContentLayout title={meta.title} description={meta.description} activePath="/about" canonical={meta.canonical} ogImage={meta.openGraph.image}>
+  <header class="page-intro page-intro--profile about-hero">
+    <div class="about-hero__copy">
+      <div class="about-hero__intro-meta">
+        <p class="eyebrow">About</p>
+        <span class="about-hero__affiliation">{profile.currentAffiliationLabel}</span>
+      </div>
+      <h1>Control engineering for real machines.</h1>
+      <p class="about-hero__lede">I am a PhD student in Systems and Control Engineering at KFUPM. My work connects geometric modelling, autonomous robotics, and safe physical interaction.</p>
+      <div class="button-row"><ButtonLink href={profile.cvPath} variant="primary">Download CV</ButtonLink><ButtonLink href="/contact" variant="secondary">Contact me</ButtonLink></div>
+    </div>
+    <aside class="about-facts" aria-label="Profile facts">
+      <span class="about-facts__label">At a glance</span>
+      <div><dt>Role</dt><dd>{profile.title}, {profile.department}</dd></div>
+      <div><dt>Based in</dt><dd>{profile.location}</dd></div>
+      <div><dt>Research focus</dt><dd>{profile.researchFocus}</dd></div>
+    </aside>
+  </header>
+  <section class="section about-education" aria-labelledby="education-title">
+    <div class="section__heading">
+      <p class="eyebrow">Formation</p>
+      <div><h2 id="education-title">Training across engineering and intelligent robotics.</h2><p>Degrees in control engineering, marine robotics, and intelligent physical systems.</p></div>
+    </div>
+    <div class="record-list">
+      {education.degrees.map((degree, index) => (
+        <article class:list={['record', 'about-record', index % 2 === 1 && 'about-record--reverse']}>
+          <div class="education-media">
+            <img class="education-image" src={getUniversityImage(degree.image ?? '').src} srcset={getUniversityImage(degree.image ?? '').srcset} sizes="(max-width: 620px) 100vw, 50vw" alt={`${degree.institution} campus`} loading="lazy" decoding="async" />
+          </div>
+          <div class="record__content">
+            <div class="education-meta"><span class="meta">{degree.period}</span><span>{degree.location}</span></div>
+            <h3>{degree.degree}</h3>
+            <div class="single-degree__details">
+              <strong>{degree.field}</strong>
+              <span>{degree.institution}</span>
+            </div>
+            {degree.programNote && <p class="record__note record__note--program">{degree.programNote}</p>}
+            {degree.thesis && <p class="record__note">Thesis: {degree.thesis.title}</p>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
 </ContentLayout>

@@ -9,14 +9,22 @@
           "isMe": true
         },
         {
-          "name": "Coauthors",
+          "name": "Aymen Benyahia",
+          "isMe": false
+        },
+        {
+          "name": "Ramy Rashad",
+          "isMe": false
+        },
+        {
+          "name": "Sami El-Ferik",
           "isMe": false
         }
       ],
-      "venue": "ICUAS 2026",
+      "venue": "2026 International Conference on Unmanned Aircraft Systems (ICUAS)",
       "year": 2026,
-      "status": "accepted",
-      "publisherUrl": null,
+      "status": "published",
+      "publisherUrl": "https://ieeexplore.ieee.org/document/11598698/",
       "themeSlugs": [
         "variable-tilt-hexacopter"
       ],
@@ -25,12 +33,12 @@
         "se3-hexacopter"
       ],
       "citation": {
-        "pages": null,
+        "pages": "88-95",
         "volume": null,
         "issue": null,
-        "doi": null
+        "doi": "10.1109/ICUAS69441.2026.11598698"
       },
-      "bibtexPath": null
+      "bibtexPath": "/assets/references/2026-icuas-geometric-adaptive-se3.bib"
     },
     {
       "id": "apo-arx-ship-2025",
@@ -58,7 +66,7 @@
       "status": "published",
       "publisherUrl": "https://ieeexplore.ieee.org/abstract/document/10989967/",
       "themeSlugs": [
-        "ship-identification"
+        "underwater-robot-cooperation"
       ],
       "projectIds": [
         "ship-identification"
@@ -80,13 +88,25 @@
           "isMe": true
         },
         {
-          "name": "Coauthors",
+          "name": "Ziad Shoeib",
+          "isMe": false
+        },
+        {
+          "name": "Ahmed Abdelrazeq",
+          "isMe": false
+        },
+        {
+          "name": "MD Tarique bin Hamid",
+          "isMe": false
+        },
+        {
+          "name": "Ramy Rashad",
           "isMe": false
         }
       ],
-      "venue": "ICUAS 2026",
-      "year": 2026,
-      "status": "in-review",
+      "venue": "SSD Conference 2027",
+      "year": 2027,
+      "status": "submitted",
       "publisherUrl": null,
       "themeSlugs": [
         "variable-tilt-hexacopter"

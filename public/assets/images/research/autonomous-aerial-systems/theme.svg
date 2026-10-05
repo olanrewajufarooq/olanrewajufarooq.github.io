@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Autonomous aerial systems illustration</title>
+  <desc id="desc">A formation of aerial vehicles follows a planned path through a measured space.</desc>
+  <rect width="1200" height="675" fill="#18232c"/>
+  <path d="M95 510C290 130 475 570 680 205s260-40 425-130" fill="none" stroke="#f39a68" stroke-width="6" stroke-dasharray="18 16"/>
+  <g fill="#2457d6" stroke="#8eafff" stroke-width="7"><path d="m270 260 50-28 50 28v56l-50 28-50-28z"/><path d="m545 410 50-28 50 28v56l-50 28-50-28z"/><path d="m850 180 50-28 50 28v56l-50 28-50-28z"/></g>
+  <g stroke="#f5f1e8" stroke-width="6"><path d="M260 288h120M535 438h120M840 208h120"/><path d="M320 220v136M605 370v136M910 140v136"/></g>
+  <text x="72" y="92" fill="#f5f1e8" font-family="IBM Plex Sans, sans-serif" font-size="26" letter-spacing="4">AUTONOMOUS AERIAL SYSTEMS</text>
+</svg>

@@ -1,0 +1,35 @@
+<button
+  type="button"
+  class="theme-toggle"
+  data-theme-toggle
+  aria-label="Switch to light mode"
+  aria-pressed="true"
+  title="Switch to light mode"
+>
+  <span class="theme-toggle__icon" data-theme-icon aria-hidden="true">○</span>
+</button>
+
+<script>
+  const button = document.querySelector<HTMLElement>('[data-theme-toggle]');
+
+  if (button) {
+    const icon = button.querySelector<HTMLElement>('[data-theme-icon]');
+
+    const updateButton = () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      button.setAttribute('aria-pressed', String(isDark));
+      button.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      if (icon) icon.textContent = isDark ? '○' : '◐';
+    };
+
+    button.addEventListener('click', () => {
+      const nextTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('site-theme', nextTheme);
+      updateButton();
+    });
+
+    updateButton();
+  }
+</script>

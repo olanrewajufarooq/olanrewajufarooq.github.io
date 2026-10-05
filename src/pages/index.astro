@@ -1,43 +1,76 @@
 ---
+import { getCollection } from 'astro:content';
 import ContentLayout from '../layouts/ContentLayout.astro';
-import HomeHero from '../features/home/components/HomeHero.astro';
-import ResearchFocusSection from '../features/home/components/ResearchFocusSection.astro';
-import CurrentAffiliationSection from '../features/home/components/CurrentAffiliationSection.astro';
-import NowSection from '../features/home/components/NowSection.astro';
-import FeaturedThemesSection from '../features/home/components/FeaturedThemesSection.astro';
-import LatestWorkSection from '../features/home/components/LatestWorkSection.astro';
-import CollaborationSection from '../features/home/components/CollaborationSection.astro';
-import {
-  getFeaturedThemes,
-  getLatestAcceptedOrPublishedPublication,
-  getCurrentProjects
-} from '../shared/content/home';
+import ButtonLink from '../components/ui/ButtonLink.astro';
+import profile from '../data/site/profile.json';
 import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
 
-const featuredThemes = getFeaturedThemes();
-const latestPublication = getLatestAcceptedOrPublishedPublication();
-const currentProjects = getCurrentProjects();
-
+const research = await getCollection('research');
+const phdTheme = research.find((entry) => entry.data.slug === 'vehicle-manipulator-systems');
+const publications = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year);
+const latestPublication = publications.find((entry) => ['published', 'accepted'].includes(entry.data.status));
+const themeSlug = (theme: NonNullable<typeof phdTheme>) => theme.data.slug ?? theme.id.replace(/\.md$/, '');
 const meta = buildMetadata({
-  title: 'Farooq Olanrewaju | PhD Student in Robotics and Control',
-  description: 'Academic portfolio of Farooq Olanrewaju, PhD Student in robotics, control engineering, and autonomous systems research.',
+  title: 'Farooq Olanrewaju | Robotics and Control Research',
+  description: 'Research profile of Farooq Olanrewaju, a PhD student working on geometric control, autonomous robotics, and safe physical interaction.',
   canonical: getCanonicalUrl('/'),
-  image: '/assets/images/me/headshot.png',
+  image: profile.photo,
 });
 ---
 
-<ContentLayout
-  title={meta.title}
-  description={meta.description}
-  activePath="/"
-  canonical={meta.canonical}
-  ogImage={meta.openGraph?.image}
->
-  <HomeHero />
-  <ResearchFocusSection />
-  <CurrentAffiliationSection />
-  <NowSection />
-  <FeaturedThemesSection themes={featuredThemes} />
-  <LatestWorkSection publication={latestPublication} projects={currentProjects} />
-  <CollaborationSection />
+<ContentLayout title={meta.title} description={meta.description} activePath="/" canonical={meta.canonical} ogImage={meta.openGraph.image}>
+  <section class="page-intro page-intro--home home-hero" aria-labelledby="home-title">
+    <p class="eyebrow">Robotics · control · autonomous systems</p>
+    <h1 id="home-title">I study how robots move, adapt, and interact safely.</h1>
+    <p>{profile.researchFocus} I am a {profile.title.toLowerCase()} in {profile.department} at {profile.institution}.</p>
+    <div class="button-row">
+      <ButtonLink href="/research" variant="primary">Explore research</ButtonLink>
+      <ButtonLink href="/contact" variant="secondary">Start a conversation</ButtonLink>
+    </div>
+  </section>
+
+  {phdTheme && <section class="section" aria-labelledby="themes-title">
+    <div class="section__heading">
+      <p class="eyebrow">Current Research</p>
+      <h2 id="themes-title">My PhD work.</h2>
+    </div>
+    <div class="phd-research">
+      <a class="phd-research__feature" href={`/research/${themeSlug(phdTheme)}`}>
+        <div class="phd-research__feature-copy">
+          <div class="research-card__meta meta"><span>{phdTheme.data.period}</span><span>{phdTheme.data.status}</span></div>
+          <h3>{phdTheme.data.title}</h3>
+          <p>{phdTheme.data.summary}</p>
+          <span class="research-card__link">Open theme <span aria-hidden="true">↗</span></span>
+        </div>
+        <img src="/assets/images/research/vehicle-manipulator-systems/cover.jpg" alt="Placeholder image for Vehicle-Manipulator Systems" loading="lazy" />
+      </a>
+      <div class="phd-research__pillars" aria-label="PhD research pillars">
+        {[
+          ['Differential Geometry', 'Geometric descriptions of configuration, motion, and interaction.'],
+          ['Port-Hamiltonian Control', 'Structure-preserving models and energy-aware control design.'],
+          ['Safe Interaction', 'Control methods for reliable physical human–robot interaction.'],
+        ].map(([title, description]) => (
+          <article class="phd-research__pillar">
+            <img src="/assets/images/research/research-placeholder.svg" alt={`Placeholder image for ${title}`} loading="lazy" />
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>}
+
+  {latestPublication && <section class="section" aria-labelledby="publication-title">
+    <div class="section__heading">
+      <p class="eyebrow">Latest publication</p>
+      <div>
+        <h2 id="publication-title">A recent contribution.</h2>
+        <p>Published work and submissions are collected in the publication record.</p>
+      </div>
+    </div>
+    <article class="record">
+      <div class="record__side"><span class="meta">{latestPublication.data.year}</span><span class:list={['status-label', latestPublication.data.status === 'published' ? 'status-label--published' : 'status-label--warm']}>{latestPublication.data.status === 'published' ? 'Published' : latestPublication.data.status}</span></div>
+      <div class="record__content"><h3>{latestPublication.data.title}</h3><p>{latestPublication.data.authors.map((author) => author.name).join(', ')}</p><div class="record__details"><span>{latestPublication.data.venue}</span><span class="record__actions"><a href="/publications">All publications</a></span></div></div>
+    </article>
+  </section>}
 </ContentLayout>

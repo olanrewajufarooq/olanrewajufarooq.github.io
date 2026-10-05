@@ -25,6 +25,8 @@ export interface SingleDegreeEntry {
   period: string;
   url?: string | null;
   logo?: string | null;
+  image?: string | null;
+  programNote?: string | null;
   thesis?: Thesis | null;
 }
 

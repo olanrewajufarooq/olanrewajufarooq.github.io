@@ -1,37 +1,40 @@
 ---
+import { getCollection } from 'astro:content';
 import ContentLayout from '../layouts/ContentLayout.astro';
-import PublicationsIntro from '../features/publications/components/PublicationsIntro.astro';
-import PublicationsList from '../features/publications/components/PublicationsList.tsx';
-import publicationsData from '../data/publications/publications.json';
-import type { Publication } from '../shared/types';
 import { buildMetadata, getCanonicalUrl } from '../shared/content/metadata';
 
-const publications = publicationsData.publications as Publication[];
-
+const publications = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title));
+const publishedCount = publications.filter((publication) => publication.data.status === 'published').length;
+const underReviewCount = publications.filter((publication) => publication.data.status !== 'published').length;
+const statusLabel = (status: string) => ({ 'in-review': 'Under review', submitted: 'Submitted', accepted: 'Accepted', published: 'Published', 'in-draft': 'Draft' })[status] ?? status;
 const meta = buildMetadata({
-  title: 'Publications | Farooq Olanrewaju',
-  description: 'Accepted and published works by Farooq Olanrewaju in robotics, control, and autonomous systems.',
+  title: 'Publications',
+  description: 'Publication record of Farooq Olanrewaju in robotics, control, and autonomous systems.',
   canonical: getCanonicalUrl('/publications'),
 });
 ---
 
-<ContentLayout
-  title={meta.title}
-  description={meta.description}
-  activePath="/publications"
-  canonical={meta.canonical}
-  ogImage={meta.openGraph?.image}
->
-  <main class="publications-content">
-    <PublicationsIntro />
-    <PublicationsList client:load publications={publications} />
-  </main>
+<ContentLayout title={meta.title} description={meta.description} activePath="/publications" canonical={meta.canonical} ogImage={meta.openGraph.image}>
+  <header class="page-intro page-intro--index page-intro--publications publications-hero">
+    <div class="publications-hero__main">
+      <p class="eyebrow">Publication record</p>
+      <h1>Work you can read and cite.</h1>
+      <p class="publications-hero__lede">Published work and submissions across geometric control, aerial robotics, marine systems, and system identification.</p>
+    </div>
+    <aside class="publications-hero__summary" aria-label="Publication summary">
+      <span class="publications-hero__summary-label">Record at a glance</span>
+      <div class="publications-hero__total"><strong>{publications.length}</strong><span>works</span></div>
+      <div class="publications-hero__breakdown"><span><strong>{publishedCount}</strong> published</span><span><strong>{underReviewCount}</strong> in progress</span></div>
+    </aside>
+  </header>
+  <section class="section" aria-label="Publication list">
+    <div class="record-list">
+      {publications.map((publication) => (
+        <article class="record">
+          <div class="record__side"><span class="meta">{publication.data.year}</span><span class:list={['status-label', publication.data.status === 'published' ? 'status-label--published' : 'status-label--warm']}>{statusLabel(publication.data.status)}</span></div>
+          <div class="record__content"><h3>{publication.data.title}</h3><p>{publication.data.authors.map((author) => author.name).join(', ')}</p><div class="record__details"><span>{publication.data.venue}</span><span class="record__actions">{publication.data.publisherUrl && <a href={publication.data.publisherUrl} target="_blank" rel="noreferrer">Publisher</a>}{publication.data.citation?.doi && <a href={`https://doi.org/${publication.data.citation.doi}`} target="_blank" rel="noreferrer">DOI</a>}{publication.data.bibtexPath && <a href={publication.data.bibtexPath} download>BibTeX</a>}</span></div></div>
+        </article>
+      ))}
+    </div>
+  </section>
 </ContentLayout>
-
-<style>
-  .publications-content {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-</style>
-

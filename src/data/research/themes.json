@@ -2,9 +2,9 @@
   "themes": [
     {
       "slug": "vehicle-manipulator-systems",
-      "title": "Vehicle-Manipulator Systems and Safe Interaction",
-      "summary": "Research on geometric and port-Hamiltonian modelling and control of vehicle-manipulator systems with emphasis on safe interaction and energy-aware robotic behaviour.",
-      "period": "2024 \u2013 Present",
+      "title": "Vehicle-Manipulator Systems",
+      "summary": "Development of control frameworks for integrated vehicle-manipulator platforms with focus on safe physical interaction",
+      "period": "2026 \u2013 Present",
       "status": "ongoing",
       "featured": true,
       "keywords": [
@@ -13,15 +13,15 @@
         "Safe Interaction",
         "Physical Human-Robot Interaction"
       ],
-      "coverImage": "/assets/images/research/vehicle-manipulator-systems/cover.jpg",
+      "coverImage": "/assets/images/research/vehicle-manipulator-systems/theme.svg",
       "projectIds": [],
       "publicationIds": [],
       "order": 1
     },
     {
       "slug": "variable-tilt-hexacopter",
-      "title": "Variable-Tilt Hexacopter and SE(3) Geometric Control",
-      "summary": "Research on geometric modelling, adaptive control, estimation, and control allocation for fully-actuated aerial vehicles.",
+      "title": "Foundations of Geometric Modelling and Control",
+      "summary": "Ongoing modelling and control of a Voliro-like aerial robot model, with emphasis on geometric dynamics, estimation, and control allocation.",
       "period": "2024 \u2013 Present",
       "status": "ongoing",
       "featured": true,
@@ -32,7 +32,7 @@
         "Adaptive Control",
         "Control Allocation"
       ],
-      "coverImage": "/assets/images/research/variable-tilt-hexacopter/cover.jpg",
+      "coverImage": "/assets/images/research/variable-tilt-hexacopter/theme.svg",
       "projectIds": [
         "adaptive-hexacopter",
         "se3-hexacopter"
@@ -45,11 +45,11 @@
     },
     {
       "slug": "underwater-robot-cooperation",
-      "title": "Underwater Robot Cooperation",
-      "summary": "Research on cooperative underwater robotics, grasp planning, vision, autonomous docking, and mission-oriented control for marine systems.",
-      "period": "2022 \u2013 2024",
+      "title": "Marine Robotics",
+      "summary": "A collection of MSc projects in underwater robotics completed across Université de Toulon, Instituto Superior Técnico, and Universitat Jaume I.",
+      "period": "2022 \u2013 2025",
       "status": "completed",
-      "featured": true,
+      "featured": false,
       "keywords": [
         "Underwater Robotics",
         "Grasp Planning",
@@ -57,76 +57,40 @@
         "Autonomous Docking",
         "Marine Robotics"
       ],
-      "coverImage": "/assets/images/research/underwater-robot-cooperation/cover.jpg",
+      "coverImage": "/assets/images/research/underwater-robot-cooperation/theme.svg",
       "projectIds": [
         "grasp-planning",
         "bluerov-treasure",
         "bluerov-trajectory",
         "underwater-auv",
-        "oceanography"
-      ],
-      "publicationIds": [],
-      "order": 3
-    },
-    {
-      "slug": "ship-identification",
-      "title": "Ship Maneuvering System Identification",
-      "summary": "System identification research for ship maneuvering dynamics using optimization-driven ARX modelling for marine control applications.",
-      "period": "2024 \u2013 2025",
-      "status": "completed",
-      "featured": true,
-      "keywords": [
-        "System Identification",
-        "Marine Systems",
-        "ARX Models",
-        "Optimization"
-      ],
-      "coverImage": "/assets/images/research/ship-identification/cover.jpg",
-      "projectIds": [
+        "oceanography",
         "ship-identification"
       ],
       "publicationIds": [
         "apo-arx-ship-2025"
       ],
-      "order": 4
+      "order": 3
     },
     {
-      "slug": "microgrid-control",
-      "title": "Microgrid Control and Learning-Based Energy Systems",
-      "summary": "Research on reinforcement learning-based control strategies for microgrid systems and energy management.",
-      "period": "2025 \u2013 Present",
-      "status": "ongoing",
+      "slug": "intelligent-systems-control",
+      "title": "Intelligent Systems and Control",
+      "summary": "Control and estimation projects spanning renewable-energy management and probabilistic robotic perception.",
+      "period": "2025 \u2013 2026",
+      "status": "completed",
       "featured": false,
       "keywords": [
-        "Microgrid Control",
-        "Reinforcement Learning",
-        "Energy Systems"
-      ],
-      "coverImage": "/assets/images/research/microgrid-control/cover.jpg",
-      "projectIds": [
-        "microgrid-control"
-      ],
-      "publicationIds": [],
-      "order": 5
-    },
-    {
-      "slug": "probabilistic-sensor-fusion",
-      "title": "Probabilistic Sensor Fusion and Adaptive Kalman Filtering",
-      "summary": "Research on adaptive Kalman filtering, uncertainty quantification, and robust sensor fusion under noise mis-specification.",
-      "period": "2025 \u2013 Present",
-      "status": "ongoing",
-      "featured": false,
-      "keywords": [
-        "Kalman Filtering",
+        "Intelligent Control",
+        "Energy Management",
         "Sensor Fusion",
-        "Probabilistic Guarantees"
+        "Probabilistic Estimation"
       ],
-      "coverImage": "/assets/images/research/probabilistic-sensor-fusion/cover.jpg",
+      "coverImage": "/assets/images/research/microgrid-control/theme.svg",
       "projectIds": [
+        "microgrid-control",
         "prob-kalman-filter"
       ],
       "publicationIds": [],
-      "order": 6
+      "order": 5
     },
     {
       "slug": "autonomous-aerial-systems",
@@ -140,7 +104,7 @@
         "Autonomous Flight",
         "Control Systems"
       ],
-      "coverImage": "/assets/images/research/autonomous-aerial-systems/cover.jpg",
+      "coverImage": "/assets/images/research/autonomous-aerial-systems/theme.svg",
       "projectIds": [
         "uas-development"
       ],

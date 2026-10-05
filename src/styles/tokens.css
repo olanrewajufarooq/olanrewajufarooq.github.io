@@ -1,15 +1,16 @@
 :root {
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-heading: "Source Serif 4", Georgia, serif;
-
-  --color-bg: #111214;
-  --color-surface: #17191d;
-  --color-surface-soft: #1e2126;
-  --color-text: #ece7de;
-  --color-text-muted: #b2ab9f;
-  --color-border: #2a2d33;
-  --color-accent: #7c94ad;
-
+  --font-display: "Newsreader", Georgia, serif;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --color-bg: #f5f1e8;
+  --color-surface: #fffdf8;
+  --color-text: #17202a;
+  --color-text-muted: #59636b;
+  --color-border: #d9d3c8;
+  --color-accent: #2457d6;
+  --color-accent-strong: #173da0;
+  --color-success: #24704f;
+  --color-warm: #a94d1f;
+  --color-focus: #173da0;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -17,27 +18,32 @@
   --space-5: 1.5rem;
   --space-6: 2rem;
   --space-7: 3rem;
-  --space-8: 4.5rem;
-
+  --space-8: 3.5rem;
+  --space-9: 5rem;
+  --content-width: 76rem;
+  --reading-width: 46rem;
   --radius-sm: 0.35rem;
-  --radius-md: 0.65rem;
-  --radius-lg: 1rem;
-
-  --sidebar-width: 19rem;
-
+  --radius-md: 0.75rem;
   --transition-fast: 160ms ease;
-  --transition-base: 220ms ease;
+  --transition-base: 240ms ease;
+}
 
-  --color-primary: #7c94ad;
-  --color-text-inverse: #111214;
-  --color-bg-secondary: #1e2126;
-  --font-family-sans: "Inter", system-ui, sans-serif;
-  --font-size-base: 1rem;
-  --line-height-normal: 1.7;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --color-neutral-400: #5c5f66;
-  --color-neutral-500: #484c52;
+html[data-theme='dark'] {
+  --color-bg: #101820;
+  --color-surface: #18232c;
+  --color-text: #f5f1e8;
+  --color-text-muted: #aab5bd;
+  --color-border: #34434e;
+  --color-accent: #8eafff;
+  --color-accent-strong: #b7c9ff;
+  --color-success: #7ed6a7;
+  --color-warm: #f39a68;
+  --color-focus: #b7c9ff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+  }
 }

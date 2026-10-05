@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Ship identification illustration</title>
+  <desc id="desc">A simplified ship silhouette crossing a measured horizon with identification traces.</desc>
+  <rect width="1200" height="675" fill="#18232c"/>
+  <path d="M0 430h1200" stroke="#8eafff" stroke-width="4" opacity=".8"/>
+  <path d="M145 455h720l-70 80H255z" fill="#2457d6" stroke="#f39a68" stroke-width="7"/>
+  <path d="M330 455v-92h270v92M390 363v-82h120v82M750 455v-125h52v125" fill="none" stroke="#f5f1e8" stroke-width="10"/>
+  <g stroke="#34434e" stroke-width="3" fill="none"><path d="M110 225h980M110 280h980M110 335h980"/><path d="M170 170v215M270 170v215M370 170v215M470 170v215M570 170v215M670 170v215M770 170v215M870 170v215M970 170v215"/></g>
+  <text x="72" y="92" fill="#f5f1e8" font-family="IBM Plex Sans, sans-serif" font-size="26" letter-spacing="4">MARINE SYSTEM IDENTIFICATION</text>
+</svg>

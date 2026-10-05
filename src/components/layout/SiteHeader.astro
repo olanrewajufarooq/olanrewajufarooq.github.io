@@ -1,0 +1,36 @@
+---
+import navigation from '../../data/site/navigation.json';
+import profile from '../../data/site/profile.json';
+import ThemeToggle from '../ui/ThemeToggle.astro';
+
+interface Props {
+  activePath: string;
+}
+
+const { activePath } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="site-header__row">
+    <a class="site-header__brand" href="/">
+      {profile.name}
+      <span>{profile.currentAffiliationLabel}</span>
+    </a>
+    <nav class="site-header__nav" aria-label="Primary navigation">
+      {navigation.map((item) => (
+        <a class="nav-link" href={item.href} aria-current={item.href === activePath ? 'page' : undefined}>{item.label}</a>
+      ))}
+    </nav>
+    <div class="site-header__actions">
+      <ThemeToggle />
+      <details class="mobile-menu">
+        <summary aria-label="Open navigation menu"><span class="mobile-menu__label" aria-hidden="true">☰</span></summary>
+        <nav class="mobile-menu__panel" aria-label="Mobile navigation">
+          {navigation.map((item) => (
+            <a class="nav-link" href={item.href} aria-current={item.href === activePath ? 'page' : undefined}>{item.label}</a>
+          ))}
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

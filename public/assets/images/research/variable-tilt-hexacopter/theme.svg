@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Variable-tilt hexacopter illustration</title>
+  <desc id="desc">A hexagonal aerial vehicle with six tilting rotors and a geometric trajectory.</desc>
+  <rect width="1200" height="675" fill="#18232c"/>
+  <path d="M90 535C270 400 360 500 530 350S790 160 1110 115" fill="none" stroke="#f39a68" stroke-width="5" stroke-dasharray="16 18"/>
+  <g fill="none" stroke="#34434e" stroke-width="2"><circle cx="625" cy="342" r="235"/><circle cx="625" cy="342" r="160"/><path d="M625 88v508M371 342h508"/></g>
+  <path d="M625 225 790 320 790 410 625 505 460 410 460 320z" fill="#2457d6" opacity=".85" stroke="#8eafff" stroke-width="7"/>
+  <g fill="#fffdf8" stroke="#f39a68" stroke-width="10"><circle cx="385" cy="270" r="38"/><circle cx="865" cy="270" r="38"/><circle cx="385" cy="414" r="38"/><circle cx="865" cy="414" r="38"/><circle cx="625" cy="120" r="38"/><circle cx="625" cy="565" r="38"/></g>
+  <text x="72" y="92" fill="#f5f1e8" font-family="IBM Plex Sans, sans-serif" font-size="26" letter-spacing="4">SE(3) GEOMETRIC CONTROL</text>
+</svg>

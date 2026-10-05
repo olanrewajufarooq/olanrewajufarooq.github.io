@@ -1,29 +1,52 @@
 ---
+import { getCollection } from 'astro:content';
 import ContentLayout from '../../layouts/ContentLayout.astro';
-import ResearchIntro from '../../features/research/components/ResearchIntro.astro';
-import ResearchTimeline from '../../features/research/components/ResearchTimeline';
-import themesData from '../../data/research/themes.json';
-import type { ResearchThemeSummary } from '../../shared/types/research';
 import { buildMetadata, getCanonicalUrl } from '../../shared/content/metadata';
+import { sortResearchLatestFirst } from '../../shared/content/research';
 
-const themes = (themesData.themes as ResearchThemeSummary[]).sort(
-  (a, b) => a.order - b.order
-);
-
+const themes = (await getCollection('research')).sort(sortResearchLatestFirst);
+const currentThemes = themes.filter((theme) => theme.data.status === 'ongoing');
+const completedThemes = themes.filter((theme) => theme.data.status !== 'ongoing');
+const themeSlug = (theme: (typeof themes)[number]) => theme.data.slug ?? theme.id.replace(/\.md$/, '');
 const meta = buildMetadata({
-  title: 'Research | Farooq Olanrewaju',
-  description: 'Research themes, portfolio, and current directions of Farooq Olanrewaju.',
+  title: 'Research',
+  description: 'Research themes and projects by Farooq Olanrewaju across robotics, control, and autonomous systems.',
   canonical: getCanonicalUrl('/research'),
 });
 ---
 
-<ContentLayout
-  title={meta.title}
-  description={meta.description}
-  activePath="/research"
-  canonical={meta.canonical}
-  ogImage={meta.openGraph?.image}
->
-  <ResearchIntro />
-  <ResearchTimeline client:load themes={themes} />
+<ContentLayout title={meta.title} description={meta.description} activePath="/research" canonical={meta.canonical} ogImage={meta.openGraph.image}>
+  <header class="page-intro page-intro--index">
+    <p class="eyebrow">Research</p>
+    <h1>Questions, machines, and control.</h1>
+    <p>A working catalogue of research across geometric modelling, autonomous systems, and physical interaction.</p>
+  </header>
+  <section class="section research-catalogue" aria-labelledby="research-list-title">
+    <div class="section__heading">
+      <p class="eyebrow">Current research</p>
+      <div><h2 id="research-list-title">Active themes and working questions.</h2><p>Each record names the problem, its period, and the methods currently shaping the work.</p></div>
+    </div>
+    <div class="catalogue-list">
+      {currentThemes.map((theme, index) => (
+        <article class:list={['catalogue-entry', index % 2 === 1 && 'catalogue-entry--reverse']}>
+          <img class="catalogue-entry__image" src={theme.data.coverImage} alt="" />
+          <div class="catalogue-entry__body"><div class="catalogue-entry__meta meta"><span>{theme.data.period}</span><span class="status-label">{theme.data.status}</span></div><h3><a href={`/research/${themeSlug(theme)}`}>{theme.data.title}</a></h3><p>{theme.data.summary}</p><a class="text-link" href={`/research/${themeSlug(theme)}`}>Open theme <span aria-hidden="true">↗</span></a></div>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="section research-catalogue research-catalogue--archive" aria-labelledby="archive-title">
+    <div class="section__heading">
+      <p class="eyebrow">Completed work</p>
+      <div><h2 id="archive-title">An archive of previous questions.</h2><p>Earlier projects remain useful context for the methods and systems I work with today.</p></div>
+    </div>
+    <div class="catalogue-list">
+      {completedThemes.map((theme, index) => (
+        <article class:list={['catalogue-entry', index % 2 === 1 && 'catalogue-entry--reverse']}>
+          <img class="catalogue-entry__image" src={theme.data.coverImage} alt="" />
+          <div class="catalogue-entry__body"><div class="catalogue-entry__meta meta"><span>{theme.data.period}</span><span class="status-label status-label--complete">{theme.data.status}</span></div><h3><a href={`/research/${themeSlug(theme)}`}>{theme.data.title}</a></h3><p>{theme.data.summary}</p><a class="text-link" href={`/research/${themeSlug(theme)}`}>Open theme <span aria-hidden="true">↗</span></a></div>
+        </article>
+      ))}
+    </div>
+  </section>
 </ContentLayout>
